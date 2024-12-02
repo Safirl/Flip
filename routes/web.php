@@ -13,7 +13,8 @@ Route::controller(\App\Http\Controllers\AppController::class)->group(function ()
 Route::controller(\App\Http\Controllers\AuthController::class)->group(function () {
     Route::get('/login', 'login')->name('auth.login');
     Route::post('/login','authenticate');
-    Route::get('/register', 'register')->name('auth.register');
+    Route::get('/register', 'register')->name('auth.register.show');
+    Route::post('/register', 'createUser')->name('auth.register.create');
     Route::delete('/logout', 'logout')->name('auth.logout');
 });
 
