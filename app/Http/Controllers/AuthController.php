@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,7 @@ class AuthController extends Controller
         dd('islogin');
     }
 
-    public function authenticate(Request $request) {
+    public function authenticate(LoginRequest $request) {
     }
 
     public function logout(): RedirectResponse {
@@ -23,6 +24,6 @@ class AuthController extends Controller
     }
 
     //Permet de créer un compte dans la base de donnée
-    public function register(Request $request) {
+    public function register(LoginRequest $request) {
     }
 }
