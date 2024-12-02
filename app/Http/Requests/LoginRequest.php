@@ -23,10 +23,17 @@ class LoginRequest extends FormRequest
     {
         $isRegister = $this->routeIs('auth.register');
 
-        return [
+        $rules = [
             'email' => 'required|email',
             'password' => 'required|min:8',
         ];
+
+        if ($isRegister) {
+            $rules['name'] = ['required', 'string', 'max:255'];
+            $rules['email'][] = 'unique:users,email';
+        }
+
+        return $rules;
     }
 
     public function messages(): array
