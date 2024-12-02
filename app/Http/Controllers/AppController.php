@@ -4,24 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AppController extends Controller
 {
     public function index(): View
     {
         //Renvoie vers les polls du jour
-        dd('hello world');
-//        return view('');
+
+        return view('app.polls');
     }
 
     public function account(): View
     {
-        dd('hello world');
+        return view('app.account');
     }
 
     public function feed(): View {
         //Return les feeds des actus de la semaine
-        dd('hello world');
+        return view('app.feed');
     }
 
     public function results(): View {
@@ -29,8 +30,7 @@ class AppController extends Controller
         //Résultats d'un sondage
     }
 
-    public function activity(): View {
-        dd('hello world');
-        //return toute l'activité liées aux commentaires
+    public function notification(): View {
+        return view('app.notification');
     }
 }
