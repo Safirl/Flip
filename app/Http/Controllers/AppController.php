@@ -11,6 +11,7 @@ class AppController extends Controller
     {
         //Renvoie vers les polls du jour
         dd('hello world');
+//        return view('');
     }
 
     public function account(): View
