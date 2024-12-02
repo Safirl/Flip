@@ -34,9 +34,11 @@ class AppController extends Controller
         //Résultats d'un sondage
     }
 
-    public function notification(): View {
+    public function notification(): View
+    {
         return view('app.notification');
-        
+    }
+
     public function activity(): View
     {
         dd('hello world');
