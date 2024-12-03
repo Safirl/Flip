@@ -15,8 +15,11 @@ use Illuminate\View\View;
 class AuthController extends Controller
 {
     //Return la view pour se connecter
-    public function login(): View
+    public function login(): View|RedirectResponse
     {
+        if (Auth::check()) {
+            return redirect()->route('account')->with('success', 'You are already logged in!');
+        }
         return view('auth.login');
     }
 
@@ -33,11 +36,26 @@ class AuthController extends Controller
             'name' => $credentials['name'],
             'email' => $credentials['email'],
             'password' => Hash::make($credentials['password']),
+            'friend_id' => $this->generateFriendCode()
         ]);
         Auth::login($user);
 
         $request->session()->regenerate();
         return redirect()->intended(route('polls'))->with('success', 'Account created and logged in successfully!');
+    }
+
+    private function generateFriendCode(): string
+    {
+        do {
+            $friendId = strtoupper(bin2hex(random_bytes(3))); // Exemple : "A1B2C3"
+        } while ($this->friendIdExists($friendId));
+
+        return $friendId;
+    }
+
+    private function friendIdExists(string $friendId): bool
+    {
+        return \App\Models\User::where('friend_id', $friendId)->exists();
     }
 
     public function authenticate(LoginRequest $request): RedirectResponse

@@ -13,14 +13,15 @@
                 @csrf
                 <button class="">Se déconnecter</button>
             </form>
-            <div>Votre code ami : {{ \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier() }}</div>
+            <div>Votre code ami : {{ \Illuminate\Support\Facades\Auth::user()->friend_code }}</div>
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('addFriend') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div>
-                            <label for="friend">Ajouter un ami</label>
-                            <input type="number" class="form-control" id="friend">
+                            <label for="friend_id">Ajouter un ami</label>
+                            <input type="text" class="form-control" id="friend_id" name="friend_id">
+                            @error("friend_id") {{ $message }} @enderror
                         </div>
                         <button class="btn btn-primary">
                             Add friend
