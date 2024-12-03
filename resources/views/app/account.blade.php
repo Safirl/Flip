@@ -13,6 +13,7 @@
                 @csrf
                 <button class="">Se déconnecter</button>
             </form>
+            <div>Votre code ami : {{ \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier() }}</div>
         @endauth
         @guest
             <a href="{{ route('auth.login') }}">Se connecter</a>

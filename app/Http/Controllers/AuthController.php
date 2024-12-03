@@ -25,7 +25,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function createUser(LoginRequest $request)
+    public function createUser(LoginRequest $request): RedirectResponse
     {
         $credentials = $request->validated();
         $user = User::create([
