@@ -126,7 +126,7 @@ class AppController extends Controller
 
 //	public function result( Poll $poll)
 //    {
-        return view('app.result', compact('poll'));
+        //return view('app.result', compact('poll'));
 //        $polls = Poll::all();
 //        if ($polls->slug != $slug) {
 //            return to_route('app.result', ['slug' => $polls->slug]);
