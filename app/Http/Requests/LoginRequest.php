@@ -21,18 +21,16 @@ class LoginRequest extends FormRequest
      */
     public function rules(): array
     {
-        $isRegister = $this->routeIs('auth.register');
-
+        $isRegister = $this->route()->getName() === 'auth.register.create';
         $rules = [
             'email' => 'required|email',
             'password' => 'required|min:8',
         ];
 
         if ($isRegister) {
-            $rules['name'] = ['required', 'string', 'max:255'];
-            $rules['email'][] = 'unique:users,email';
+            $rules['name'] = ['required', 'string', 'max:255', 'min:3'];
+            $rules['email'] = 'unique:users,email';
         }
-
         return $rules;
     }
 
@@ -44,6 +42,7 @@ class LoginRequest extends FormRequest
             'email.unique' => 'Cet email est déjà utilisé.',
             'password.required' => 'Le mot de passe est obligatoire.',
             'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+            'name.min' => 'Le nom doit faire au moins 3 caractères.',
             'name.required' => 'Le nom est obligatoire pour l\'inscription.',
         ];
     }
