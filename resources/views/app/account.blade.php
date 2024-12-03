@@ -13,7 +13,7 @@
                 @csrf
                 <button class="">Se déconnecter</button>
             </form>
-            <div>Votre code ami : {{ \Illuminate\Support\Facades\Auth::user()->friend_code }}</div>
+            <div>Votre code ami : {{ \Illuminate\Support\Facades\Auth::user()->friend_id }}</div>
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('addFriend') }}" method="post" enctype="multipart/form-data">
@@ -29,31 +29,14 @@
                     </form>
                 </div>
             </div>
-            {{--Show friends--}}
-            {{--            <div>--}}
-            {{--                @foreach($friends as $friend)--}}
-            {{--                    <article>--}}
-            {{--                        <h2>{{ $post->title }}</h2>--}}
-            {{--                        <p class="small"> @if($post->category)--}}
-            {{--                                Category : {{ $post->category?->name }}--}}
-            {{--                            @endif</p>--}}
-            {{--                        <p class="small">--}}
-            {{--                            @if(!$post->tags->isEmpty())--}}
-            {{--                                , Tags :--}}
-            {{--                                @foreach($post->tags as $tag)--}}
-            {{--                                    {{ $tag->name }}--}}
-            {{--                                @endforeach--}}
-            {{--                            @endif--}}
-
-            {{--                        </p>--}}
-            {{--                        <p>{{ $post->content }}</p>--}}
-            {{--                        <p>--}}
-            {{--                            <a href="{{ route('blog.show', ['slug' => $post->slug, 'post' => $post->id] ) }}"--}}
-            {{--                               class="btn btn-primary">Lire la suite</a>--}}
-            {{--                        </p>--}}
-            {{--                    </article>--}}
-            {{--                @endforeach--}}
-            {{--            </div>--}}
+{{--            Show friends--}}
+            <div>
+                @foreach($friends as $friend)
+                    <div>
+                        {{ $friend->name }}
+                    </div>
+                @endforeach
+            </div>
             <div>
                 <form action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
                     @method("delete")
