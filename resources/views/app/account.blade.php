@@ -29,30 +29,37 @@
                 </div>
             </div>
             {{--Show friends--}}
-{{--            <div>--}}
-{{--                @foreach($friends as $friend)--}}
-{{--                    <article>--}}
-{{--                        <h2>{{ $post->title }}</h2>--}}
-{{--                        <p class="small"> @if($post->category)--}}
-{{--                                Category : {{ $post->category?->name }}--}}
-{{--                            @endif</p>--}}
-{{--                        <p class="small">--}}
-{{--                            @if(!$post->tags->isEmpty())--}}
-{{--                                , Tags :--}}
-{{--                                @foreach($post->tags as $tag)--}}
-{{--                                    {{ $tag->name }}--}}
-{{--                                @endforeach--}}
-{{--                            @endif--}}
+            {{--            <div>--}}
+            {{--                @foreach($friends as $friend)--}}
+            {{--                    <article>--}}
+            {{--                        <h2>{{ $post->title }}</h2>--}}
+            {{--                        <p class="small"> @if($post->category)--}}
+            {{--                                Category : {{ $post->category?->name }}--}}
+            {{--                            @endif</p>--}}
+            {{--                        <p class="small">--}}
+            {{--                            @if(!$post->tags->isEmpty())--}}
+            {{--                                , Tags :--}}
+            {{--                                @foreach($post->tags as $tag)--}}
+            {{--                                    {{ $tag->name }}--}}
+            {{--                                @endforeach--}}
+            {{--                            @endif--}}
 
-{{--                        </p>--}}
-{{--                        <p>{{ $post->content }}</p>--}}
-{{--                        <p>--}}
-{{--                            <a href="{{ route('blog.show', ['slug' => $post->slug, 'post' => $post->id] ) }}"--}}
-{{--                               class="btn btn-primary">Lire la suite</a>--}}
-{{--                        </p>--}}
-{{--                    </article>--}}
-{{--                @endforeach--}}
-{{--            </div>--}}
+            {{--                        </p>--}}
+            {{--                        <p>{{ $post->content }}</p>--}}
+            {{--                        <p>--}}
+            {{--                            <a href="{{ route('blog.show', ['slug' => $post->slug, 'post' => $post->id] ) }}"--}}
+            {{--                               class="btn btn-primary">Lire la suite</a>--}}
+            {{--                        </p>--}}
+            {{--                    </article>--}}
+            {{--                @endforeach--}}
+            {{--            </div>--}}
+            <div>
+                <form action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
+                    @method("delete")
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Se déconnecter</button>
+                </form>
+            </div>
         @endauth
         @guest
             <a href="{{ route('auth.login') }}">Se connecter</a>

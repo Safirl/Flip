@@ -16,5 +16,6 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
     Route::get('/register', 'register')->name('auth.register.show');
     Route::post('/register', 'createUser')->name('auth.register.create');
     Route::delete('/logout', 'logout')->name('auth.logout');
+    Route::delete('/users/{user}', 'deleteUser')->name('auth.destroy');
 });
 

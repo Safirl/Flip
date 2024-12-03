@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class AuthController extends Controller
@@ -55,5 +56,22 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect()->route('auth.login')->with('success', 'You have been logged out!');
+    }
+
+    public function deleteUser(User $user): RedirectResponse {
+
+        if (auth()->id() !== $user->id && !auth()->user()->isAdmin) {
+            abort(403, 'Action non autorisée.');
+        }
+
+        Log::info('Utilisateur supprimé', [
+            'user_deleted_id' => $user->id,
+            'deleted_by_id' => auth()->id(),
+            'timestamp' => now(),
+        ]);
+
+        $user->delete();
+
+        return redirect()->route('polls')->with('success', 'Utilisateur supprimé avec succès.');
     }
 }
