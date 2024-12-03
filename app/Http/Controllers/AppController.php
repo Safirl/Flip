@@ -57,7 +57,7 @@ class AppController extends Controller
         return view('app.feed');
     }
 
-    public function result(Request $request): View
+    public function result(Request $request): View|RedirectResponse
     {
         $answer = filter_var($request->query('answer'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
         $userId = 1;
@@ -92,6 +92,9 @@ class AppController extends Controller
 
     public function addFriend(AddFriendRequest $request): RedirectResponse
     {
+        if ($request['friend_id'] === Auth::user()->friend_id) {
+            return redirect()->back()->withErrors(['friend_id' => 'Vous essayez d\'ajouter votre ID!' ]);
+        }
         $friend_id = User::where('friend_id', $request->validated())->first()->id;
 
         $isAlreadyAdded = Friend::where(function ($query) use ($friend_id) {
@@ -138,10 +141,16 @@ class AppController extends Controller
 
     public function showComments(Poll $poll): View
     {
-        $comments = Comment::where('poll_id', $poll->id)->get();
+        //We only want our friends comments
+        $friends = Auth::user()->friends();
+        $comments = $poll->comments()->get();
+        $friendsComments = $comments->filter(function ($comment) use ($friends) {
+            return $friends->contains('id', $comment->user_id);
+        });
+
         return view('app.comments', [
             'poll' => $poll,
-            'comments' => $comments,
+            'comments' => $friendsComments,
         ]);
     }
 

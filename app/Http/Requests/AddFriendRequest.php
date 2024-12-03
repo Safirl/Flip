@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AddFriendRequest extends FormRequest
 {
@@ -22,7 +23,10 @@ class AddFriendRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'friend_id' => 'required|exists:users,friend_id',
+            'friend_id' => [
+                'required',
+                'exists:users,friend_id', // Vérifie que le friend_id existe dans la colonne `friend_id` de la table users
+            ],
         ];
     }
 

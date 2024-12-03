@@ -51,4 +51,39 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     * Returns all the friends. Merge when user appears in user_id_1 and user_id_2.
+     */
+    public function friends(): \Illuminate\Database\Eloquent\Collection {
+        $friends1 = $this->friendsAsUser1()->get();
+
+        $friends2 = $this->friendsAsUser2()->get();
+
+        return $friends1->merge($friends2);
+    }
+
+    private function friendsAsUser1(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            User::class,
+            'friends',
+            'user_id_1',
+            'user_id_2'
+        );
+    }
+    private function friendsAsUser2(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            User::class,
+            'friends',
+            'user_id_2',
+            'user_id_1'
+        );
+    }
 }

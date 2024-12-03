@@ -40,7 +40,7 @@
                 <form action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
                     @method("delete")
                     @csrf
-                    <button type="submit" class="btn btn-danger">Se déconnecter</button>
+                    <button type="submit" class="btn btn-danger">Supprimer le compte</button>
                 </form>
             </div>
         @endauth

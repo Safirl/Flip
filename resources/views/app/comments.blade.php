@@ -26,8 +26,9 @@
     <div class="container-comments">
         Commentaires :
         @foreach($comments as $comment)
-            <div class="comment-card">
-                {{ $comment->content }}
+            <div class="comment">
+                <p><strong>{{ $comment->user->name ?? 'Utilisateur inconnu' }}</strong> :</p>
+                <p>{{ $comment->content }}</p>
             </div>
         @endforeach
     </div>
