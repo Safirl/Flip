@@ -1,6 +1,5 @@
 @extends('base')
 
-
 @section('title', 'profil')
 
 @section('content')
@@ -49,5 +48,4 @@
             <a href="{{ route('auth.login') }}">Se connecter</a>
         @endguest
     </div>
-
 @endsection
