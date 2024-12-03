@@ -15,7 +15,24 @@
             <p><strong>Analysis:</strong> {{ $poll->analysis }}</p>
             <p><strong>Slug:</strong> {{ $poll->slug }}</p>
 
-            <a href="{{ route('app.result', ['poll' => $poll->slug]) }}">Lire la suite</a>
+                <a href="{{ route('app.result', ['poll' => $poll->slug]) }}">Lire la suite</a>
+
+{{--                <form action="{{ route('app.vote', ['poll' => $poll->id]) }}" method="POST">--}}
+                <form action="{{ route('app.result', ['poll' => $poll->slug]) }}" >
+                    @csrf
+
+                    <!-- Boutons radio -->
+                    <input type="radio" id="intox-{{ $poll->id }}" name="answer" value="false">
+                    <label for="intox-{{ $poll->id }}">Intox</label>
+
+                    <input type="radio" id="info-{{ $poll->id }}" name="answer" value="true">
+                    <label for="info-{{ $poll->id }}">Info</label>
+
+                    <!-- Bouton Valider -->
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                </form>
+
+
         </div>
         <hr>
     @endforeach

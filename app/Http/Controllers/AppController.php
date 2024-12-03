@@ -21,6 +21,7 @@ use function Sodium\add;
 class AppController extends Controller
 {
 
+
     public function index(): View
     {
 //        Poll::create(
