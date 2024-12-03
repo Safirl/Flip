@@ -13,5 +13,14 @@ class Poll extends Model
         'author',
         'context',
         'analysis',
+        'title',
+        'slug',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
+
+

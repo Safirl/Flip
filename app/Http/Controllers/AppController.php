@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Poll;
+use App\Models\Post;
 use App\Http\Requests\AddFriendRequest;
 use App\Models\Friend;
 use App\Models\User;
@@ -13,13 +15,21 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
 use function Sodium\add;
 
+
+
+
 class AppController extends Controller
 {
+
     public function index(): View
     {
-        //Dev only, create a new user
-        //createUser('secret123', 'john@example.com', 'John');
-        return view('app.polls');
+//        Poll::create(
+//
+//        );
+
+        //Renvoie vers les polls du jour
+        $polls = Poll::all();
+        return view('app.polls', compact('polls'));
     }
 
     public function account(): View
@@ -96,4 +106,15 @@ class AppController extends Controller
             'friend_id' => 12345678,
         ]);
     }
+
+//	public function result( Poll $poll)
+//    {
+        return view('app.result', compact('poll'));
+//        $polls = Poll::all();
+//        if ($polls->slug != $slug) {
+//            return to_route('app.result', ['slug' => $polls->slug]);
+//        }
+//        return view('app.polls', compact('polls'));
+
+//    }
 }
