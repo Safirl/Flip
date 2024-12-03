@@ -1,6 +1,5 @@
 @extends('base')
 @section('title', 'Login')
-
 @section('content')
     <h1>Se connecter</h1>
     <div class="card">

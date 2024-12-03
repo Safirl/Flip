@@ -4,7 +4,7 @@
 @section('title', 'profil')
 
 @section('content')
-    <h1> Votre profil</h1>
+    <h1>Votre profil</h1>
     <div class="">
         @auth
             {{ \Illuminate\Support\Facades\Auth::user()->name }}

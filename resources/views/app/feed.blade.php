@@ -4,7 +4,7 @@
 @section('title', 'feed')
 
 @section('content')
-    <h1> Feed</h1>
+    <h1>Feed</h1>
 
 
 @endsection

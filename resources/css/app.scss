@@ -1,4 +1,15 @@
-
 @import 'foundation-sites/scss/foundation';
 @import 'motion-ui/motion-ui';
 @include foundation-everything;
+
+
+body, *{
+    font-family: Figtree, ui-sans-serif, system-ui, sans-serif;
+    background-color: red;
+
+    h1 {
+        color: red;
+    }
+
+
+}
