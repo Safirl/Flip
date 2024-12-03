@@ -97,13 +97,9 @@ class AppController extends Controller
         }
         $friend_id = User::where('friend_id', $request->validated())->first()->id;
 
-        $isAlreadyAdded = Friend::where(function ($query) use ($friend_id) {
-            $query->where('user_id_1', Auth::user()->id)
-                ->where('user_id_2', $friend_id);
-        })->orWhere(function ($query) use ($friend_id) {
-            $query->where('user_id_2', Auth::user()->id)
-                ->where('user_id_1', $friend_id);
-        })->first();
+        $isAlreadyAdded = Auth::user()->friends()->contains(function ($friend) use ($friend_id) {
+            return $friend->id == $friend_id;
+        });
 
         if ($isAlreadyAdded) {
             return redirect()->back()->withErrors(['friend_id' => 'Ami déjà ajouté']);
