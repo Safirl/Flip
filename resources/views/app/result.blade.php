@@ -12,3 +12,4 @@
     <p><strong>Slug:</strong> {{ $poll->slug }}</p>
 
 @endsection
+

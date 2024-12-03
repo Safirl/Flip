@@ -10,6 +10,7 @@ use App\Models\Friend;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
@@ -56,10 +57,25 @@ class AppController extends Controller
         return view('app.feed');
     }
 
-    public function results(): View
-    {
-        dd('hello world');
-        //Résultats d'un sondage
+    public function result(Request $request): View {
+        $answer = filter_var($request->query('answer'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+        $userId = 1;
+        $pollId = 1;
+
+        // Validation des données
+        if ($answer === null) {
+            return redirect()->route('app.poll')->withErrors('Votez');
+        }
+
+        // Insère les données dans la base de données
+        DB::table('user_poll')->insert([
+            'answer' => $answer ? 1 : 0, // Convertit en entier (0 ou 1)
+            'user_id' => $userId,
+            'poll_id' => $pollId,
+        ]);
+
+        // Retourne une vue avec les données
+        return view('result', ['answer' => $answer]);
     }
 
     public function notification(): View
