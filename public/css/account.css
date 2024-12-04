@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 12px;
 }
 
 .card-account-text {
@@ -80,17 +81,14 @@ p {
     align-items: center;
 }
 
-.card {
-    padding: 12px;
-    flex-direction: row;
-    justify-content: flex-start;
-}
 
 .friend-card{
     display: flex;
     border: none;
     box-shadow: 0px 0px var(--global-blurs-blur-sm, 4px) 0px rgba(0, 0, 0, 0.10);
     margin-bottom: var(--spacing-m);
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .friends-p {
@@ -120,4 +118,4 @@ p {
 
 .user-card {
     justify-content: center;
-}
+}   
