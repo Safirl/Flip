@@ -14,6 +14,7 @@ class Button extends Component
     public $label;
     public $onClick;
     public $expand;
+    public $classes;
 
     public function __construct(
         $size = 'large',
@@ -23,7 +24,8 @@ class Button extends Component
         $iconEnd = null,
         $label = 'Label',
         $onClick = null,
-        $expand = false
+        $expand = false,
+        $classes = null
     ) {
         $this->size = $size;
         $this->color = $color;
@@ -33,6 +35,7 @@ class Button extends Component
         $this->label = $label;
         $this->onClick = $onClick;
         $this->expand = $expand;
+        $this->classes = $classes;
     }
 
     public function sizeClass()

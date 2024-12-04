@@ -10,6 +10,14 @@
         {{--        Mettre les infos liées à la carte bref on les retrouve depuis poll --}}
     </div>
     <div style="width: 100%; display: flex; justify-content: center">
+        <x-button
+            size="large"
+            color="primary"
+            outlined="true"
+            label=""
+            iconEnd="fa-solid fa-arrow-left"
+            classes="btn-back"
+        />
         <div class="bulb @if($poll->isIntox) intox-bulb @else info-bulb @endif ">
             <i class="fa-solid fa-lightbulb"></i>
             <h1 style="">

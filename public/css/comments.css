@@ -1,6 +1,7 @@
 .bulb {
     display: flex;
-    padding: var(--spacing-xs, 4px) var(--spacing-xl);
+    padding-right: var(--spacing-m);
+    padding-left: var(--spacing-m);
     justify-content: center;
     align-items: center;
     gap: var(--spacing-xs, 4px);
@@ -24,4 +25,8 @@
 .fa-lightbulb {
     font-size: 1.2rem;
     color: var(--app-white-300);
+}
+
+.btn-back {
+    padding: .5rem;
 }

@@ -1,5 +1,5 @@
 <button
-    class="btn {{ $sizeClass() }} {{ $colorClass() }} {{ $outlinedClass() }} {{ $expandClass() }}"
+    class="btn {{ $classes }} {{ $sizeClass() }} {{ $colorClass() }} {{ $outlinedClass() }} {{ $expandClass() }}"
     @if($onClick) onclick="{{ $onClick }}" @endif
 >
     @if($iconStart)
