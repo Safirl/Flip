@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/_button.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components/_Navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components/_nav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/_link.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
