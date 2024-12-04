@@ -2,9 +2,9 @@
 @section('title', 'Login')
 @section('content')
     <h1>Créer un compte</h1>
-    <div class="card">
-        <form action="{{route('auth.register.create')}}" method="post" class="vstack gap-3">
-            @csrf
+    <form action="{{route('auth.register.create')}}" method="post" class="vstack gap-3 card">
+        @csrf
+        <div>
             <div class="form-group">
                 <label for="name">Pseudo</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
@@ -22,15 +22,9 @@
                 <input type="password" class="form-control" id="password" name="password">
                 @error("password") <span class="text-error">{{ $message }}</span> @enderror
             </div>
+        </div>
 
-            <x-button
-                size="large"
-                color="primary"
-                label="M'inscrire et me connecter"
-                expand="true"
-                iconEnd="fa-solid fa-chevron-right"
-            />
-
+        <div>
             <div class="text-center">
                 <span class="text">En vous inscrivant vous acceptez les</span>
                 <x-link color="primary"
@@ -39,8 +33,14 @@
                         url='auth.register.show'
                         label="Conditions Générales d'Utilisation">
                 </x-link>
+                <x-button
+                    size="large"
+                    color="primary"
+                    label="M'inscrire et me connecter"
+                    expand="true"
+                    iconEnd="fa-solid fa-chevron-right"
+                />
             </div>
-        </form>
-    </div>
-
+        </div>
+    </form>
 @endsection
