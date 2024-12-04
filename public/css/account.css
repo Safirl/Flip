@@ -1,0 +1,17 @@
+.card {
+    border-radius: var(--spacing-l, 12px);
+    border: 1px solid var(--palettes-grey-100, #D9D9D9);
+    background: rgba(252, 252, 252, 0.50);
+
+    display: flex;
+    padding: var(--spacing-xxl, 24px) var(--spacing-l, 12px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-account-text {
+    text-align: center;
+    font-weight: 400;
+    font-size: var(--font-size-l, 14px);
+}
