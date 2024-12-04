@@ -86,4 +86,9 @@ class User extends Authenticatable
             'user_id_1'
         );
     }
+
+    public function polls()
+    {
+        return $this->belongsToMany(Poll::class, 'user_poll');
+    }
 }

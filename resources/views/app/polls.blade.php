@@ -7,6 +7,7 @@
     <h1> Votes du jour </h1>
 
     @foreach ($polls as $poll)
+        
         <div class="poll">
             <h2>{{ $poll->title }}</h2>
             <p><strong>Quote:</strong> "{{ $poll->quote }}"</p>
@@ -14,9 +15,8 @@
             <p><strong>Context:</strong> {{ $poll->context }}</p>
             <p><strong>Analysis:</strong> {{ $poll->analysis }}</p>
             <p><strong>Slug:</strong> {{ $poll->slug }}</p>
-
             @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
-            (auth()->check() && \App\Models\UserPoll::where('user_id', auth()->id())->where('poll_id', $poll->id)->exists()))
+            (auth()->check() && $poll->users()->exists()))
                 <a href="{{ route('app.result', ['poll' => $poll->slug]) }}">Lire la suite</a>
             @else
                 <form action="{{ route('app.result', ['poll' => $poll->slug]) }}">

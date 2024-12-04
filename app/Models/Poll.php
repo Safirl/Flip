@@ -29,6 +29,11 @@ class Poll extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function users(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'user_poll');
+    }
 }
 
 
