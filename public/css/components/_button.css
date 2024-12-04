@@ -58,17 +58,17 @@
 /* BUTTON SIZES */
 .btn-size-small {
     height: 1.5rem;
-    padding: 0.25rem 0.5rem;
+    padding: 0.20rem 0.5rem;
 }
 
 .btn-size-medium {
     height: 2rem;
-    padding: 0.5rem 1rem;
+    padding: 0.45rem 1rem;
 }
 
 .btn-size-large {
     height: 2.5rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.70rem 1.5rem;
 }
 
 /* FULL-WIDTH BUTTON */
@@ -76,10 +76,19 @@
     display: block;
     width: 100%;
 }
+
 .icon {
-    font-family: Font Awesome 6 Free !important;
     color: var(--app-white-400);
 }
+
+.icon-start {
+    margin-right: 0.25rem;
+}
+
+.icon-end {
+    margin-left: 0.25rem;
+}
+
 
 .btn-outlined .icon {
     color: var(--btn-color);

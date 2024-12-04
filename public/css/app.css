@@ -2,7 +2,7 @@
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
 * {
-    font-family: var(--app-text-font) !important;
+    font-family: var(--app-text-font);
     font-size: var(--app-font-size);
     color: var(--app-black-500);
     line-height: normal;
@@ -72,6 +72,12 @@ input:hover {
     box-sizing: border-box;
 }
 
+@media (min-width: 500px) {
+    .container {
+        align-items: center;
+    }
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -79,7 +85,10 @@ input:hover {
     flex-grow: 1;
     max-height: 100%;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
 }
 
+.text-center {
+    text-align: center;
+}
 
