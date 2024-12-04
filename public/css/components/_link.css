@@ -1,0 +1,65 @@
+.link {
+    width: fit-content;
+    display: flex;
+    padding: 0.5rem 1.375rem;
+    justify-content: center;
+    align-items: flex-end;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    border-radius: var(--spacing-m);
+    border: 1px solid transparent;
+}
+
+.link-text {
+    text-decoration: underline;
+}
+
+.link-size-small {
+    font-size: 0.5rem;
+}
+
+.link-size-medium {
+    font-size: 0.875rem;
+}
+
+.link-size-large {
+    font-size: 0.95rem;
+}
+
+.link-primary {
+    color: var(--app-primary-800);
+    --link-color: var(--app-primary-800);
+}
+
+.link-secondary {
+    color: var(--app-secondary-500);
+    --link-color: var(--app-secondary-500);
+}
+
+.link-noPadding {
+    padding: 0.2rem;
+}
+
+.link:focus {
+    outline: solid 3px var(--app-primary-200);
+    transition: all 0.25s;
+}
+
+.link:hover {
+    outline: solid 3px var(--app-primary-200);
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+.icon {
+    color:  var(--link-color);
+}
+
+.icon-start {
+    margin-right: 0.25rem;
+}
+
+.icon-end {
+    margin-left: 0.25rem;
+}

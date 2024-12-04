@@ -1,0 +1,119 @@
+@import url('variables.css');
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+* {
+    font-family: var(--app-text-font);
+    font-size: var(--app-font-size);
+    color: var(--app-black-500);
+    line-height: normal;
+}
+
+body {
+    background: linear-gradient(to bottom left, var(--app-primary-100), var(--app-white-300), var(--app-primary-100));
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.form-group {
+    margin: 1rem 0;
+}
+
+label {
+    font-size: 0.9rem !important;
+    font-weight: 300;
+    color: var(--app-grey-500);
+}
+
+input {
+    display: block;
+    height: 2.5rem;
+    width: 100%;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem !important;
+    border: 1px solid var(--app-grey-500);
+    border-radius: var(--spacing-m);
+    margin-top: 0.25rem !important;
+    background-color: var(--app-primary-500) 0.5;
+}
+
+input:focus {
+    outline: solid 3px var(--app-primary-200);
+    transition: all 0.25s;
+}
+
+
+input:hover {
+    outline: solid 3px var(--app-primary-200);
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: calc(100dvh - env(safe-area-inset-bottom));
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 500px) {
+    .container {
+        align-items: center;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    max-height: 100%;
+    width: 100%;
+    max-width: 500px;
+}
+
+.text-center {
+    text-align: -webkit-center;
+}
+
+.text {
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.text-error {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--app-error-500);
+    margin-left: 0.4rem;
+}
+
+.text-error:before {
+    font-family: 'Font Awesome 6 Free';
+    font-size: 0.7rem;
+    content: '\f071';
+    font-weight: 900;
+    margin-right: 0.3rem;
+    color: var(--app-error-500);;
+}
+
+
+
