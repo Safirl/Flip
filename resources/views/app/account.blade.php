@@ -1,14 +1,14 @@
 @extends('base')
 
-@section('title', 'profil')
+@section('title', 'Profil')
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/account.css') }}">
 @endsection
 @section('content')
     <div class="section-user-profile">
         <div class="user-profile">
-            <div>
-                <i class="icon fa-solid fa-user"></i>
+            <div class="profile-bg">
+                <i class="icon-user fa-solid fa-user"></i>
             </div>
             @guest()
                 <p>
@@ -32,7 +32,7 @@
 
     <div class="friend-container">
         @auth
-            <div class="card">
+            <div class="card user-card">
                 <div class="card-body">
                     <form action="{{ route('addFriend') }}" method="post" enctype="multipart/form-data"
                           class="add-friend-form">
@@ -52,22 +52,29 @@
             </div>
             {{--            Show friends--}}
             <div>
-                <p><strong>Vos amis </strong>({{count($friends)}}) :</p>
+                <p class="friends-p"><strong>Vos amis </strong>({{count($friends)}}) :</p>
                 @foreach($friends as $friend)
                     <div class="friend-card card">
-                        <i class="icon fa-solid fa-user"></i>
-                        <p>{{ $friend->name }}</p>
+                        <div class="friend-bg">
+                            <i class="friend-icon fa-solid fa-user"></i>
+                        </div>
+                        <div class="friend-content">
+                            <p style="font-weight: lighter; font-size: 10px">{{ $friend->friend_id }}</p>
+                            <p style="font-weight: normal">{{ $friend->name }}</p>
+                        </div>
                     </div>
                 @endforeach
             </div>
             <div>
-                <form action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
+                <form class="disconnect-btn" action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
                     @method("delete")
                     @csrf
-                    <button type="submit" class="btn btn-danger">Supprimer le compte</button>
+                    <button type="submit" class="btn-disconnect">Supprimer le compte</button>
                 </form>
             </div>
         @endauth
+
+
         @guest
             <div class="card">
                 <p class="card-account-text">
@@ -83,7 +90,6 @@
                         expand="true"
                     />
                 </form>
-
             </div>
         @endguest
     </div>

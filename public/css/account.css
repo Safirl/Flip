@@ -28,9 +28,10 @@
     gap: var(--spacing-s);
 }
 
-.icon {
+.icon-user {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    color: var(--app-white-500);
+    padding: 1rem;
 }
 
 .section-user-profile {
@@ -81,9 +82,42 @@ p {
 
 .card {
     padding: 12px;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .friend-card{
     display: flex;
+    border: none;
+    box-shadow: 0px 0px var(--global-blurs-blur-sm, 4px) 0px rgba(0, 0, 0, 0.10);
+    margin-bottom: var(--spacing-m);
+}
 
+.friends-p {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.profile-bg {
+    background-color: var(--app-primary-200);
+    border-radius: .5rem;
+}
+
+.friend-bg {
+    background-color: var(--app-secondary-100);
+    border-radius: .5rem;
+}
+
+.friend-icon {
+    color: var(--app-white-300);
+    font-size: 1rem;
+    padding: .5rem;
+}
+
+.friend-content {
+    margin-left: .5rem;
+}
+
+.user-card {
+    justify-content: center;
 }
