@@ -1,0 +1,71 @@
+.container {
+    padding:0!important;
+}
+/* Swiper container */
+.swiper-container {
+    width: 100%;
+    padding: 20px 0;
+    overflow: scroll; /* No unwanted overflow */
+}
+
+/* Swiper wrapper and slide styles */
+.swiper-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.swiper-slide {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 30%; /* Each card takes 30% of the screen */
+    max-width: 30%;
+    margin: 0 10px; /* Spacing between slides */
+}
+
+/* Active slide has larger scale and shadow */
+.swiper-slide-active {
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Non-active slides appear smaller */
+.swiper-slide-prev,
+.swiper-slide-next {
+    transform: scale(0.9);
+    opacity: 0.8;
+}
+
+/* Smooth hover effect */
+.swiper-slide:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #333;
+    font-size: 20px;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    .swiper-slide {
+        width: 80%; /* Cards are larger on small screens */
+        max-width: 80%;
+    }
+}
+
+/* Desktop adjustments for larger screens */
+@media (min-width: 769px) {
+    .swiper-slide {
+        width: 30%; /* Cards take 30% of the screen width */
+        max-width: 30%;
+    }
+}
