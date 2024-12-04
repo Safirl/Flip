@@ -11,5 +11,7 @@
     <p><strong>Analysis:</strong> {{ $poll->analysis }}</p>
     <p><strong>Slug:</strong> {{ $poll->slug }}</p>
 
+    <p><strong>Your answer:</strong> {{ $answer == 1 ? 'Info' : 'Intox' }}</p>
+
 @endsection
 
