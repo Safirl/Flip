@@ -9,7 +9,11 @@ Route::controller(\App\Http\Controllers\AppController::class)->group(function ()
     Route::get('/notification', 'notification')->name('notification');
     Route::get('/account', 'account')->name('account');
     Route::get('/feed', 'feed')->name('feed');
-    Route::post('/account/add-friend', 'addFriend')->name('addFriend');
+    Route::post('/account/add-friend', 'addFriend')->name('addFriend')->middleware('auth');
+
+    //Comments
+    Route::get('/comments/{poll:slug}', 'showComments')->name('comments.show')->middleware('auth');
+    Route::post('/comments/{poll:slug}', 'addComment')->name('addComment')->middleware('auth');
 });
 
 Route::controller(\App\Http\Controllers\AuthController::class)->group(function () {

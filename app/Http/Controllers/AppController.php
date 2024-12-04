@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommentRequest;
+use App\Models\Comment;
 use App\Models\Poll;
 use App\Models\Post;
 use App\Http\Requests\AddFriendRequest;
@@ -15,8 +17,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
 use function Sodium\add;
-
-
 
 
 class AppController extends Controller
@@ -57,7 +57,8 @@ class AppController extends Controller
         return view('app.feed');
     }
 
-    public function result(Request $request): View {
+    public function result(Request $request): View|RedirectResponse
+    {
         $answer = filter_var($request->query('answer'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
         $userId = 1;
         $pollId = 1;
@@ -91,15 +92,14 @@ class AppController extends Controller
 
     public function addFriend(AddFriendRequest $request): RedirectResponse
     {
+        if ($request['friend_id'] === Auth::user()->friend_id) {
+            return redirect()->back()->withErrors(['friend_id' => 'Vous essayez d\'ajouter votre ID!' ]);
+        }
         $friend_id = User::where('friend_id', $request->validated())->first()->id;
 
-        $isAlreadyAdded = Friend::where(function ($query) use ($friend_id) {
-            $query->where('user_id_1', Auth::user()->id)
-                ->where('user_id_2', $friend_id);
-        })->orWhere(function ($query) use ($friend_id) {
-            $query->where('user_id_2', Auth::user()->id)
-                ->where('user_id_1', $friend_id);
-        })->first();
+        $isAlreadyAdded = Auth::user()->friends()->contains(function ($friend) use ($friend_id) {
+            return $friend->id == $friend_id;
+        });
 
         if ($isAlreadyAdded) {
             return redirect()->back()->withErrors(['friend_id' => 'Ami déjà ajouté']);
@@ -126,12 +126,41 @@ class AppController extends Controller
 
 //	public function result( Poll $poll)
 //    {
-        //return view('app.result', compact('poll'));
+//    return view('app.result', compact('poll'));
 //        $polls = Poll::all();
 //        if ($polls->slug != $slug) {
 //            return to_route('app.result', ['slug' => $polls->slug]);
 //        }
 //        return view('app.polls', compact('polls'));
-
+//
 //    }
+
+    public function showComments(Poll $poll): View
+    {
+        //We only want our friends comments and ours
+        $friends = Auth::user()->friends();
+        $comments = $poll->comments()->get();
+        $friendsComments = $comments->filter(function ($comment) use ($friends) {
+            return ($friends->contains('id', $comment->user_id) || $comment->user()->first()->id == Auth::id())
+                && $comment->parent_id == null;
+        });
+
+        return view('app.comments', [
+            'poll' => $poll,
+            'friends_comments' => $friendsComments,
+            'comments' => $comments,
+        ]);
+    }
+
+    public function addComment(CommentRequest $request, Poll $poll): RedirectResponse {
+        $data = $request->validated();
+        $parent_id = $request->input('parent_id');
+        $comment = Comment::create([
+            'poll_id' => $poll->id,
+            'parent_id' => $parent_id,
+            'content' => $data['content'],
+            'user_id' => Auth::id(),
+        ]);
+        return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'Comment added successfully!');
+    }
 }
