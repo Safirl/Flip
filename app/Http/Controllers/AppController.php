@@ -137,7 +137,27 @@ class AppController extends Controller
 
         session()->push('completed_polls', $poll->id);
 
-        return view('app.result', ['answer' => $answer, 'poll' => $poll]);
+
+        $intoxCount = DB::table('user_poll')
+            ->where('poll_id', $poll->id)
+            ->where('answer', 0)
+            ->count();
+
+        $infoCount = DB::table('user_poll')
+            ->where('poll_id', $poll->id)
+            ->where('answer', 1)
+            ->count();
+
+
+
+        return view('app.result', [
+            'answer' => $answer,
+            'poll' => $poll,
+            'intoxCount' => $intoxCount,
+            'infoCount' => $infoCount,
+        ]);
+
+
     }
 
     public function notification(): View

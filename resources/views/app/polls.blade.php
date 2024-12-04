@@ -7,7 +7,7 @@
     <h1> Votes du jour </h1>
 
     @foreach ($polls as $poll)
-        
+
         <div class="poll">
             <h2>{{ $poll->title }}</h2>
             <p><strong>Quote:</strong> "{{ $poll->quote }}"</p>
