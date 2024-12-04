@@ -1,4 +1,5 @@
 @import url('variables.css');
+@import "@fortawesome/fontawesome-free/css/all.min.css";
 
 * {
     font-family: var(--app-text-font) !important;
@@ -20,36 +21,65 @@ h1 {
     margin-bottom: 1rem;
 }
 
+p {
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
 .form-group {
     margin: 1rem 0;
 }
 
 label {
     font-size: 0.9rem !important;
-    font-weight: 400;
+    font-weight: 300;
     color: var(--app-grey-500);
 }
 
 input {
     display: block;
     height: 2.5rem;
+    width: 100%;
     padding: 0.75rem 0.5rem;
     font-size: 0.9rem !important;
     border: 1px solid var(--app-grey-500);
     border-radius: var(--spacing-m);
+    margin-top: 0.25rem !important;
+    background-color: var(--app-primary-500) 0.5;
 }
 
 input:focus {
-    outline: solid 2px var(--app-primary-200);
+    outline: solid 3px var(--app-primary-200);
     transition: all 0.25s;
+}
+
+
+input:hover {
+    outline: solid 3px var(--app-primary-200);
+    transition: all 0.25s;
+    cursor: pointer;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
+    min-height: calc(100dvh - env(safe-area-inset-bottom));
     padding: 1.5rem;
-    z-index: 0;
+    box-sizing: border-box;
 }
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    max-height: 100%;
+    width: 100%;
+    max-width: 400px;
+}
+
 
