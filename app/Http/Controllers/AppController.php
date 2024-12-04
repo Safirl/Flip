@@ -137,23 +137,24 @@ class AppController extends Controller
 
     public function showComments(Poll $poll): View
     {
-        //We only want our friends comments
+        //We only want our friends comments and ours
         $friends = Auth::user()->friends();
         $comments = $poll->comments()->get();
         $friendsComments = $comments->filter(function ($comment) use ($friends) {
-            return $friends->contains('id', $comment->user_id);
+            return ($friends->contains('id', $comment->user_id) || $comment->user()->first()->id == Auth::id())
+                && $comment->parent_id == null;
         });
 
         return view('app.comments', [
             'poll' => $poll,
-            'comments' => $friendsComments,
+            'friends_comments' => $friendsComments,
+            'comments' => $comments,
         ]);
     }
 
     public function addComment(CommentRequest $request, Poll $poll): RedirectResponse {
         $data = $request->validated();
         $parent_id = $request->input('parent_id');
-//        dd($poll);
         $comment = Comment::create([
             'poll_id' => $poll->id,
             'parent_id' => $parent_id,
