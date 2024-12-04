@@ -19,7 +19,7 @@
         <div class="form-group">
             <label for="comment">Commentaire :</label>
             <input type="text" class="form-control" id="comment" name="content" value= {{ old('content') }}>
-            @error("content") {{ $message }} @enderror
+            @error("content") <span class="text-error">{{ $message }}</span> @enderror
         </div>
         <button class="btn btn-primary">Ajouter le commentaire</button>
     </form>
@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label for="comment">Répondre :</label>
                         <input type="text" class="form-control" id="comment" name="content" value= {{ old('content') }}>
-                        @error("content") {{ $message }} @enderror
+                        @error("content") <span class="text-error">{{ $message }}</span> @enderror
                     </div>
                     <button class="btn btn-primary">Répondre au commentaire</button>
                 </form>
@@ -50,4 +50,5 @@
             </div>
         @endforeach
     </div>
+    <x-nav-bar/>
 @endsection

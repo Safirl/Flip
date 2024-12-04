@@ -8,13 +8,13 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" value= {{ old('email') }}>
-                @error("email") {{ $message }} @enderror
+               @error("email")  <span class="text-error">{{ $message }}</span> @enderror
             </div>
 
             <div class="form-group">
                 <label for="password">Mot de passe</label>
                 <input type="password" class="form-control" id="password" name="password">
-                @error("password") {{ $message }} @enderror
+                @error("password") <span class="text-error">{{ $message }}</span> @enderror
             </div>
             <x-button
                 size="large"
@@ -38,6 +38,12 @@
                     expand="true"
                 />
             </form>
+            <x-link color="primary"
+                    size="medium"
+                    url='auth.register.show'
+                    label="Continuer sans compte"
+                    iconEnd="fa-solid fa-chevron-right">
+            </x-link>
         </div>
     </div>
 

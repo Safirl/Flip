@@ -89,6 +89,31 @@ input:hover {
 }
 
 .text-center {
-    text-align: center;
+    text-align: -webkit-center;
 }
+
+.text {
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.text-error {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--app-error-500);
+    margin-left: 0.4rem;
+}
+
+.text-error:before {
+    font-family: 'Font Awesome 6 Free';
+    font-size: 0.7rem;
+    content: '\f071';
+    font-weight: 900;
+    margin-right: 0.3rem;
+    color: var(--app-error-500);;
+}
+
+
 

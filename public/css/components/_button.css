@@ -10,6 +10,7 @@
     border-radius: var(--spacing-m);
     border: 1px solid transparent;
     --btn-color: var(--app-primary-800);
+    margin: 0.5rem 0;
 }
 
 .btn:focus {
@@ -77,6 +78,7 @@
     width: 100%;
 }
 
+/* ICON */
 .icon {
     color: var(--app-white-400);
 }

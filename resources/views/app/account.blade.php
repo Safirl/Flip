@@ -20,7 +20,7 @@
                         <div>
                             <label for="friend_id">Ajouter un ami</label>
                             <input type="text" class="form-control" id="friend_id" name="friend_id">
-                            @error("friend_id") {{ $message }} @enderror
+                            @error("friend_id") <span class="text-error">{{ $message }}</span> @enderror
                         </div>
                         <button class="btn btn-primary">
                             Add friend
@@ -48,4 +48,5 @@
             <a href="{{ route('auth.login') }}">Se connecter</a>
         @endguest
     </div>
+    <x-nav-bar/>
 @endsection

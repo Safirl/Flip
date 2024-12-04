@@ -26,7 +26,7 @@ class User extends Authenticatable
         'password',
         'is_admin',
         'is_pathfinder',
-        'friend_code'
+        'friend_id'
     ];
 
     /**

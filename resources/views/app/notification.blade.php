@@ -8,4 +8,5 @@
 
     {{--    @foreach ($posts  as $post)--}}
     {{--    @endforeach--}}
+    <x-nav-bar/>
 @endsection
