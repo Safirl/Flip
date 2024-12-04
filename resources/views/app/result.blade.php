@@ -14,4 +14,3 @@
     <p><strong>Your answer:</strong> {{ $answer == 1 ? 'Info' : 'Intox' }}</p>
 
 @endsection
-

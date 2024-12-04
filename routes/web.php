@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(\App\Http\Controllers\AppController::class)->group(function () {
     Route::get('/', 'index')->name('polls');
-    Route::get('/result/{poll:slug}',  'result')->name('result');
+    Route::get('/result/{poll:slug}',  'result')->name('app.result');
     Route::get('/notification', 'notification')->name('notification');
     Route::get('/account', 'account')->name('account');
     Route::get('/feed', 'feed')->name('feed');
