@@ -1,17 +1,25 @@
 @extends('base')
 
 @section('title', 'Commentaires')
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/comments.css') }}">
+@endsection
 
 @section('content')
     <div>
         {{--        Mettre les infos liées à la carte bref on les retrouve depuis poll --}}
     </div>
-    <div>
-        C'est une @if($poll->isIntox)
-            info
-        @else
-            intox
-        @endif
+    <div style="width: 100%; display: flex; justify-content: center">
+        <div class="bulb @if($poll->isIntox) intox-bulb @else info-bulb @endif ">
+            <i class="fa-solid fa-lightbulb"></i>
+            <h1 style="">
+                @if($poll->isIntox)
+                    INTOX
+                @else
+                    INFO
+                @endif
+            </h1>
+        </div>
     </div>
     <form action="{{route('addComment', ['poll' => $poll])}}" method="post" class="vstack gap-3">
         @csrf

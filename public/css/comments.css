@@ -1,0 +1,27 @@
+.bulb {
+    display: flex;
+    padding: var(--spacing-xs, 4px) var(--spacing-xl);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xs, 4px);
+    flex-shrink: 0;
+    width: fit-content;
+}
+
+.info-bulb {
+    border-radius: var(--spacing-xxl, 24px);
+    background: var(--app-secondary-500);
+}
+
+.info-bulb h1 {
+    font-style: italic;
+    font-weight: 800;
+    line-height: normal;
+    margin-bottom: 0;
+    color: var(--app-white-300);
+}
+
+.fa-lightbulb {
+    font-size: 1.2rem;
+    color: var(--app-white-300);
+}
