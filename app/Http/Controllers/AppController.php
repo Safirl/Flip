@@ -30,7 +30,7 @@ class AppController extends Controller
 //            'context' => "The ongoing debate around the legalization of cannabis is intensifying, with several countries considering making it legal for recreational use.",
 //            'analysis' => "Proponents argue that cannabis legalization would provide economic benefits and reduce law enforcement costs. Critics are concerned about public health implications.",
 //            'title' => "Legalization of Cannabis",
-//            'slug' => "legalization-of-cannabis"
+//            'slug' => "legalization-of-cannabis-2"
 //        ]);
 //
 //        // Poll 2: "Should the government raise the minimum wage?"
@@ -40,7 +40,7 @@ class AppController extends Controller
 //            'context' => "The national conversation around the minimum wage has been ongoing, with some arguing for a hike in pay to combat income inequality.",
 //            'analysis' => "Supporters argue that raising the minimum wage would improve workers' quality of life, while opponents claim it could lead to job losses and inflation.",
 //            'title' => "Raising the Minimum Wage",
-//            'slug' => "raising-the-minimum-wage"
+//            'slug' => "raising-the-minimum-wage-2"
 //        ]);
 //
 //        // Poll 3: "Do you believe in the need for climate change policies?"
@@ -50,7 +50,7 @@ class AppController extends Controller
 //            'context' => "With increasing natural disasters and environmental destruction, the urgency to implement climate change policies has become a priority for governments worldwide.",
 //            'analysis' => "While climate change policies are widely supported by environmentalists, some argue that the economic cost of implementing these policies could be too high.",
 //            'title' => "Climate Change Policies",
-//            'slug' => "climate-change-policies"
+//            'slug' => "climate-change-policies-2"
 //        ]);
 //
 //        // Poll 4: "Is universal healthcare a fundamental right?"
@@ -60,7 +60,7 @@ class AppController extends Controller
 //            'context' => "The debate about universal healthcare continues to spark polarized views. Some advocate for healthcare being a basic right, while others argue about its feasibility.",
 //            'analysis' => "Supporters argue that universal healthcare ensures equity in access to services, while critics raise concerns about funding and potential inefficiency.",
 //            'title' => "Universal Healthcare",
-//            'slug' => "universal-healthcare"
+//            'slug' => "universal-healthcare-2"
 //        ]);
 //
 //        // Poll 5: "Should governments prioritize spending on defense over education?"
@@ -70,7 +70,7 @@ class AppController extends Controller
 //            'context' => "This debate revolves around whether governments should allocate more funds to military defense or prioritize investments in education, which can shape a nation's long-term success.",
 //            'analysis' => "The challenge is balancing immediate national security concerns with long-term investments in human capital.",
 //            'title' => "Defense vs. Education Spending",
-//            'slug' => "defense-vs-education-spending"
+//            'slug' => "defense-vs-education-spending-2"
 //        ]);
 
         //Renvoie vers les polls du jour
@@ -101,10 +101,19 @@ class AppController extends Controller
         return view('app.feed');
     }
 
-    public function result(Request $request): View|RedirectResponse
+    public function result(Request $request, Poll $poll): View|RedirectResponse
     {
         $answer = filter_var($request->query('answer'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-        $poll = Poll::where('slug', $slug)->first();
+
+//
+//        if ($answer) {
+//            $resultAnswer = 1;
+//        }
+//        else{
+//            $resultAnswer = 0;
+//        }
+
+
         $userId = Auth::id();
 
 
@@ -113,14 +122,22 @@ class AppController extends Controller
         }
 
 
-        DB::table('user_poll')->insert([
-            'answer' => $answer ? 1 : 0, // Convertit en entier (0 ou 1)
+        $user_poll = DB::table('user_poll')->insert([
+            'answer' => $answer,
             'user_id' => $userId ?? null,
             'poll_id' => $poll->id,
         ]);
 
+        $user_poll = DB::table('user_poll')
+            ->where('user_id', $userId)
+            ->where('poll_id', $poll->id)
+            ->first();
+
+
+
         session()->push('completed_polls', $poll->id);
-        return view('app.result', ['answer' => $answer], ['poll' => $poll]);
+
+        return view('app.result', ['answer' => $answer, 'poll' => $poll]);
     }
 
     public function notification(): View
