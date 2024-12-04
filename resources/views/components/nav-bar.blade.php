@@ -8,11 +8,10 @@
 <style>
     .navbar {
         position: fixed; /* Fixe la barre à un emplacement spécifique */
-        height: 52px;
-        top: calc(100dvh - env(safe-area-inset-bottom) - 52px); /* Place la barre en bas de l'écran */
         left: 0; /* S'assure que la barre commence à gauche */
         display: flex;
         width: 100%; /* Occupe toute la largeur de l'écran */
+        height: fit-content;
         padding: var(--spacing-s, 6px) 0px;
         justify-content: center;
         align-items: center;

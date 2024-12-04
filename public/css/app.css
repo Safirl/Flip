@@ -33,7 +33,7 @@ p {
 }
 
 label {
-    font-size: 0.9rem !important;
+    font-size: 0.9rem;
     font-weight: 300;
     color: var(--app-grey-500);
 }

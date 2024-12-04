@@ -26,6 +26,8 @@
         @yield('content')
 </div>
 </body>
+<x-nav-bar/>
+
 <style>
     .alert {
         padding: 0.75rem 1.25rem;

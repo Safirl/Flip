@@ -1,9 +1,9 @@
 <a href="{{route($url)}}" class="nav-button">
-    <div class="icon">
-        <i class="{{ $icon }}"></i>
-    </div>
     <div class="label">
         {{ $label }}
+    </div>
+    <div class="icon">
+        <i class="{{ $icon }}"></i>
     </div>
 </a>
 
@@ -17,12 +17,12 @@
     }
 
     .nav-button .icon {
-        font-size: 2rem;
+        font-size: 1.5rem;
         margin-bottom: 0.5rem;
     }
 
     .nav-button .label {
-        font-size: 1rem;
+        font-size: 10px;
         font-weight: bold;
     }
 </style>
