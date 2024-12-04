@@ -1,5 +1,5 @@
 <div class="navbar">
-    <x-nav-button icon="fa-solid fa-home" label="Polls" url='polls'/>
-    <x-nav-button icon="fa-solid fa-home" label="Feed" url='feed'/>
-    <x-nav-button icon="fa-solid fa-home" label="Account" url='account'/>
+    <x-nav-button icon="fa-regular fa-home" label="Accueil" url='polls'/>
+    <x-nav-button icon="fa-solid fa-square-poll-vertical" label="Résultats" url='feed'/>
+    <x-nav-button icon="fa-solid fa-user" label="Profil" url='account'/>
 </div>
