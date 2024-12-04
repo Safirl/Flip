@@ -15,30 +15,23 @@
             <p><strong>Analysis:</strong> {{ $poll->analysis }}</p>
             <p><strong>Slug:</strong> {{ $poll->slug }}</p>
 
-            <a href="{{ route('app.result', ['poll' => $poll->slug]) }}">Lire la suite</a>
-            @if(\Illuminate\Support\Facades\Auth::check())
-                <a href="{{ route('comments.show', ['poll' => $poll->slug]) }}">Voir les commentaires</a>
+            @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
+            (auth()->check() && \App\Models\UserPoll::where('user_id', auth()->id())->where('poll_id', $poll->id)->exists()))
+                <a href="{{ route('app.result', ['poll' => $poll->slug]) }}">Lire la suite</a>
             @else
-                <a href="{{ route('auth.login') }}">Se connecter pour voir les commentaires</a>
-            @endif
-
-            {{--                <form action="{{ route('app.vote', ['poll' => $poll->id]) }}" method="POST">--}}
-            <form action="{{ route('app.result', ['poll' => $poll->slug]) }}">
-                @csrf
-
-                <!-- Boutons radio -->
-                <input type="radio" id="intox-{{ $poll->id }}" name="answer" value="false">
-                <label for="intox-{{ $poll->id }}">Intox</label>
+                <form action="{{ route('app.result', ['poll' => $poll->slug]) }}">
+                    @csrf
+                    <input type="radio" id="intox-{{ $poll->id }}" name="answer" value="false">
+                    <label for="intox-{{ $poll->id }}">Intox</label>
 
                 <input type="radio" id="info-{{ $poll->id }}" name="answer" value="true">
                 <label for="info-{{ $poll->id }}">Info</label>
 
-                <!-- Bouton Valider -->
-                <button type="submit" class="btn btn-primary">Valider</button>
-            </form>
-
-
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                </form>
+            @endif
         </div>
         <hr>
     @endforeach
+
 @endsection
