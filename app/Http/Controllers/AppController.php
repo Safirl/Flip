@@ -109,7 +109,7 @@ class AppController extends Controller
 
 
         if ($answer === null) {
-            return redirect()->route('app.poll')->withErrors('Votez');
+            return redirect()->route_to('app.poll');
         }
 
 
@@ -119,7 +119,7 @@ class AppController extends Controller
             'poll_id' => $poll->id,
         ]);
 
-
+        session()->push('completed_polls', $poll->id);
         return view('app.result', ['answer' => $answer], ['poll' => $poll]);
     }
 
