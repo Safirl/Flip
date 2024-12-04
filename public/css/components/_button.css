@@ -76,10 +76,19 @@
     display: block;
     width: 100%;
 }
+
 .icon {
-    font-family: Font Awesome 6 Free !important;
     color: var(--app-white-400);
 }
+
+.icon-start {
+    margin-right: 0.25rem;
+}
+
+.icon-end {
+    margin-left: 0.25rem;
+}
+
 
 .btn-outlined .icon {
     color: var(--btn-color);

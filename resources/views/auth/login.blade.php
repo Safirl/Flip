@@ -23,7 +23,7 @@
                     kind="fill"
                     label="Connexion"
                     expand="true"
-                    iconEnd="fa-regular fa-chevron-left"
+                    iconEnd="fa-solid fa-chevron-right"
                 />
             </form>
         </div>
