@@ -5,8 +5,18 @@
     <link rel="stylesheet" href="{{ asset('css/account.css') }}">
 @endsection
 @section('content')
-    <div class="container">
-        <h1>Votre profil</h1>
+        <div class="section-user-profile">
+            <div class="user-profile">
+                <div>
+                    <i class="icon fa-solid fa-user">
+                    </i>
+                </div>
+                <p>
+                    Vous n’êtes pas connecté
+                </p>
+            </div>
+        </div>
+
         <div class="">
             @auth
                 {{ \Illuminate\Support\Facades\Auth::user()->name }}
@@ -53,15 +63,18 @@
                         Vous souhaitez partager l’expérience avec vos proches ? Créez-vous un compte pour partager votre
                         code ami.
                     </p>
-                    <x-button
-                        size="large"
-                        color="primary"
-                        label="Connexion / Inscription"
-                        expand="true"
-                    />
+                    <form action="{{route('auth.login')}}" method="get">
+                        @csrf
+                        <x-button
+                            size="large"
+                            color="primary"
+                            label="Connexion / Inscription"
+                            expand="true"
+                        />
+                    </form>
+
                 </div>
             @endguest
         </div>
         <x-nav-bar/>
-    </div>
 @endsection

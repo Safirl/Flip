@@ -40,7 +40,7 @@
             </form>
             <x-link color="primary"
                     size="medium"
-                    url='auth.register.show'
+                    url='polls'
                     label="Continuer sans compte"
                     iconEnd="fa-solid fa-chevron-right">
             </x-link>
