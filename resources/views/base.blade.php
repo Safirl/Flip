@@ -23,6 +23,8 @@
         @endif
         @yield('content')
 </div>
+<x-nav-bar/>
+
 
 </body>
 <style>

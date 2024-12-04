@@ -33,6 +33,4 @@
         </div>
         <hr>
     @endforeach
-
-    <x-nav-bar/>
 @endsection
