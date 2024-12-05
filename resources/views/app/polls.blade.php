@@ -35,11 +35,19 @@
                             <div class="form-buttons">
                                 <div class="buttons-item">
                                     <input type="radio" id="intox-{{ $poll->id }}" name="answer" value="false">
-                                    <label for="intox-{{ $poll->id }}">Intox</label>
+                                    <label class="link labelIntox" for="intox-{{ $poll->id }}">
+                                        <img  class="notfocus" src="{{ asset('images/crossViolet.svg') }}" alt="intox">
+                                        <img  class="focus" src="{{ asset('images/cross.svg') }}" alt="intox">
+                                        <p><em>Intox</em></p>
+                                    </label>
                                 </div>
                                 <div class="buttons-item">
                                     <input type="radio" id="info-{{ $poll->id }}" name="answer" value="true">
-                                    <label for="info-{{ $poll->id }}">Info</label>
+                                    <label class="link labelInfo" for="info-{{ $poll->id }}">
+                                        <img  class="focus" src="{{ asset('images/icon-circle-bulb.svg') }}" alt="info">
+                                        <img  class="notfocus " src="{{ asset('images/icon-circle-bulb-bleu.svg') }}" alt="info">
+                                        <p><em>Info</em></p>
+                                    </label>
                                 </div>
                             </div>
                             <x-button id="submit-button"
@@ -58,6 +66,8 @@
     </div>
 
     <x-nav-bar/>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
