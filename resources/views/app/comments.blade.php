@@ -37,15 +37,15 @@
             <p>"{{$poll->quote}}"</p>
         </div>
     </div>
-    <div class="add-comment-btn">
-        <x-button
-            size="large"
-            color="primary"
-            label="Ajouter un commentaire"
-            extend="true"
-            iconEnd="fa-solid fa-plus"
-        />
-    </div>
+        <div class="add-comment-btn toggle-popup">
+            <x-button
+                size="large"
+                color="primary"
+                label="Ajouter un commentaire"
+                extend="true"
+                iconEnd="fa-solid fa-plus"
+            />
+        </div>
     {{--    PopUp--}}
     {{--    <form class="card pop-up-comment" action="{{route('addComment', ['poll' => $poll])}}" method="post" class="vstack gap-3">--}}
     {{--        @csrf--}}
@@ -67,7 +67,7 @@
                 iconEnd="fa-solid fa-arrow-left"
                 classes="btn-back close-popup"
             />
-            <h3>Répondre au commentaire</h3>
+            <h3>Ajouter un commentaire</h3>
             <form action="{{ route('addComment', ['poll' => $poll]) }}" method="post">
                 @csrf
                 <input type="hidden" name="parent_id" value="{{ $parentId }}">
@@ -109,7 +109,8 @@
                     @else
                         <div></div>
                     @endif
-                    <button onclick="{{ $parentId = $comment->id }}" class="btn-response" style="color: var(--app-primary-500)">Répondre<i
+                    <button onclick="{{ $parentId = $comment->id }}" class="btn-response toggle-popup"
+                            style="color: var(--app-primary-500)">Répondre<i
                             style="color: var(--app-primary-500); padding-left: .5rem"
                             class="fa-solid fa-paper-plane"></i></button>
                 </div>
@@ -161,18 +162,26 @@
                 if (popup) {
                     popup.style.opacity = '0'
                     popup.style.zIndex = '-100'
+                    const body = document.querySelector("body")
+                    if (body) {
+                        body.style.overflow = 'unset';
+                    }
                 }
             });
         });
     });
 
     document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.btn-response').forEach((button) => {
+        document.querySelectorAll('.toggle-popup').forEach((button) => {
             button.addEventListener('click', () => {
                 const popup = document.querySelector('.popup-container');
                 if (popup) {
                     popup.style.opacity = '1'
                     popup.style.zIndex = 'unset'
+                    const body = document.querySelector("body")
+                    if (body) {
+                        body.style.overflow = 'hidden';
+                    }
                 }
             });
         });

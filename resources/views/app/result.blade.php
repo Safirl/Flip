@@ -58,14 +58,16 @@
             <p><strong>{{$intoxCount}}</strong> personnes pensenet que c'est une intox</p>
             <p>Sur {{$intoxCount + $infoCount}} votants</p>
         </div>
-
-        <x-button
-            size="large"
-            color="primary"
-            kind="filled"
-            iconEnd="fa-solid fa-chevron-right"
-            label="Voir les commentaires">
-        </x-button>
+        <form action="{{ route('comments.show', ['poll' => $poll]) }}" method="get">
+            @csrf
+            <x-button
+                size="large"
+                color="primary"
+                kind="filled"
+                iconEnd="fa-solid fa-chevron-right"
+                label="Voir les commentaires">
+            </x-button>
+        </form>
     </div>
     <div>
         <i class="fa-solid fa-book-open"></i>

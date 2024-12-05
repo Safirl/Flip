@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/variables.css') }}">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/_button.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/_nav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/_link.css') }}">
