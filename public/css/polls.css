@@ -56,3 +56,11 @@ h1 {
 .hidden {
     display: none;
 }
+
+.link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--spacing-xxl) 0 ;
+}

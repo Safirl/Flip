@@ -22,6 +22,14 @@
                          (auth()->check() && $poll->users()->exists()))
                         <a href="{{ route('app.result', ['poll' => $poll->slug]) }}">Lire la suite</a>
                     @else
+                        <x-link
+                            color="primary"
+                                size="medium"
+                                noPadding=true
+                                url='notification'
+                                iconEnd="fa-solid fa-chevron-right"
+                                label="Voir le contexte">
+                        </x-link>
                         <form class="form" action="{{ route('app.result', ['poll' => $poll->slug]) }}" method="POST">
                             @csrf
                             <div class="form-buttons">
@@ -46,20 +54,19 @@
                     @endif
                 </div>
             @endforeach
-    </div>
+        </div>
 
-    <x-nav-bar/>
+        <x-nav-bar/>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            effect: "cards",
-            grabCursor: true,
-        });
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                effect: "cards",
+                grabCursor: true,
+            });
 
-    </script>
+        </script>
 
 @endsection
 @section('scripts')
-
 @endsection
