@@ -19,11 +19,16 @@
                 <p>{{ \Illuminate\Support\Facades\Auth::user()->name }}</p>
                 <p>Votre code ami : <strong>{{ \Illuminate\Support\Facades\Auth::user()->friend_id }}</strong></p>
                 <div class="disconnect-btn-container">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    <form class="disconnect-btn" action="{{ route('auth.logout') }}" method="post">
+                    <form action="{{ route('auth.logout') }}" method="post">
                         @method("delete")
                         @csrf
-                        <button class="btn-disconnect">Se déconnecter</button>
+                        <x-link color="grey"
+                                size="medium"
+                                noPadding=true
+                                url='auth.register.show'
+                                iconStart="fa-solid fa-right-from-bracket"
+                                label="Se déconnecter">
+                        </x-link>
                     </form>
                 </div>
             @endauth
@@ -43,14 +48,16 @@
                             @error("friend_id") <span class="text-error">{{ $message }}</span> @enderror
                         </div>
                         <x-button
-                            size="small"
+                            size="large"
                             color="primary"
                             label="Valider"
+                            expand="true"
                         />
                     </form>
                 </div>
             </div>
-            {{--            Show friends--}}
+            {{--Show friends--}}
+        <div class="flex">
             <div>
                 <p class="friends-p"><strong>Vos amis </strong>({{count($friends)}}) :</p>
                 @foreach($friends as $friend)
@@ -65,13 +72,22 @@
                     </div>
                 @endforeach
             </div>
-            <div>
-                <form class="disconnect-btn" action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
+            <div class="delete-btn">
+                <form class="disconnect-btn"
+                      action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
                     @method("delete")
                     @csrf
-                    <button type="submit" class="btn-disconnect">Supprimer le compte</button>
+                    <x-button
+                        kind="clear"
+                        type="submit"
+                        size="small"
+                        color="error"
+                        label="Supprimer le compte"
+                        expand="false"
+                    />
                 </form>
             </div>
+        </div>
         @endauth
 
 

@@ -70,12 +70,11 @@ input:hover {
     display: flex;
     flex-direction: column;
     /*justify-content: space-between;*/
-    align-items: flex-start;
     gap: 1rem;
     min-height: calc(100dvh - env(safe-area-inset-bottom));
     padding: 1.5rem;
     box-sizing: border-box;
-    margin-bottom: 5rem;
+   padding-bottom: 5rem;
 }
 
 @media (min-width: 500px) {

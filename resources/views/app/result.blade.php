@@ -59,19 +59,24 @@
             <p>Sur {{$intoxCount + $infoCount}} votants</p>
         </div>
 
-            <x-button
-                size="large"
-                color="primary"
-                outlined="false"
-                iconEnd="fa-solid fa-chevron-right"
-                label="Voir les commentaires">
+        <x-button
+            size="large"
+            color="primary"
+            outlined="false"
+            iconEnd="fa-solid fa-chevron-right"
+            label="Voir les commentaires">
         </x-button>
     </div>
-<div>
-    <i class="fa-solid fa-book-open"></i>
-    <h3>Contexte</h3>
-</div>
+    <div>
+        <i class="fa-solid fa-book-open"></i>
+        <h3>Contexte</h3>
+    </div>
     <p>{{ $poll->context }}</p>
+    <div></div>
+    <div>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <h3>Analyse</h3>
+    </div>
     <p>{{ $poll->analysis }}</p>
 
 

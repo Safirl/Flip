@@ -16,13 +16,13 @@ class Link extends Component
     public $noPadding;
 
     public function __construct(
-        $size = 'medium',
-        $color = 'primary',
+        $size = '',
+        $color = '',
         $iconStart = null,
         $iconEnd = null,
         $url = '',
         $route = '',
-        $label = 'Link',
+        $label = '',
         $noPadding = false
     )
     {

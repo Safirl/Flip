@@ -18,7 +18,7 @@ class AuthController extends Controller
     public function login(): View|RedirectResponse
     {
         if (Auth::check()) {
-            return redirect()->route('account')->with('success', 'You are already logged in!');
+            return redirect()->route('account')->with('success', 'Vous êtes déjà connecté');
         }
         return view('auth.login');
     }
@@ -41,7 +41,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         $request->session()->regenerate();
-        return redirect()->intended(route('polls'))->with('success', 'Account created and logged in successfully!');
+        return redirect()->intended(route('polls'))->with('success', 'Bienvenue ' . $credentials['name'] . ' !');
     }
 
     private function generateFriendCode(): string
@@ -63,7 +63,7 @@ class AuthController extends Controller
         $credentials = $request->validated();
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('polls'))->with('success', 'User connected successfully!');
+            return redirect()->intended(route('polls'))->with('success', 'Vous êtes connecté');
         }
         return to_route('auth.login')->withErrors([
             'email' => 'Email ou mot de passe incorrect!',
@@ -73,7 +73,7 @@ class AuthController extends Controller
     public function logout(): RedirectResponse
     {
         Auth::logout();
-        return redirect()->route('auth.login')->with('success', 'You have been logged out!');
+        return redirect()->route('auth.login')->with('success', 'Vous avez été déconnecté');
     }
 
     public function deleteUser(User $user): RedirectResponse {
