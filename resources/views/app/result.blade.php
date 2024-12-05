@@ -49,6 +49,7 @@
     <p><strong>Author:</strong> {{ $poll->author }}</p>
     <p><strong>Context:</strong> {{ $poll->context }}</p>
     <p><strong>Slug:</strong> {{ $poll->slug }}</p>-->
+    {{--<p><strong>Analysis:</strong> {{ $poll->analysis }}</p>--}}
     <img src="{{ asset('images/context.svg') }}"  alt="context">
     <h3>Contexte</h3>
     <p>{{ $poll->analysis }}</p>

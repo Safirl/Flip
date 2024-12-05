@@ -147,3 +147,10 @@ input:hover {
     }
 }
 
+.divider {
+    border: none;
+    height: 1px;
+    background-color: var(--app-grey-100);
+    margin: var(--spacing-xxl) 0;
+}
+

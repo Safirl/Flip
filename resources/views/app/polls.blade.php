@@ -20,16 +20,16 @@
 
                     @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
                          (auth()->check() && $poll->users()->exists()))
-                        <a href="{{ route('app.result', ['poll' => $poll->slug]) }}">Lire la suite</a>
-                    @else
                         <x-link
+                            route="{{ route('app.result', ['poll' => $poll->slug]) }}"
+                            label="Voir le contexte"
                             color="primary"
-                                size="medium"
-                                noPadding=true
-                                url='notification'
-                                iconEnd="fa-solid fa-chevron-right"
-                                label="Voir le contexte">
-                        </x-link>
+                            size="medium"
+                            iconEnd="fa-solid fa-chevron-right"/>
+                    @else
+
+                        <hr class="divider">
+
                         <form class="form" action="{{ route('app.result', ['poll' => $poll->slug]) }}" method="POST">
                             @csrf
                             <div class="form-buttons">
@@ -55,18 +55,18 @@
                 </div>
             @endforeach
         </div>
+    </div>
 
-        <x-nav-bar/>
 
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                effect: "cards",
-                grabCursor: true,
-            });
+    <x-nav-bar/>
 
-        </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cards",
+            grabCursor: true,
+        });
+    </script>
 @endsection
 @section('scripts')
 @endsection

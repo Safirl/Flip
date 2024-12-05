@@ -11,6 +11,7 @@ class Link extends Component
     public $iconStart;
     public $iconEnd;
     public $url;
+    public $route;
     public $label;
     public $noPadding;
 
@@ -19,7 +20,8 @@ class Link extends Component
         $color = 'primary',
         $iconStart = null,
         $iconEnd = null,
-        $url = '#',
+        $url = '',
+        $route = '',
         $label = 'Link',
         $noPadding = false
     )
@@ -29,6 +31,7 @@ class Link extends Component
         $this->iconStart = $iconStart;
         $this->iconEnd = $iconEnd;
         $this->url = $url;
+        $this->route = $route;
         $this->label = $label;
         $this->noPadding = $noPadding;
     }
