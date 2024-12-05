@@ -87,11 +87,14 @@
                     />
                 </form>
             </div>
+            <form action="{{ route('mentionslegales') }}" method="get">
+                <button class="link" type="submit">Voir les mentions légales</button>
+            </form>
         @endauth
 
 
         @guest
-            <div class="card">
+            <div class="card delete-btn">
                 <p class="card-account-text">
                     Vous souhaitez partager l’expérience avec vos proches ? Créez-vous un compte pour partager votre
                     code ami.
@@ -105,6 +108,8 @@
                         expand="true"
                     />
                 </form>
+
+
             </div>
         @endguest
     </div>

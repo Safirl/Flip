@@ -287,4 +287,9 @@ class AppController extends Controller
         return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'Comment added successfully!');
     }
 
+    public function mentionslegales(): View
+    {
+        return view('app.mention');
+    }
+
 }
