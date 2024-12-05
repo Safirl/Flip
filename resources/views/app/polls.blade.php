@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <h1 style="padding: 1.5rem 1.5rem 0;">Votes du jour</h1>
+    <h1 style="padding: 1.5rem 1.5rem 0;">@if($isFeed) Votes de la semaine @else Votes du jour @endif </h1>
 
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
