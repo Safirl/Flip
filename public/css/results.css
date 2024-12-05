@@ -85,8 +85,9 @@ p {
 
 figure {
     width: 100%;
-    max-width: 15rem;
-    transform: translateY(-5rem);
+    max-width: 12rem;
+    transform: translateY(-6rem);
+
 }
 
 .contenaireGraph {
@@ -111,6 +112,11 @@ figure {
 }
 
 .textContenaire {
-    transform: translateY(-4rem);
     width: 100%;
+}
+
+.cadreFigure{
+    width: fit-content;
+    overflow: hidden;
+    height: 200px;
 }

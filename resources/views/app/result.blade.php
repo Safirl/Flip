@@ -19,8 +19,8 @@
         </form>
         <div class="contenaireInformationVote">
             <div class="bulb {{ $answer == 1 ? 'info-bulb' : 'intox-bulb' }}">
-                @if($answer == 1)
-                    <i class="fa-solid fa-lightbulb"></i>
+                @if( $poll->is_intox == 1)
+
                     <img src="{{ asset('images/icon-circle-bulb.svg') }}" alt="Info">
                     <h1>INFO</h1>
                 @else
@@ -33,7 +33,7 @@
 
 
 
-    @if($answer ==1)
+    @if($poll->is_intox == 1)
         <style>
             .bulb {
                 background: var(--app-secondary-500);
@@ -51,9 +51,11 @@
 
 
     <div class="contenaireGraph">
-        <figure class="highcharts-figure">
-            <div id="container"></div>
-        </figure>
+        <div class="cadreFigure">
+            <figure class="highcharts-figure">
+                <div id="container"></div>
+            </figure>
+        </div>
         <div class="textContenaire">
             <p><strong>{{$intoxCount}}</strong> personnes pensenet que c'est une intox</p>
             <p>Sur {{$intoxCount + $infoCount}} votants</p>
