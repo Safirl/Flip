@@ -15,8 +15,6 @@
                 <div class="swiper-slide">
                     <h4>{{ $poll->author }}</strong> :</h4>
                     <p class="author"><em>"{{ $poll->quote }}"</em></p>
-                    {{-- <p><strong>Context:</strong> {{ $poll->context }}</p> --}}
-                    {{--<p><strong>Analysis:</strong> {{ $poll->analysis }}</p>--}}
 
                     @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
                          (auth()->check() && $poll->users()->exists()))
@@ -28,10 +26,9 @@
                             iconEnd="fa-solid fa-chevron-right"/>
                     @else
 
-                        <hr class="divider">
-
                         <form class="form" action="{{ route('app.result', ['poll' => $poll->slug]) }}" method="POST">
                             @csrf
+                            <hr class="divider">
                             <div class="form-buttons">
                                 <div class="buttons-item">
                                     <input type="radio" id="intox-{{ $poll->id }}" name="answer" value="false">

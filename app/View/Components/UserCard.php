@@ -10,7 +10,7 @@ class UserCard extends Component
 {
     public $image;
     public $label;
-    public $text;
+    public string $text;
     public $imageColor;
     public $isBackground;
     /**

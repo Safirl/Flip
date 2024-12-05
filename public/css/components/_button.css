@@ -48,6 +48,33 @@
     color: var(--app-white-400);
     --btn-color: var(--app-error-500);
 }
+/* LABEL */
+.btnLabel {
+    color: inherit;
+}
+
+/* Exemple pour les boutons remplis */
+.btn-fill-primary .btnLabel {
+    color: var(--app-white-400); /* Couleur du texte pour le bouton primaire rempli */
+}
+
+.btn-fill-secondary .btnLabel {
+    color: var(--app-white-400); /* Couleur du texte pour le bouton secondaire rempli */
+}
+
+.btn-fill-grey .btnLabel {
+    color: var(--app-white-400); /* Couleur du texte pour le bouton gris rempli */
+}
+
+.btn-fill-error .btnLabel {
+    color: var(--app-white-400); /* Couleur du texte pour le bouton erreur rempli */
+}
+
+/* Exemple pour les boutons outline */
+.btn-outlined .btnLabel {
+    color: var(--btn-color); /* Texte utilise la couleur définie pour le bouton outline */
+}
+
 
 /* BUTTON OUTLINED */
 .btn-outlined {
@@ -91,19 +118,39 @@
     margin-left: 0.25rem;
 }
 
-
 .btn-outlined .icon {
     color: var(--btn-color);
 }
 
-/* Supprime les marges si une seule icône est présente */
-.btn:has(.icon-start):not(:has(.icon-end)) .icon-start,
-.btn:has(.icon-end):not(:has(.icon-start)) .icon-end {
-    margin: 0;
+/* Supprime les marges si aucune étiquette (label) n'est présente */
+.btn:not(:has(span, .btnLabel)) .icon-start,
+.btn:not(:has(span, .btnLabel)) .icon-end {
+    margin: 0; /* Pas de marge si pas de label */
 }
 
-/* Padding du bouton uniquement si une seule icône est présente */
-.btn:has(.icon-start):not(:has(.icon-end)),
-.btn:has(.icon-end):not(:has(.icon-start)) {
-    padding: 0.5rem 1rem;
+/* Ajoute des marges si une étiquette (label) est présente */
+.btn:has(span, .btnLabel) .icon-start {
+    margin-right: 0.25rem;
+}
+
+.btn:has(span, .btnLabel) .icon-end {
+    margin-left: 0.25rem;
+}
+
+.btn:not(:has(.btnLabel)):has(.icon-start):not(:has(.icon-end)),
+.btn:not(:has(.btnLabel)):has(.icon-end):not(:has(.icon-start)) {
+    padding: 0.5rem 1rem; /* Padding réduit pour une icône seule */
+}
+
+/* CLEAR*/
+.btn-clear {
+    background-color: transparent;
+    color: var(--btn-color);
+    text-decoration: underline;
+    border: none;
+    box-shadow: none;
+}
+
+.btn-clear .btnLabel {
+    color: inherit;
 }

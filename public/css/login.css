@@ -1,0 +1,11 @@
+.container-auth {
+    height: 83vh;
+}
+
+.auth {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: normal;
+}
