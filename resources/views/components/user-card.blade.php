@@ -1,4 +1,4 @@
-<div class="friend-card card">
+<div class="@if($isBackground) card-background @endif friend-card card">
     <div class="friend-bg">
         <i class="friend-icon {{$image}}"></i>
     </div>
@@ -20,10 +20,15 @@
     .friend-card{
         display: flex;
         border: none;
-        box-shadow: 0px 0px var(--global-blurs-blur-sm, 4px) 0px rgba(0, 0, 0, 0.10);
         margin-bottom: var(--spacing-m);
         flex-direction: row;
         justify-content: flex-start;
+        background: none;
+    }
+
+    .card-background {
+        box-shadow: 0px 0px var(--global-blurs-blur-sm, 4px) 0px rgba(0, 0, 0, 0.10);
+        background-color: var(--app-white-300);
     }
 
     .friend-bg {

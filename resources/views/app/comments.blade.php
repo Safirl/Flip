@@ -60,7 +60,6 @@
     {{--    </form>--}}
 
     <div class="container-comments">
-        Commentaires :
         @foreach($friends_comments as $comment)
             <x-user-card
                 image="fa-solid fa-user"
@@ -68,28 +67,49 @@
                 text="{{ $comment->content }}"
                 imageColor="rgba(60, 19, 134, 1)"
             />
+            {{--            <form action="{{route('addComment', ['poll' => $poll])}}" method="post" class="vstack gap-3">--}}
+            {{--                @csrf--}}
+            {{--                <input type="hidden" name="parent_id" value="{{ $comment->id }}">--}}
+            {{--                <div class="form-group">--}}
+            {{--                    <label for="comment">Répondre :</label>--}}
+            {{--                    <input type="text" class="form-control" id="comment" name="content" value= {{ old('content') }}>--}}
+            {{--                    @error("content") <span class="text-error">{{ $message }}</span> @enderror--}}
+            {{--                </div>--}}
+            {{--                <button class="btn btn-primary">Répondre au commentaire</button>--}}
+            {{--            </form>--}}
             <div class="comment">
-                <p><strong>{{ $comment->user->name ?? 'Utilisateur inconnu' }}</strong> :</p>
-                <p>{{ $comment->content }}</p>
-                <button>Voir la discussion</button>
-                <form action="{{route('addComment', ['poll' => $poll])}}" method="post" class="vstack gap-3">
-                    @csrf
-                    <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                    <div class="form-group">
-                        <label for="comment">Répondre :</label>
-                        <input type="text" class="form-control" id="comment" name="content" value= {{ old('content') }}>
-                        @error("content") <span class="text-error">{{ $message }}</span> @enderror
-                    </div>
-                    <button class="btn btn-primary">Répondre au commentaire</button>
-                </form>
-            </div>
-            <div class="answers">
-                @foreach($comment->replies()->get() as $reply)
-                    <p><strong>{{ $reply->user->name ?? 'Utilisateur inconnu' }}</strong> :</p>
-                    <p>{{ $reply->content }}</p>
-                @endforeach
+                <button class="toggle-discussion">Voir la discussion</button>
+                <div class="answers">
+                    @foreach($comment->replies()->get() as $reply)
+                        <x-user-card
+                            image="fa-solid fa-user"
+                            label="{{ $reply->user->name ?? 'Utilisateur inconnu' }}"
+                            text="{{ $reply->content }}"
+                            imageColor="rgba(60, 19, 134, 1)"
+                            :isBackground="false"
+                        />
+                    @endforeach
+                </div>
             </div>
         @endforeach
     </div>
     <x-nav-bar/>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Sélectionner tous les boutons et les réponses associées
+        document.querySelectorAll('.toggle-discussion').forEach((button) => {
+            button.addEventListener('click', () => {
+                // Trouver la div "answers" qui suit le bouton
+                const answersDiv = button.nextElementSibling
+                // Vérifier si la div est visible ou cachée
+                if (answersDiv.style.display === 'none') {
+                    answersDiv.style.display = 'block'; // Afficher
+                } else {
+                    answersDiv.style.display = 'none'; // Cacher
+                }
+            });
+        });
+    });
+</script>

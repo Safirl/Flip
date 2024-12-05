@@ -12,6 +12,7 @@ class UserCard extends Component
     public $label;
     public $text;
     public $imageColor;
+    public $isBackground;
     /**
      * Create a new component instance.
      */
@@ -19,13 +20,15 @@ class UserCard extends Component
         $image = null,
         $label = null,
         $text = null,
-        $imageColor = null
+        $imageColor = null,
+        $isBackground = true
     )
     {
         $this->image = $image;
         $this->label = $label;
         $this->text = $text;
         $this->imageColor = $imageColor;
+        $this->isBackground = filter_var($isBackground, FILTER_VALIDATE_BOOLEAN);
     }
 
     /**
