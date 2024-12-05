@@ -57,8 +57,26 @@
             </figure>
         </div>
         <div class="textContenaire">
-            <p><strong>{{$intoxCount}}</strong> personnes pensenet que c'est une intox</p>
-            <p>Sur {{$intoxCount + $infoCount}} votants</p>
+            @if( $poll->is_intox == 1 )
+                <div class="contenaireCountMistake">
+                <p><strong>{{$intoxCount}}</strong> personnes sont tombées dans le panneau </p>
+                <p >Sur {{$intoxCount + $infoCount}} votants</p>
+                </div>
+                <p class="pourcent" style="color: #2399F3">
+                    {{($intoxCount / ($intoxCount + $infoCount))*100 }}%
+                </p>
+
+            @else
+                <div class="contenaireCountMistake">
+                    <p><strong>{{$infoCount}}</strong> personnes sont tombées dans le panneau </p>
+                    <p >Sur {{$intoxCount + $infoCount}} votants</p>
+                </div>
+                <p class="pourcent" style="color: #6420DF">
+                    {{ round(($infoCount / ($intoxCount + $infoCount)) * 100) }}%
+                </p>
+            @endif
+
+
         </div>
         <form action="{{ route('comments.show', ['poll' => $poll]) }}" method="get">
             @csrf

@@ -113,10 +113,17 @@ figure {
 
 .textContenaire {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .cadreFigure{
     width: fit-content;
     overflow: hidden;
-    height: 200px;
+    height: 221px;
+}
+
+.textContenaire .pourcent{
+    font-size: 18px;
 }
