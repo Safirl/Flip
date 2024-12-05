@@ -16,20 +16,22 @@ class Button extends Component
     public $expand;
     public $classes;
 
+    public $type;
+
     public function __construct(
-        $size = 'large',
-        $color = 'primary',
-        $outlined = false,
+        $size = '',
+        $color = '',
+        $kind = '',
         $iconStart = null,
         $iconEnd = null,
-        $label = 'Label',
+        $label = '',
         $onClick = null,
         $expand = false,
         $classes = null
     ) {
         $this->size = $size;
         $this->color = $color;
-        $this->outlined = $outlined;
+        $this->kind = $kind;
         $this->iconStart = $iconStart;
         $this->iconEnd = $iconEnd;
         $this->label = $label;
@@ -62,11 +64,16 @@ class Button extends Component
         return $classes[$this->color] ?? $classes['primary'];
     }
 
-    public function outlinedClass()
+    public function kindClass()
     {
-        return $this->outlined ? 'btn-outlined' : '';
-    }
+        $kinds = [
+            'filled' => '',
+            'outlined' => 'btn-outlined',
+            'clear' => 'btn-clear',
+        ];
 
+        return $kinds[$this->kind] ?? '';
+    }
     public function expandClass()
     {
         return $this->expand ? 'btn-expand' : '';

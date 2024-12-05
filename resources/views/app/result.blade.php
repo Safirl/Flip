@@ -14,9 +14,7 @@
                 size="large"
                 color="primary"
                 outlined="true"
-                label=""
                 iconEnd="fa-solid fa-arrow-left"
-                classes="btn-back"
             />
         </form>
         <div class="contenaireInformationVote">
@@ -31,7 +29,6 @@
                 @endif
             </div>
         </div>
-
     </div>
 
 
@@ -53,8 +50,6 @@
 
 
 
-
-
     <div class="contenaireGraph">
         <figure class="highcharts-figure">
             <div id="container"></div>
@@ -63,33 +58,35 @@
             <p><strong>{{$intoxCount}}</strong> personnes pensenet que c'est une intox</p>
             <p>Sur {{$intoxCount + $infoCount}} votants</p>
         </div>
-        <a href="#" class="link"> voir les commentaires</a>
+
+        <x-button
+            size="large"
+            color="primary"
+            outlined="false"
+            iconEnd="fa-solid fa-chevron-right"
+            label="Voir les commentaires">
+        </x-button>
     </div>
-    <!--   <h2>{{ $poll->title }}</h2>
-    <p><strong>Quote:</strong> "{{ $poll->quote }}"</p>
-    <p><strong>Author:</strong> {{ $poll->author }}</p>
-    <p><strong>Context:</strong> {{ $poll->context }}</p>
-    <p><strong>Slug:</strong> {{ $poll->slug }}</p>-->
-    {{--<p><strong>Analysis:</strong> {{ $poll->analysis }}</p>--}}
-    <img src="{{ asset('images/context.svg') }}" alt="context">
-    <h3>Contexte</h3>
+    <div>
+        <i class="fa-solid fa-book-open"></i>
+        <h3>Contexte</h3>
+    </div>
+    <p>{{ $poll->context }}</p>
+    <div></div>
+    <div>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <h3>Analyse</h3>
+    </div>
     <p>{{ $poll->analysis }}</p>
 
 
-
     <script src="https://code.highcharts.com/highcharts.js"></script>
-
-
-
-
     <script type="module" src="/src/main.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var intoxCount = {{ $intoxCount }};
             var infoCount = {{ $infoCount }};
             var totalVotes = intoxCount + infoCount;
-
 
             Highcharts.chart('container', {
                 chart: {
@@ -105,14 +102,13 @@
                     pie: {
                         allowPointSelect: false,
                         cursor: 'pointer',
-                        innerSize: '90%', //
+                        innerSize: '90%',
                         dataLabels: {
-                            enabled: false // Désactive les labels
+                            enabled: false
                         }
 
                     }
                 },
-
 
                 series: [{
                     name: 'Votes',
@@ -120,19 +116,15 @@
                     data: [{
                         name: 'Intox',
                         y: {{ $intoxCount }},
-                        color: '#6420DF' // Couleur personnalisée
+                        color: 'var(--app-primary-500)'
                     }, {
                         name: 'Info',
                         y: {{ $infoCount }},
-                        color: '#2399F3' // // Couleur personnalisée
+                        color: 'var(--app-secondary-500)'
                     }]
                 }]
             });
         });
     </script>
-
-
     <x-nav-bar/>
-
-
 @endsection

@@ -15,8 +15,6 @@
                 <div class="swiper-slide">
                     <h4>{{ $poll->author }}</strong> :</h4>
                     <p class="author"><em>"{{ $poll->quote }}"</em></p>
-                    {{-- <p><strong>Context:</strong> {{ $poll->context }}</p> --}}
-                    {{--<p><strong>Analysis:</strong> {{ $poll->analysis }}</p>--}}
 
                     @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
                          (auth()->check() && $poll->users()->exists()))
@@ -28,18 +26,25 @@
                             iconEnd="fa-solid fa-chevron-right"/>
                     @else
 
-                        <hr class="divider">
-
                         <form class="form" action="{{ route('app.result', ['poll' => $poll->slug]) }}" method="POST">
                             @csrf
+                            <hr class="divider">
                             <div class="form-buttons">
                                 <div class="buttons-item">
                                     <input type="radio" id="intox-{{ $poll->id }}" name="answer" value="false">
-                                    <label for="intox-{{ $poll->id }}">Intox</label>
+                                    <label class="link labelIntox" for="intox-{{ $poll->id }}">
+                                        <img  class="notfocus" src="{{ asset('images/crossViolet.svg') }}" alt="intox">
+                                        <img  class="focus" src="{{ asset('images/cross.svg') }}" alt="intox">
+                                        <p><em>Intox</em></p>
+                                    </label>
                                 </div>
                                 <div class="buttons-item">
                                     <input type="radio" id="info-{{ $poll->id }}" name="answer" value="true">
-                                    <label for="info-{{ $poll->id }}">Info</label>
+                                    <label class="link labelInfo" for="info-{{ $poll->id }}">
+                                        <img  class="focus" src="{{ asset('images/icon-circle-bulb.svg') }}" alt="info">
+                                        <img  class="notfocus " src="{{ asset('images/icon-circle-bulb-bleu.svg') }}" alt="info">
+                                        <p><em>Info</em></p>
+                                    </label>
                                 </div>
                             </div>
                             <x-button id="submit-button"
@@ -58,6 +63,8 @@
     </div>
 
     <x-nav-bar/>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>

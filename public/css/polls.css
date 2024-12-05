@@ -34,6 +34,7 @@ h1 {
 }
 
 .form {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,13 +45,18 @@ h1 {
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: space-around;
     gap: 1.5rem;
+    position: relative;
+    align-content: space-around;
+    flex-wrap: wrap;
+    top: -40px;
 }
 
 .buttons-item {
     flex: 1 0 0;
+    width: 100%;
 }
 
 .hidden {
@@ -62,5 +68,90 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: var(--spacing-xxl) 0 ;
+    margin: var(--spacing-xxl) 0;
+
+}
+input{
+    opacity: 0;
+}
+
+
+.form-buttons .labelInfo:hover
+{
+    background-color: #2399F3;
+}
+
+.form-buttons .labelInfo:hover p em
+{
+    color: white;
+}
+
+.form-buttons .labelInfo p em
+{
+    color: #2399F3;
+}
+.form-buttons .labelInfo
+{
+    background-color: transparent;
+    border: 1px solid #2399F3;
+}
+
+
+.form-buttons label{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 40px;
+    width: 45%;
+    height: 56px;
+}
+
+label p em{
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+}
+
+
+.form-buttons label img{
+    width: 26px;
+    height: 26px;
+}
+
+
+.form-buttons .labelIntox{
+    background-color: transparent;
+    border: 1px solid #6420DF;
+}
+
+.form-buttons .labelIntox p em{
+    color:  #6420DF;
+}
+
+.form-buttons .labelIntox:hover{
+    background-color: #6420DF;
+}
+.form-buttons .labelIntox:hover p em{
+    color:  white;
+}
+
+
+
+.form-buttons label .notfocus{
+    display: block;
+}
+
+.form-buttons label .focus{
+    display: none;
+}
+.form-buttons label:hover .focus{
+    display: block;
+}
+
+.form-buttons label:hover .notfocus{
+    display: none;
 }
