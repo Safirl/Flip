@@ -10,26 +10,30 @@
     <div>
         {{--        Mettre les infos liées à la carte bref on les retrouve depuis poll --}}
     </div>
-    <div class="back-bar">
-        <x-button
-            size="large"
-            color="primary"
-            kind="outlined"
-            label=""
-            iconEnd="fa-solid fa-arrow-left"
-            classes="btn-back"
-        />
-        <div class="bulb @if($poll->isIntox) intox-bulb @else info-bulb @endif ">
-            <i class="fa-solid fa-lightbulb"></i>
-            <h1 style="">
-                @if($poll->isIntox)
-                    INTOX
-                @else
-                    INFO
-                @endif
-            </h1>
+    <form action="{{ url()->previous() }}"
+          method="get">
+        <div class="back-bar">
+            <x-button
+                size="large"
+                color="primary"
+                kind="outlined"
+                label=""
+                iconEnd="fa-solid fa-arrow-left"
+                classes="btn-back"
+            />
+
+            <div class="bulb @if($poll->isIntox) intox-bulb @else info-bulb @endif ">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h1 style="">
+                    @if($poll->isIntox)
+                        INTOX
+                    @else
+                        INFO
+                    @endif
+                </h1>
+            </div>
         </div>
-    </div>
+    </form>
     {{--    Quote--}}
     <div class="card">
         <div class="card-section">
@@ -37,15 +41,15 @@
             <p>"{{$poll->quote}}"</p>
         </div>
     </div>
-        <div class="add-comment-btn toggle-popup">
-            <x-button
-                size="large"
-                color="primary"
-                label="Ajouter un commentaire"
-                extend="true"
-                iconEnd="fa-solid fa-plus"
-            />
-        </div>
+    <div class="add-comment-btn toggle-popup">
+        <x-button
+            size="large"
+            color="primary"
+            label="Ajouter un commentaire"
+            extend="true"
+            iconEnd="fa-solid fa-plus"
+        />
+    </div>
     {{--    PopUp--}}
     {{--    <form class="card pop-up-comment" action="{{route('addComment', ['poll' => $poll])}}" method="post" class="vstack gap-3">--}}
     {{--        @csrf--}}
