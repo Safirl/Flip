@@ -21,6 +21,10 @@ h1 {
     margin-bottom: 1rem;
 }
 
+h1, h2, h3, h4 {
+    display: inline;
+}
+
 p {
     font-size: 0.9rem;
     font-style: normal;
@@ -71,6 +75,7 @@ input:hover {
     min-height: calc(100dvh - env(safe-area-inset-bottom));
     padding: 1.5rem;
     box-sizing: border-box;
+    margin-bottom: 5rem;
 }
 
 @media (min-width: 500px) {

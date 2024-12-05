@@ -14,9 +14,7 @@
                 size="large"
                 color="primary"
                 outlined="true"
-                label=""
                 iconEnd="fa-solid fa-arrow-left"
-                classes="btn-back"
             />
         </form>
         <div class="contenaireInformationVote">
@@ -31,7 +29,6 @@
                 @endif
             </div>
         </div>
-
     </div>
 
 
@@ -61,13 +58,20 @@
             <p><strong>{{$intoxCount}}</strong> personnes pensenet que c'est une intox</p>
             <p>Sur {{$intoxCount + $infoCount}} votants</p>
         </div>
-        <a href="#" class="link"> voir les commentaires</a>
+
+            <x-button
+                size="large"
+                color="primary"
+                outlined="false"
+                iconEnd="fa-solid fa-chevron-right"
+                label="Voir les commentaires">
+        </x-button>
     </div>
 <div>
     <i class="fa-solid fa-book-open"></i>
     <h3>Contexte</h3>
 </div>
-    <p><strong>Context:</strong> {{ $poll->context }}</p>
+    <p>{{ $poll->context }}</p>
     <p>{{ $poll->analysis }}</p>
 
 

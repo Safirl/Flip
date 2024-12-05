@@ -22,7 +22,7 @@ class Button extends Component
         $outlined = false,
         $iconStart = null,
         $iconEnd = null,
-        $label = 'Label',
+        $label = '',
         $onClick = null,
         $expand = false,
         $classes = null

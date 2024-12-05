@@ -95,3 +95,15 @@
 .btn-outlined .icon {
     color: var(--btn-color);
 }
+
+/* Supprime les marges si une seule icône est présente */
+.btn:has(.icon-start):not(:has(.icon-end)) .icon-start,
+.btn:has(.icon-end):not(:has(.icon-start)) .icon-end {
+    margin: 0;
+}
+
+/* Padding du bouton uniquement si une seule icône est présente */
+.btn:has(.icon-start):not(:has(.icon-end)),
+.btn:has(.icon-end):not(:has(.icon-start)) {
+    padding: 0.5rem 1rem;
+}

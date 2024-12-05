@@ -9,19 +9,18 @@
 .bulb {
     position: relative; /* Facultatif si déjà bien placé */
     display: inline-flex;
-    padding: var(--spacing-xs, 8px) var(--spacing-xl, 24px); /* Plus d'espace */
+    padding: var(--spacing-xs) var(--spacing-xl); /* Plus d'espace */
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-sm, 8px);
-    border-radius: var(--spacing-xxl, 24px);
+    gap: var(--spacing-s);
+    border-radius: var(--spacing-xxl);
     background-color: var(--app-secondary-500);
     max-width: 80%; /* Empêche de déborder */
     text-align: center;
 }
 
-
 .info-bulb {
-    border-radius: var(--spacing-xxl, 24px);
+    border-radius: var(--spacing-xxl);
     background: var(--app-secondary-500);
 }
 
@@ -89,7 +88,6 @@ figure {
     max-width: 15rem;
     transform: translateY(-5rem);
 }
-
 
 .contenaireGraph {
     border-radius: 0.75rem;
