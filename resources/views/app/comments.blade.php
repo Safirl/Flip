@@ -32,20 +32,42 @@
             </h1>
         </div>
     </div>
-    <form action="{{route('addComment', ['poll' => $poll])}}" method="post" class="vstack gap-3">
-        @csrf
-        <input type="hidden" name="parent_id" value="{{ null }}">
-        <div class="form-group">
-            <label for="comment">Commentaire :</label>
-            <input type="text" class="form-control" id="comment" name="content" value= {{ old('content') }}>
-            @error("content") <span class="text-error">{{ $message }}</span> @enderror
+    {{--    Quote--}}
+    <div class="card">
+        <div class="card-section">
+            <p style="margin-bottom: 1rem"><strong>{{$poll->author}}</strong></p>
+            <p>"{{$poll->quote}}"</p>
         </div>
-        <button class="btn btn-primary">Ajouter le commentaire</button>
-    </form>
+    </div>
+    <div class="add-comment-btn">
+        <x-button
+            size="large"
+            color="primary"
+            label="Ajouter un commentaire"
+            extend="true"
+            iconEnd="fa-solid fa-plus"
+        />
+    </div>
+    {{--    PopUp--}}
+    {{--    <form class="card pop-up-comment" action="{{route('addComment', ['poll' => $poll])}}" method="post" class="vstack gap-3">--}}
+    {{--        @csrf--}}
+    {{--        <input type="hidden" name="parent_id" value="{{ null }}">--}}
+    {{--        <div class="form-group">--}}
+    {{--            <label for="comment">Commentaire :</label>--}}
+    {{--            <input type="text" class="form-control" id="comment" name="content" value= {{ old('content') }}>--}}
+    {{--            @error("content") <span class="text-error">{{ $message }}</span> @enderror--}}
+    {{--        </div>--}}
+    {{--    </form>--}}
 
     <div class="container-comments">
         Commentaires :
         @foreach($friends_comments as $comment)
+            <x-user-card
+                image="fa-solid fa-user"
+                label="{{ $comment->user->name ?? 'Utilisateur inconnu' }}"
+                text="{{ $comment->content }}"
+                imageColor="rgba(60, 19, 134, 1)"
+            />
             <div class="comment">
                 <p><strong>{{ $comment->user->name ?? 'Utilisateur inconnu' }}</strong> :</p>
                 <p>{{ $comment->content }}</p>

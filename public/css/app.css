@@ -67,6 +67,7 @@ input:hover {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 1rem;
     min-height: calc(100dvh - env(safe-area-inset-bottom));
     padding: 1.5rem;
     box-sizing: border-box;
@@ -83,9 +84,14 @@ input:hover {
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
-    max-height: 100%;
+    max-height: fit-content;
     width: 100%;
     max-width: 500px;
+
+    border-radius: var(--spacing-l, 12px);
+    border: 1px solid var(--app-grey-100);
+    background: rgba(252, 252, 252, 0.50);
+    padding: 12px;
 }
 
 .text-center {

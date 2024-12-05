@@ -1,8 +1,4 @@
 .card {
-    border-radius: var(--spacing-l, 12px);
-    border: 1px solid var(--app-grey-100);
-    background: rgba(252, 252, 252, 0.50);
-
     display: flex;
     padding: var(--spacing-xxl, 24px) var(--spacing-l, 12px);
     flex-direction: column;

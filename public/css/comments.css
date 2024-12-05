@@ -43,3 +43,17 @@
     position: relative;
     height: fit-content;
 }
+
+p {
+    margin: 0;
+}
+
+.card {
+    padding: var(--spacing-xxl);
+}
+
+.add-comment-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
