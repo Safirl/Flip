@@ -33,7 +33,7 @@
                     <x-button
                         size="large"
                         color="primary"
-                        outlined="true"
+                        kind="outlined"
                         label="Inscription"
                         expand="true"
                     />

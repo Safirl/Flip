@@ -13,7 +13,7 @@
             <x-button
                 size="large"
                 color="primary"
-                outlined="true"
+                kind="outlined"
                 iconEnd="fa-solid fa-arrow-left"
             />
         </form>
@@ -62,7 +62,7 @@
         <x-button
             size="large"
             color="primary"
-            outlined="false"
+            kind="filled"
             iconEnd="fa-solid fa-chevron-right"
             label="Voir les commentaires">
         </x-button>

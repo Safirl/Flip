@@ -14,7 +14,7 @@
         <x-button
             size="large"
             color="primary"
-            outlined="true"
+            kind="outlined"
             label=""
             iconEnd="fa-solid fa-arrow-left"
             classes="btn-back"
@@ -62,7 +62,7 @@
             <x-button
                 size="large"
                 color="primary"
-                outlined="true"
+                kind="outlined"
                 label=""
                 iconEnd="fa-solid fa-arrow-left"
                 classes="btn-back close-popup"

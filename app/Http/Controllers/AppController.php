@@ -24,62 +24,62 @@ class AppController extends Controller
 
     public function index(): View
     {
-        //    Poll::create([
-        //        'quote' => "The legalization of cannabis could generate tax revenue and reduce criminal activity.",
-        //        'author' => "Politician A",
-        //        'context' => "The ongoing debate around the legalization of cannabis is intensifying, with several countries considering making it legal for recreational use.",
-        //        'analysis' => "Proponents argue that cannabis legalization would provide economic benefits and reduce law enforcement costs. Critics are concerned about public health implications.",
-        //        'title' => "Legalization of Cannabis",
-        //        'slug' => "legalization-of-cannabis-2",
-        //        'published_at' => date('Y-m-d')
-        //    ]);
+//            Poll::create([
+//                'quote' => "The legalization of cannabis could generate tax revenue and reduce criminal activity.",
+//                'author' => "Politician A",
+//                'context' => "The ongoing debate around the legalization of cannabis is intensifying, with several countries considering making it legal for recreational use.",
+//                'analysis' => "Proponents argue that cannabis legalization would provide economic benefits and reduce law enforcement costs. Critics are concerned about public health implications.",
+//                'title' => "Legalization of Cannabis",
+//                'slug' => "legalization-of-cannabis-2",
+//                'published_at' => date('Y-m-d')
+//            ]);
+//
+//            // Poll 2: "Should the government raise the minimum wage?"
+//            Poll::create([
+//                'quote' => "Raising the minimum wage will lift millions of workers out of poverty.",
+//                'author' => "Economist B",
+//                'context' => "The national conversation around the minimum wage has been ongoing, with some arguing for a hike in pay to combat income inequality.",
+//                'analysis' => "Supporters argue that raising the minimum wage would improve workers' quality of life, while opponents claim it could lead to job losses and inflation.",
+//                'title' => "Raising the Minimum Wage",
+//                'slug' => "raising-the-minimum-wage-2",
+//                'published_at' => date('Y-m-d')
+//            ]);
+//
+//            // Poll 3: "Do you believe in the need for climate change policies?"
+//            Poll::create([
+//                'quote' => "We must take immediate action to reduce carbon emissions and protect our planet for future generations.",
+//                'author' => "Environmental Leader C",
+//                'context' => "With increasing natural disasters and environmental destruction, the urgency to implement climate change policies has become a priority for governments worldwide.",
+//                'analysis' => "While climate change policies are widely supported by environmentalists, some argue that the economic cost of implementing these policies could be too high.",
+//                'title' => "Climate Change Policies",
+//                'slug' => "climate-change-policies-2",
+//                'published_at' => date('Y-m-d')
+//            ]);
+//
+//            // Poll 4: "Is universal healthcare a fundamental right?"
+//            Poll::create([
+//                'quote' => "Healthcare should be accessible to all, regardless of income or status.",
+//                'author' => "Health Advocate D",
+//                'context' => "The debate about universal healthcare continues to spark polarized views. Some advocate for healthcare being a basic right, while others argue about its feasibility.",
+//                'analysis' => "Supporters argue that universal healthcare ensures equity in access to services, while critics raise concerns about funding and potential inefficiency.",
+//                'title' => "Universal Healthcare",
+//                'slug' => "universal-healthcare-2",
+//                'published_at' => date('Y-m-d')
+//            ]);
+//
+//            // Poll 5: "Should governments prioritize spending on defense over education?"
+//            Poll::create([
+//                'quote' => "A strong defense ensures the safety and sovereignty of a nation, but investing in education will secure a prosperous future.",
+//                'author' => "Politician E",
+//                'context' => "This debate revolves around whether governments should allocate more funds to military defense or prioritize investments in education, which can shape a nation's long-term success.",
+//                'analysis' => "The challenge is balancing immediate national security concerns with long-term investments in human capital.",
+//                'title' => "Defense vs. Education Spending",
+//                'slug' => "defense-vs-education-spending-2",
+//                'published_at' => date('Y-m-d')
+//            ]);
 
-        //    // Poll 2: "Should the government raise the minimum wage?"
-        //    Poll::create([
-        //        'quote' => "Raising the minimum wage will lift millions of workers out of poverty.",
-        //        'author' => "Economist B",
-        //        'context' => "The national conversation around the minimum wage has been ongoing, with some arguing for a hike in pay to combat income inequality.",
-        //        'analysis' => "Supporters argue that raising the minimum wage would improve workers' quality of life, while opponents claim it could lead to job losses and inflation.",
-        //        'title' => "Raising the Minimum Wage",
-        //        'slug' => "raising-the-minimum-wage-2",
-        //        'published_at' => date('Y-m-d')
-        //    ]);
 
-        //    // Poll 3: "Do you believe in the need for climate change policies?"
-        //    Poll::create([
-        //        'quote' => "We must take immediate action to reduce carbon emissions and protect our planet for future generations.",
-        //        'author' => "Environmental Leader C",
-        //        'context' => "With increasing natural disasters and environmental destruction, the urgency to implement climate change policies has become a priority for governments worldwide.",
-        //        'analysis' => "While climate change policies are widely supported by environmentalists, some argue that the economic cost of implementing these policies could be too high.",
-        //        'title' => "Climate Change Policies",
-        //        'slug' => "climate-change-policies-2",
-        //        'published_at' => date('Y-m-d')
-        //    ]);
-
-        //    // Poll 4: "Is universal healthcare a fundamental right?"
-        //    Poll::create([
-        //        'quote' => "Healthcare should be accessible to all, regardless of income or status.",
-        //        'author' => "Health Advocate D",
-        //        'context' => "The debate about universal healthcare continues to spark polarized views. Some advocate for healthcare being a basic right, while others argue about its feasibility.",
-        //        'analysis' => "Supporters argue that universal healthcare ensures equity in access to services, while critics raise concerns about funding and potential inefficiency.",
-        //        'title' => "Universal Healthcare",
-        //        'slug' => "universal-healthcare-2",
-        //        'published_at' => date('Y-m-d')
-        //    ]);
-
-        //    // Poll 5: "Should governments prioritize spending on defense over education?"
-        //    Poll::create([
-        //        'quote' => "A strong defense ensures the safety and sovereignty of a nation, but investing in education will secure a prosperous future.",
-        //        'author' => "Politician E",
-        //        'context' => "This debate revolves around whether governments should allocate more funds to military defense or prioritize investments in education, which can shape a nation's long-term success.",
-        //        'analysis' => "The challenge is balancing immediate national security concerns with long-term investments in human capital.",
-        //        'title' => "Defense vs. Education Spending",
-        //        'slug' => "defense-vs-education-spending-2",
-        //        'published_at' => date('Y-m-d')
-        //    ]);
-
-
-        // Renvoie vers les polls du jour
+//         Renvoie vers les polls du jour
         $polls = Poll::where('published_at', date('Y-m-d'))->get();
 
         return view('app.polls', compact('polls'), ['isFeed' => false]);
@@ -97,7 +97,8 @@ class AppController extends Controller
         return $isUser;
     }
 
-    public function account(): View
+    public
+    function account(): View
     {
         if (Auth::check()) {
             $friends_list = Friend::where('user_id_1', Auth::id())->orWhere('user_id_2', Auth::id())->get();
@@ -114,7 +115,8 @@ class AppController extends Controller
         return view('app.account');
     }
 
-    public function feed(): View
+    public
+    function feed(): View
     {
         //Return les feeds des actus de la semaine
         $polls = Poll::whereBetween('published_at', [
@@ -125,7 +127,8 @@ class AppController extends Controller
     }
 
 
-    public function result(Request $request, Poll $poll): View|RedirectResponse
+    public
+    function result(Request $request, Poll $poll): View|RedirectResponse
     {
         $userId = Auth::id();
         if ($userId) {
@@ -192,18 +195,21 @@ class AppController extends Controller
     }
 
 
-    public function notification(): View
+    public
+    function notification(): View
     {
         return view('app.notification');
     }
 
-    public function activity(): View
+    public
+    function activity(): View
     {
         dd('hello world');
         //return toute l'activité liées aux commentaires
     }
 
-    public function addFriend(AddFriendRequest $request): RedirectResponse
+    public
+    function addFriend(AddFriendRequest $request): RedirectResponse
     {
         if ($request['friend_id'] === Auth::user()->friend_id) {
             return redirect()->back()->withErrors(['friend_id' => 'Vous essayez d\'ajouter votre ID!']);
@@ -227,7 +233,8 @@ class AppController extends Controller
     }
 
     //Used to create a fake user. Don't use on prod
-    private function createUser(string $password, string $email, string $name)
+    private
+    function createUser(string $password, string $email, string $name)
     {
         User::create([
             'name' => $name,
@@ -248,7 +255,8 @@ class AppController extends Controller
 //
 //    }
 
-    public function showComments(Poll $poll): View
+    public
+    function showComments(Poll $poll): View
     {
         //We only want our friends comments and ours
         $friends = Auth::user()->friends();
@@ -265,7 +273,8 @@ class AppController extends Controller
         ]);
     }
 
-    public function addComment(CommentRequest $request, Poll $poll): RedirectResponse
+    public
+    function addComment(CommentRequest $request, Poll $poll): RedirectResponse
     {
         $data = $request->validated();
         $parent_id = $request->input('parent_id');
@@ -277,6 +286,5 @@ class AppController extends Controller
         ]);
         return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'Comment added successfully!');
     }
-
 
 }
