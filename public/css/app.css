@@ -38,7 +38,7 @@ label {
     color: var(--app-grey-500);
 }
 
-input {
+input, textarea {
     display: block;
     height: 2.5rem;
     width: 100%;
@@ -48,6 +48,11 @@ input {
     border-radius: var(--spacing-m);
     margin-top: 0.25rem !important;
     background-color: var(--app-primary-500) 0.5;
+}
+
+textarea {
+    height: 10rem;
+    margin: var(--spacing-m) 0;
 }
 
 input:focus {

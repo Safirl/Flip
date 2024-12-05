@@ -63,3 +63,63 @@ p {
     display: flex;
     flex-direction: column;
 }
+.answers {
+    display: none;
+    padding-left: 2rem;
+}
+
+.btn-toggle-discussion {
+    background: none;
+    border: none;
+    text-decoration: underline;
+}
+
+.btn-response {
+    background: none;
+    border: none;
+    text-decoration: underline;
+}
+
+.comment {
+    margin-bottom: 1rem;
+}
+
+.action-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    margin: 0;
+    width: fit-content;
+}
+
+.popup-container {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100dvh;
+    background: rgba(209, 188, 245, 0.40);
+    backdrop-filter: blur(1.350000023841858px);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: var(--app-white-300);
+    padding: var(--spacing-l);
+    border-radius: var(--spacing-l);
+    width: 80%;
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    margin-top: 1rem;
+}

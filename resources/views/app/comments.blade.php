@@ -6,21 +6,19 @@
 @endsection
 
 @section('content')
+    {{ $parentId = null }}
     <div>
         {{--        Mettre les infos liées à la carte bref on les retrouve depuis poll --}}
     </div>
     <div class="back-bar">
-        <form action="{{ url()->previous() }}"
-              method="get">
-            <x-button
-                size="large"
-                color="primary"
-                outlined="true"
-                label=""
-                iconEnd="fa-solid fa-arrow-left"
-                classes="btn-back"
-            />
-        </form>
+        <x-button
+            size="large"
+            color="primary"
+            outlined="true"
+            label=""
+            iconEnd="fa-solid fa-arrow-left"
+            classes="btn-back"
+        />
         <div class="bulb @if($poll->isIntox) intox-bulb @else info-bulb @endif ">
             <i class="fa-solid fa-lightbulb"></i>
             <h1 style="">
@@ -59,6 +57,33 @@
     {{--        </div>--}}
     {{--    </form>--}}
 
+    <div class="popup-container" style="opacity: 0; z-index: -100">
+        <div class="popup-content">
+            <x-button
+                size="large"
+                color="primary"
+                outlined="true"
+                label=""
+                iconEnd="fa-solid fa-arrow-left"
+                classes="btn-back close-popup"
+            />
+            <h3>Répondre au commentaire</h3>
+            <form action="{{ route('addComment', ['poll' => $poll]) }}" method="post">
+                @csrf
+                <input type="hidden" name="parent_id" value="{{ $parentId }}">
+                <textarea name="content" placeholder="Votre réponse..." required></textarea>
+                <div class="popup-actions">
+                    <x-button
+                        size="large"
+                        color="primary"
+                        label="Partager !"
+                        extend="false"
+                    />
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="container-comments">
         @foreach($friends_comments as $comment)
             <x-user-card
@@ -78,7 +103,16 @@
             {{--                <button class="btn btn-primary">Répondre au commentaire</button>--}}
             {{--            </form>--}}
             <div class="comment">
-                <button class="toggle-discussion">Voir la discussion</button>
+                <div class="action-btn">
+                    @if($comment->replies()->exists())
+                        <button class="btn-toggle-discussion">Voir la discussion</button>
+                    @else
+                        <div></div>
+                    @endif
+                    <button onclick="{{ $parentId = $comment->id }}" class="btn-response" style="color: var(--app-primary-500)">Répondre<i
+                            style="color: var(--app-primary-500); padding-left: .5rem"
+                            class="fa-solid fa-paper-plane"></i></button>
+                </div>
                 <div class="answers">
                     @foreach($comment->replies()->get() as $reply)
                         <x-user-card
@@ -99,15 +133,46 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         // Sélectionner tous les boutons et les réponses associées
-        document.querySelectorAll('.toggle-discussion').forEach((button) => {
+        document.querySelectorAll('.btn-toggle-discussion').forEach((button) => {
             button.addEventListener('click', () => {
-                // Trouver la div "answers" qui suit le bouton
-                const answersDiv = button.nextElementSibling
-                // Vérifier si la div est visible ou cachée
-                if (answersDiv.style.display === 'none') {
-                    answersDiv.style.display = 'block'; // Afficher
-                } else {
-                    answersDiv.style.display = 'none'; // Cacher
+                // Trouver le parent ".comment" du bouton
+                const commentDiv = button.closest('.comment');
+
+                // Trouver la div "answers" à l'intérieur de ce parent
+                const answersDiv = commentDiv.querySelector('.answers');
+
+                // Vérifier si la div "answers" existe et gérer l'affichage
+                if (answersDiv) {
+                    if (answersDiv.style.display === 'none' || answersDiv.style.display === '') {
+                        answersDiv.style.display = 'block'; // Afficher
+                    } else {
+                        answersDiv.style.display = 'none'; // Cacher
+                    }
+                }
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.close-popup').forEach((button) => {
+            button.addEventListener('click', () => {
+                const popup = document.querySelector('.popup-container');
+
+                if (popup) {
+                    popup.style.opacity = '0'
+                    popup.style.zIndex = '-100'
+                }
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.btn-response').forEach((button) => {
+            button.addEventListener('click', () => {
+                const popup = document.querySelector('.popup-container');
+                if (popup) {
+                    popup.style.opacity = '1'
+                    popup.style.zIndex = 'unset'
                 }
             });
         });
