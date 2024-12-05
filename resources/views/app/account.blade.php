@@ -57,8 +57,8 @@
                 </div>
             </div>
             {{--Show friends--}}
-        <div class="flex">
-            <div>
+            <div class="flex">
+
                 <p class="friends-p"><strong>Vos amis </strong>({{count($friends)}}) :</p>
                 @foreach($friends as $friend)
                     <div class="friend-card card">
@@ -87,7 +87,6 @@
                     />
                 </form>
             </div>
-        </div>
         @endauth
 
 
