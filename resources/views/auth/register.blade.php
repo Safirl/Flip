@@ -37,7 +37,7 @@
                         <x-link color="primary"
                                 size="medium"
                                 noPadding=true
-                                url='auth.register.show'
+                                url='mentionslegales'
                                 label="Conditions Générales d'Utilisation">
                         </x-link>
                         <x-button
