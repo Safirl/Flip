@@ -21,7 +21,7 @@ h1 {
     font-weight: 300;
     background-color: var(--app-white-300);
     border: 1px solid var(--app-grey-100);
-    padding: var(--spacing-l);
+   /* padding: var(--spacing-l); */
 }
 
 .swiper-slide::-webkit-scrollbar {
@@ -176,6 +176,11 @@ label p em{
     text-align: center;
 }
 
+.bulb img{
+    width: 26px;
+    height: 26px;
+}
+
 .info-bulb {
     border-radius: var(--spacing-xxl);
     background: var(--app-secondary-500);
@@ -184,6 +189,8 @@ label p em{
 .intox-bulb {
     border-radius: var(--spacing-xxl);
     background: var(--app-primary-500);
+    color: white;
+
 }
 
 .info-bulb h1 {
@@ -191,6 +198,115 @@ label p em{
     font-weight: 800;
     line-height: normal;
     margin-bottom: 0;
+    padding: 0;
     color: var(--app-white-300);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
 }
 
+
+.intox-bulb h1{
+    margin-bottom: 0;
+    padding: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.bg-blue {
+    background-color: #007BFF; /* Bleu */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.bg-purple {
+    background-color: #6F42C1; /* Violet */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+
+ .reponse em{
+    color: white;
+     font-size: 1rem;
+     font-weight: 600;
+     margin-top: 0;
+     margin-bottom: 1rem;
+
+}
+
+ .reponse{
+     display: flex;
+     align-items: center;
+     gap: 4px;
+ }
+
+.textContenaire .pourcent{
+    font-size: 18px;
+}
+
+
+.contenaireInformationVote {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    border-radius: 50px;
+}
+
+.textContenaire {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.contenaireinfoResultAndVote{
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.intox-contenaire{
+    background: linear-gradient(0deg, rgba(218,236,253,0) 0%, rgba(223,209,249,1) 90%);
+}
+
+.info-contenaire{
+    background: linear-gradient(0deg, rgba(0,212,255,0) 0%, rgba(218,236,253,1) 90%);
+}
+
+
+.CardContent{
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+  
+}
+
+
+.contenaireCountMistake{
+    display: flex;
+    flex-direction: column;
+}

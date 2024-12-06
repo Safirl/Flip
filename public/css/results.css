@@ -20,6 +20,8 @@
     height: fit-content;
 }
 
+
+
 .info-bulb {
     border-radius: var(--spacing-xxl, 24px);
     background: var(--app-secondary-500);
@@ -31,6 +33,14 @@
 }
 
 .info-bulb h1 {
+    font-style: italic;
+    font-weight: 800;
+    line-height: normal;
+    margin-bottom: 0;
+    color: var(--app-white-300);
+}
+
+.intox-bulb h1 {
     font-style: italic;
     font-weight: 800;
     line-height: normal;
@@ -132,3 +142,6 @@ figure {
 .textContenaire .pourcent{
     font-size: 18px;
 }
+
+
+

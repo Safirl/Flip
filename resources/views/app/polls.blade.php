@@ -17,31 +17,38 @@
                     @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
                         (auth()->check() && $poll->users()->exists()))
 
-
-                        <div class="contenaireInformationVote">
+                        <div class="contenaireinfoResultAndVote @if($poll->is_intox) intox-contenaire @else info-contenaire @endif">
                             <div class="bulb @if($poll->is_intox) intox-bulb @else info-bulb @endif ">
-                                <i class="fa-solid fa-lightbulb"></i>
-                                <h1>
+                                <h1 style="">
                                     @if($poll->is_intox)
+
+                                        <img class="" src="{{asset('../images/cross.svg')}}" alt="intox">
                                         INTOX
                                     @else
+                                        <img class="logo" src="{{asset('../images/icon-circle-bulb.svg')}}" alt="info">
                                         INFO
                                     @endif
                                 </h1>
                             </div>
-                        </div>
 
 
 
 
                         @if ($poll->id == old('poll_id'))
-                            @dump($answer)
+
 
                         @endif
                         @if ($answer !== null)
-                            <p>Votre réponse : {{ $answer ? 'Info' : 'Intox' }}</p>
+                            <div class="reponse">
+                                <h4><strong>Vous avez voté </strong></h4>
+                                <p  class="{{ $answer ? 'bg-blue' : 'bg-purple' }}"> <em>
+                                        {{ $answer ? 'INFO' : 'INTOX' }}
+                                    </em></p>
+                            </div>
                         @endif
+                        </div>
                     @endif
+                    <div class="CardContent">
                     <h4>{{ $poll->author }}</strong> :</h4>
                     <p class="author"><em>"{{ $poll->quote }}"</em></p>
 
@@ -61,9 +68,33 @@
                         @endif
                         @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
                       (auth()->check() && $poll->users()->exists()))
-                            @dump("sondage here")
-                            <p> {{ $poll->intoxCount }} </p>
-                            <p>Info : {{ $poll->infoCount }}</p>
+
+                            <div class="textContenaire">
+                                @if( $poll->is_intox == 1 )
+                                    <div class="contenaireCountMistake">
+                                        <p><strong>{{ $poll->intoxCount}}</strong> personnes ont cru à une intox. </p>
+                                        <p>Sur {{ $poll->intoxCount + $poll->infoCount}} votants</p>
+                                    </div>
+                                    <p class="pourcent" style="color: #6420DF">
+                                        {{( $poll->intoxCount / ( $poll->intoxCount + $poll->infoCount))*100 }}%
+                                    </p>
+
+                                @else
+                                    <div class="contenaireCountMistake">
+                                        <p><strong>{{$poll->infoCount}}</strong> personnes ont cru à une intox sur {{ $poll->intoxCount + $poll->infoCount}} votants. </p>
+                                        <p>Sur {{ $poll->intoxCount + $poll->infoCount}} votants</p>
+                                    </div>
+                                    <p class="pourcent" style="color: #2399F3">
+                                        {{ round(($poll->infoCount / ( $poll->intoxCount + $poll->infoCount)) * 100) }}%
+                                    </p>
+                                @endif
+                            </div>
+                            <x-link
+                                route="{{ route('app.result', ['poll' => $poll->slug]) }}"
+                                label="Voir pourquoi c’est une info"
+                                color="primary"
+                                size="medium"
+                                iconEnd="fa-solid fa-chevron-right"/>
                         @else
 {{--                           --}}
 {{--                            action="{{ route('app.polls', ['poll' => $poll->slug]) }}"--}}
@@ -101,7 +132,7 @@
                             </form>
 
                     @endif
-
+                    </div>
                 </div>
             @endforeach
         </div>
