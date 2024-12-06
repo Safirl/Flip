@@ -70,9 +70,10 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    public function logout(): RedirectResponse
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
+        $request->session()->regenerate();
         return redirect()->route('auth.login')->with('success', 'Vous avez été déconnecté');
     }
 

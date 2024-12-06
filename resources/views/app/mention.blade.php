@@ -1,8 +1,7 @@
 @extends('base')
 @section('title', 'Mentions légales')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/polls.css') }}">
-
+{{--    <link rel="stylesheet" href="{{ asset('css/polls.css') }}">--}}
 @endsection
 @section('content')
     <form action="{{ url()->previous() }}"
@@ -14,7 +13,7 @@
             iconEnd="fa-solid fa-arrow-left"
         />
     </form>
-    <h1 style="padding: 1.5rem 1.5rem 0;">Mentions légales</h1>
+    <h1 style="">Mentions légales</h1>
 
     <p>
         Adresse : 1 Rue Jacques Ellul, 33800 Bordeaux <br>

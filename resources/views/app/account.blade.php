@@ -22,13 +22,15 @@
                     <form action="{{ route('auth.logout') }}" method="post">
                         @method("delete")
                         @csrf
-                        <x-link color="grey"
-                                size="medium"
-                                noPadding=true
-                                url='auth.register.show'
-                                iconStart="fa-solid fa-right-from-bracket"
-                                label="Se déconnecter">
-                        </x-link>
+                        <x-button
+                            size="small"
+                            type="submit"
+                            color="primary"
+                            label="se déconnecter"
+                            expand="true"
+                            kind="clear"
+                            iconStart="fa-solid fa-right-from-bracket"
+                        />
                     </form>
                 </div>
             @endauth
