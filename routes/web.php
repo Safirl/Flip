@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::controller(\App\Http\Controllers\AppController::class)->group(function () {
-    Route::get('/', 'index')->name('polls');
+    Route::match(['get', 'post'], '/', 'index')->name('polls');
     Route::get('/mention', 'mentionslegales')->name('mentionslegales');
     Route::match(['get', 'post'], '/result/{poll:slug}',  'result')->name('app.result');
     Route::get('/notification', 'notification')->name('notification');

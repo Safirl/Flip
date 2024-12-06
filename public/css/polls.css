@@ -153,3 +153,44 @@ label p em{
 .form-buttons label:hover .notfocus{
     display: none;
 }
+
+
+.contenaireInformationVote {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bulb {
+    position: relative; /* Facultatif si déjà bien placé */
+    display: inline-flex;
+    padding: var(--spacing-xs) var(--spacing-xl); /* Plus d'espace */
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-s);
+    border-radius: var(--spacing-xxl);
+    background-color: var(--app-secondary-500);
+    max-width: 80%; /* Empêche de déborder */
+    text-align: center;
+}
+
+.info-bulb {
+    border-radius: var(--spacing-xxl);
+    background: var(--app-secondary-500);
+}
+
+.intox-bulb {
+    border-radius: var(--spacing-xxl);
+    background: var(--app-primary-500);
+}
+
+.info-bulb h1 {
+    font-style: italic;
+    font-weight: 800;
+    line-height: normal;
+    margin-bottom: 0;
+    color: var(--app-white-300);
+}
+

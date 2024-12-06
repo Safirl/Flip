@@ -22,10 +22,10 @@
                 classes="btn-back"
             />
 
-            <div class="bulb @if($poll->isIntox) intox-bulb @else info-bulb @endif ">
+            <div class="bulb @if($poll->is_intox) intox-bulb @else info-bulb @endif ">
                 <i class="fa-solid fa-lightbulb"></i>
                 <h1 style="">
-                    @if($poll->isIntox)
+                    @if($poll->is_intox)
                         INTOX
                     @else
                         INFO

@@ -22,7 +22,7 @@ class AppController extends Controller
 {
 
 
-    public function index(): View
+    public function index(Request $request): View
     {
 //            Poll::create([
 //                'quote' => "The legalization of cannabis could generate tax revenue and reduce criminal activity.",
@@ -30,7 +30,7 @@ class AppController extends Controller
 //                'context' => "The ongoing debate around the legalization of cannabis is intensifying, with several countries considering making it legal for recreational use.",
 //                'analysis' => "Proponents argue that cannabis legalization would provide economic benefits and reduce law enforcement costs. Critics are concerned about public health implications.",
 //                'title' => "Legalization of Cannabis",
-//                'slug' => "legalization-of-cannabis-2",
+//                'slug' => "legalization-of-cannabis-3",
 //                'published_at' => date('Y-m-d')
 //            ]);
 //
@@ -41,7 +41,7 @@ class AppController extends Controller
 //                'context' => "The national conversation around the minimum wage has been ongoing, with some arguing for a hike in pay to combat income inequality.",
 //                'analysis' => "Supporters argue that raising the minimum wage would improve workers' quality of life, while opponents claim it could lead to job losses and inflation.",
 //                'title' => "Raising the Minimum Wage",
-//                'slug' => "raising-the-minimum-wage-2",
+//                'slug' => "raising-the-minimum-wage-3",
 //                'published_at' => date('Y-m-d')
 //            ]);
 //
@@ -52,7 +52,7 @@ class AppController extends Controller
 //                'context' => "With increasing natural disasters and environmental destruction, the urgency to implement climate change policies has become a priority for governments worldwide.",
 //                'analysis' => "While climate change policies are widely supported by environmentalists, some argue that the economic cost of implementing these policies could be too high.",
 //                'title' => "Climate Change Policies",
-//                'slug' => "climate-change-policies-2",
+//                'slug' => "climate-change-policies-3",
 //                'published_at' => date('Y-m-d')
 //            ]);
 //
@@ -63,7 +63,7 @@ class AppController extends Controller
 //                'context' => "The debate about universal healthcare continues to spark polarized views. Some advocate for healthcare being a basic right, while others argue about its feasibility.",
 //                'analysis' => "Supporters argue that universal healthcare ensures equity in access to services, while critics raise concerns about funding and potential inefficiency.",
 //                'title' => "Universal Healthcare",
-//                'slug' => "universal-healthcare-2",
+//                'slug' => "universal-healthcare-3",
 //                'published_at' => date('Y-m-d')
 //            ]);
 //
@@ -74,15 +74,60 @@ class AppController extends Controller
 //                'context' => "This debate revolves around whether governments should allocate more funds to military defense or prioritize investments in education, which can shape a nation's long-term success.",
 //                'analysis' => "The challenge is balancing immediate national security concerns with long-term investments in human capital.",
 //                'title' => "Defense vs. Education Spending",
-//                'slug' => "defense-vs-education-spending-2",
+//                'slug' => "defense-vs-education-spending-3",
 //                'published_at' => date('Y-m-d')
 //            ]);
 
 
-//         Renvoie vers les polls du jour
+
+
+        // Récupère les sondages du jour
         $polls = Poll::where('published_at', date('Y-m-d'))->get();
 
-        return view('app.polls', compact('polls'), ['isFeed' => false]);
+        // Gère le vote si une réponse est soumise
+        if ($request->isMethod('post')) {
+            $pollId = $request->input('poll_id');
+            $answer = filter_var($request->input('answer'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+
+            if ($pollId && $answer !== null) {
+                $userId = Auth::id();
+
+                // Vérifie si l'utilisateur a déjà voté
+                $existingVote = DB::table('user_poll')
+                    ->where('poll_id', $pollId)
+                    ->where('user_id', $userId)
+                    ->exists();
+
+                if (!$existingVote) {
+                    // Enregistre le vote
+                    DB::table('user_poll')->insert([
+                        'poll_id' => $pollId,
+                        'user_id' => $userId ?? null,
+                        'answer' => $answer,
+                    ]);
+
+                    session()->push('completed_polls', $pollId);
+                }
+            }
+        }
+
+        // Ajoute les informations des votes pour chaque sondage
+        foreach ($polls as $poll) {
+            $poll->intoxCount = DB::table('user_poll')
+                ->where('poll_id', $poll->id)
+                ->where('answer', 0)
+                ->count();
+
+            $poll->infoCount = DB::table('user_poll')
+                ->where('poll_id', $poll->id)
+                ->where('answer', 1)
+                ->count();
+        }
+
+        // Récupère si une réponse a été soumise pour une réutilisation dans la vue
+        $answer = filter_var($request->input('answer'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+
+        return view('app.polls', compact('polls'), ['isFeed' => false, 'answer' => $answer]);
     }
 
     public function isUserIdAnswer(Poll $poll, $userId): bool
