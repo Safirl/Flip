@@ -81,7 +81,7 @@ class AppController extends Controller
 
 //         Renvoie vers les polls du jour
         $polls = Poll::where('published_at', date('Y-m-d'))->get();
-
+        session(['previous_url' => url()->full()]);
         return view('app.polls', compact('polls'), ['isFeed' => false]);
     }
 
@@ -123,6 +123,7 @@ class AppController extends Controller
             date('Y-m-d', strtotime('-7 days')) . ' 00:00:00',
             date('Y-m-d') . ' 23:59:59'
         ])->get();
+        session(['previous_url' => url()->full()]);
         return view('app.polls', compact('polls'), ['isFeed' => true]);
     }
 

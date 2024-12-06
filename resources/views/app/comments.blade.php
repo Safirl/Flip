@@ -10,7 +10,7 @@
     <div>
         {{--        Mettre les infos liées à la carte bref on les retrouve depuis poll --}}
     </div>
-    <form action="{{ url()->previous() }}"
+    <form action="{{ route('app.result', ['poll' => $poll]) }}"
           method="get">
         <div class="back-bar">
             <x-button

@@ -26,6 +26,9 @@ class AuthController extends Controller
     //Redirige vers la page se connecter
     public function register()
     {
+        if (Auth::check()) {
+            return redirect()->route('account')->with('success', 'Vous êtes déjà connecté');
+        }
         return view('auth.register');
     }
 
