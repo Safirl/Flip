@@ -83,7 +83,7 @@ class AppController extends Controller
 
         // Récupère les sondages du jour
         $polls = Poll::where('published_at', date('Y-m-d'))->get();
-
+		session(['previous_url' => url()->full()]);
         // Gère le vote si une réponse est soumise
         if ($request->isMethod('post')) {
             $pollId = $request->input('poll_id');
@@ -168,6 +168,7 @@ class AppController extends Controller
             date('Y-m-d', strtotime('-7 days')) . ' 00:00:00',
             date('Y-m-d') . ' 23:59:59'
         ])->get();
+        session(['previous_url' => url()->full()]);
         return view('app.polls', compact('polls'), ['isFeed' => true]);
     }
 

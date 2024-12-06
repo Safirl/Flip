@@ -23,6 +23,7 @@
         margin-bottom: var(--spacing-m);
         flex-direction: row;
         justify-content: flex-start;
+        align-items: flex-start;
         background: none;
     }
 

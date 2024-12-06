@@ -7,49 +7,45 @@
 @endsection
 @section('content')
 
-    <div class="back-bar">
-        <form action="{{ url()->previous() }}"
-              method="get">
+    <form action="{{ session('previous_url') }}"
+          method="get">
+        <div class="back-bar">
             <x-button
                 size="large"
                 color="primary"
                 kind="outlined"
+                label=""
                 iconEnd="fa-solid fa-arrow-left"
+                classes="btn-back"
             />
-        </form>
-        @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
-                         (auth()->check() && $poll->users()->exists()))
-            <div class="contenaireInformationVote">
-                <div class="bulb {{ $answer == 1 ? 'info-bulb' : 'intox-bulb' }}">
-                    @if( $poll->is_intox == 1)
-
-                        <img src="{{ asset('images/icon-circle-bulb.svg') }}" alt="Info">
-                        <h1>INFO</h1>
+            <div class="bulb @if($poll->isIntox) intox-bulb @else info-bulb @endif ">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h1 style="">
+                    @if($poll->isIntox)
+                        INTOX
                     @else
-                        <img src="{{ asset('images/cross.svg') }}" alt="Intox">
-                        <h1>INTOX</h1>
+                        INFO
                     @endif
-                </div>
+                </h1>
             </div>
-        @endif
-    </div>
+        </div>
+    </form>
 
 
+{{--    @if($poll->is_intox == 1)--}}
+{{--        <style>--}}
+{{--            .bulb {--}}
+{{--                background: var(--app-secondary-500);--}}
+{{--            }--}}
+{{--        </style>--}}
 
-    @if($poll->is_intox == 1)
-        <style>
-            .bulb {
-                background: var(--app-secondary-500);
-            }
-        </style>
-
-    @else
-        <style>
-            .bulb {
-                background: var(--app-primary-700);:
-            }
-        </style>
-    @endif
+{{--    @else--}}
+{{--        <style>--}}
+{{--            .bulb {--}}
+{{--                background: var(--app-primary-700);:--}}
+{{--            }--}}
+{{--        </style>--}}
+{{--    @endif--}}
 
 
     @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
@@ -63,7 +59,7 @@
             <div class="textContenaire">
                 @if( $poll->is_intox == 1 )
                     <div class="contenaireCountMistake">
-                        <p><strong>{{$intoxCount}}</strong> personnes sont tombées dans le panneau </p>
+                        <p><strong>{{$intoxCount}}</strong> personnes ont cru à une intox. </p>
                         <p>Sur {{$intoxCount + $infoCount}} votants</p>
                     </div>
                     <p class="pourcent" style="color: #2399F3">
@@ -72,8 +68,8 @@
 
                 @else
                     <div class="contenaireCountMistake">
-                        <p><strong>{{$infoCount}}</strong> personnes sont tombées dans le panneau </p>
-                        <p>Sur {{$intoxCount + $infoCount}} votants</p>
+                        <p><strong>{{$infoCount}}</strong> personnes ont cru à une intox sur {{$intoxCount + $infoCount}} votants. </p>
+                        <p></p>
                     </div>
                     <p class="pourcent" style="color: #6420DF">
                         {{ round(($infoCount / ($intoxCount + $infoCount)) * 100) }}%

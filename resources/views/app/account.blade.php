@@ -22,13 +22,15 @@
                     <form action="{{ route('auth.logout') }}" method="post">
                         @method("delete")
                         @csrf
-                        <x-link color="grey"
-                                size="medium"
-                                noPadding=true
-                                url='auth.register.show'
-                                iconStart="fa-solid fa-right-from-bracket"
-                                label="Se déconnecter">
-                        </x-link>
+                        <x-button
+                            size="small"
+                            type="submit"
+                            color="primary"
+                            label="Se déconnecter"
+                            expand="true"
+                            kind="clear"
+                            iconStart="fa-solid fa-right-from-bracket"
+                        />
                     </form>
                 </div>
             @endauth
@@ -72,6 +74,17 @@
                     </div>
                 @endforeach
             </div>
+
+            <form action="{{ route('mentionslegales') }}" method="get">
+                <x-button
+                    kind="clear"
+                    type="submit"
+                    size="small"
+                    color="grey"
+                    label="Voir les mentions légales"
+                    expand="false"
+                />
+            </form>
             <div class="delete-btn">
                 <form class="disconnect-btn"
                       action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
@@ -87,9 +100,6 @@
                     />
                 </form>
             </div>
-            <form action="{{ route('mentionslegales') }}" method="get">
-                <button class="link" type="submit">Voir les mentions légales</button>
-            </form>
         @endauth
 
 

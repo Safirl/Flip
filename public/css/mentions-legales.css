@@ -1,0 +1,23 @@
+.mentions-legales p strong{
+    margin: 0;
+}
+
+.title-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: self-end;
+    gap: 1rem;
+}
+
+.logo {
+    max-height: 25px;
+    max-width: 25px;
+}
+
+.mentions-legales-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}

@@ -7,21 +7,27 @@
 }
 
 .bulb {
-    position: relative; /* Facultatif si déjà bien placé */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
     display: inline-flex;
-    padding: var(--spacing-xs) var(--spacing-xl); /* Plus d'espace */
+    padding: var(--spacing-xs, 4px) var(--spacing-xl, 16px);
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-s);
-    border-radius: var(--spacing-xxl);
-    background-color: var(--app-secondary-500);
-    max-width: 80%; /* Empêche de déborder */
-    text-align: center;
+    gap: var(--spacing-xs, 4px);
+    flex-shrink: 0;
+    width: fit-content;
+    height: fit-content;
 }
 
 .info-bulb {
-    border-radius: var(--spacing-xxl);
+    border-radius: var(--spacing-xxl, 24px);
     background: var(--app-secondary-500);
+}
+
+.intox-bulb {
+    border-radius: var(--spacing-xxl, 24px);
+    background: var(--app-primary-500);
 }
 
 .info-bulb h1 {
@@ -45,8 +51,8 @@
 .back-bar {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Écarte les éléments */
+    align-items: center; /* Centre verticalement les éléments */
     position: relative;
     height: fit-content;
 }

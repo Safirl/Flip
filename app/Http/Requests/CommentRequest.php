@@ -22,7 +22,7 @@ class CommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'content' => 'required|string|min:3',
+            'content' => 'required|string|min:3|max:1500',
         ];
     }
 
@@ -30,7 +30,8 @@ class CommentRequest extends FormRequest
     {
         return [
             'content.required' => 'Le champ Comment est obligatoire.',
-            'content.min' => 'Le commentaire doit faire au moins 3 caractères.'
+            'content.min' => 'Le commentaire doit faire au moins 3 caractères.',
+            'content.max' => 'Le commentaire dépasse la limite de 1500 caractères.'
         ];
     }
 }

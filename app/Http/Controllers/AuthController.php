@@ -26,6 +26,9 @@ class AuthController extends Controller
     //Redirige vers la page se connecter
     public function register()
     {
+        if (Auth::check()) {
+            return redirect()->route('account')->with('success', 'Vous êtes déjà connecté');
+        }
         return view('auth.register');
     }
 
@@ -70,9 +73,10 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    public function logout(): RedirectResponse
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
+        $request->session()->regenerate();
         return redirect()->route('auth.login')->with('success', 'Vous avez été déconnecté');
     }
 
