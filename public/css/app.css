@@ -12,6 +12,8 @@ body {
     background: linear-gradient(to bottom left, var(--app-primary-100), var(--app-white-300), var(--app-primary-100));
     height: 100vh;
     margin: 0;
+    overflow-x: hidden;
+    background: no-repeat top left fixed;
 }
 
 h1 {
