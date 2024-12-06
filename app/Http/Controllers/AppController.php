@@ -160,16 +160,33 @@ class AppController extends Controller
         return view('app.account');
     }
 
-    public
-    function feed(): View
+    public function feed(Request $request): View
     {
-        //Return les feeds des actus de la semaine
+        // Récupère les sondages publiés durant la semaine
         $polls = Poll::whereBetween('published_at', [
             date('Y-m-d', strtotime('-7 days')) . ' 00:00:00',
             date('Y-m-d') . ' 23:59:59'
         ])->get();
+
         session(['previous_url' => url()->full()]);
-        return view('app.polls', compact('polls'), ['isFeed' => true]);
+
+        // Récupère la réponse soumise pour une réutilisation dans la vue
+        $answer = filter_var($request->input('answer'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+
+        // Ajoute les informations des votes pour chaque sondage
+        foreach ($polls as $poll) {
+            $poll->intoxCount = DB::table('user_poll')
+                ->where('poll_id', $poll->id)
+                ->where('answer', 0)
+                ->count();
+
+            $poll->infoCount = DB::table('user_poll')
+                ->where('poll_id', $poll->id)
+                ->where('answer', 1)
+                ->count();
+        }
+
+        return view('app.polls', compact('polls'), ['isFeed' => true, 'answer' => $answer]);
     }
 
 
