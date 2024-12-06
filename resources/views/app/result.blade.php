@@ -59,7 +59,7 @@
             <div class="textContenaire">
                 @if( $poll->is_intox == 1 )
                     <div class="contenaireCountMistake">
-                        <p><strong>{{$intoxCount}}</strong> personnes sont tombées dans le panneau </p>
+                        <p><strong>{{$intoxCount}}</strong> personnes ont cru à une intox. </p>
                         <p>Sur {{$intoxCount + $infoCount}} votants</p>
                     </div>
                     <p class="pourcent" style="color: #2399F3">
@@ -68,8 +68,8 @@
 
                 @else
                     <div class="contenaireCountMistake">
-                        <p><strong>{{$infoCount}}</strong> personnes sont tombées dans le panneau </p>
-                        <p>Sur {{$intoxCount + $infoCount}} votants</p>
+                        <p><strong>{{$infoCount}}</strong> personnes ont cru à une intox sur {{$intoxCount + $infoCount}} votants. </p>
+                        <p></p>
                     </div>
                     <p class="pourcent" style="color: #6420DF">
                         {{ round(($infoCount / ($intoxCount + $infoCount)) * 100) }}%

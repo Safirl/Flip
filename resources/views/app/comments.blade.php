@@ -50,16 +50,6 @@
             iconEnd="fa-solid fa-plus"
         />
     </div>
-    {{--    PopUp--}}
-    {{--    <form class="card pop-up-comment" action="{{route('addComment', ['poll' => $poll])}}" method="post" class="vstack gap-3">--}}
-    {{--        @csrf--}}
-    {{--        <input type="hidden" name="parent_id" value="{{ null }}">--}}
-    {{--        <div class="form-group">--}}
-    {{--            <label for="comment">Commentaire :</label>--}}
-    {{--            <input type="text" class="form-control" id="comment" name="content" value= {{ old('content') }}>--}}
-    {{--            @error("content") <span class="text-error">{{ $message }}</span> @enderror--}}
-    {{--        </div>--}}
-    {{--    </form>--}}
 
     <div class="popup-container" style="opacity: 0; z-index: -100">
         <div class="popup-content">
@@ -75,7 +65,8 @@
             <form action="{{ route('addComment', ['poll' => $poll]) }}" method="post">
                 @csrf
                 <input type="hidden" name="parent_id" value="{{ $parentId }}">
-                <textarea name="content" placeholder="Votre réponse..." required></textarea>
+                <textarea name="content" placeholder="Votre réponse..." required>{{ old('content') }}</textarea>
+                @error("content") <span class="text-error">{{ $message }}</span> @enderror
                 <div class="popup-actions">
                     <x-button
                         size="large"
