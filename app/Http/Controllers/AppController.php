@@ -25,29 +25,30 @@ class AppController extends Controller
     public function index(Request $request): View
     {
 //            Poll::create([
-//                'quote' => "The legalization of cannabis could generate tax revenue and reduce criminal activity.",
-//                'author' => "Politician A",
-//                'context' => "The ongoing debate around the legalization of cannabis is intensifying, with several countries considering making it legal for recreational use.",
-//                'analysis' => "Proponents argue that cannabis legalization would provide economic benefits and reduce law enforcement costs. Critics are concerned about public health implications.",
-//                'title' => "Legalization of Cannabis",
-//                'slug' => "legalization-of-cannabis-3",
+//                'quote' => "Les procurations pour les législatives ont quadruplé par rapport à 2022 » (juin 2024)",
+//                'author' => "Emmanuel Macron",
+//                'context' => "Lors de l’annonce de la dissolution de l’Assemblée nationale, Emmanuel Macron a avancé que le nombre de procurations avait quadruplé par rapport aux élections législatives précédentes.",
+//                'analysis' => "En réalité, cette augmentation ne concerne qu’une période très spécifique et n’est pas représentative de l’ensemble des votes par procuration. L’information a été clarifiée par le ministère de l’Intérieur et critiquée pour son manque de nuance",
+//                'title' => "Procuration législative",
+//                'slug' => "procuration-legislative",
 //                'published_at' => date('Y-m-d')
 //            ]);
-//
-//            // Poll 2: "Should the government raise the minimum wage?"
+////
+////            // Poll 2: "Should the government raise the minimum wage?"
 //            Poll::create([
-//                'quote' => "Raising the minimum wage will lift millions of workers out of poverty.",
-//                'author' => "Economist B",
-//                'context' => "The national conversation around the minimum wage has been ongoing, with some arguing for a hike in pay to combat income inequality.",
-//                'analysis' => "Supporters argue that raising the minimum wage would improve workers' quality of life, while opponents claim it could lead to job losses and inflation.",
-//                'title' => "Raising the Minimum Wage",
-//                'slug' => "raising-the-minimum-wage-3",
+//                'quote' => "Paris est aujourd’hui l’une des villes les plus accessibles au monde pour les personnes en situation de handicap",
+//                'author' => "Anne Hidalgo",
+//                'context' => "Lors d’une conférence à l’Hôtel de Ville, la maire de Paris a salué les progrès de la ville en matière d’accessibilité. Ces propos sont appuyés par des rapports d’organisations internationales qui placent Paris parmi les leaders mondiaux pour l’accessibilité des espaces publics.",
+//                'analysis' => "Une étude réalisée auprès de 3 500 personnes en situation de handicap révèle que dix grandes villes, dont Paris, ont été exclues du classement des destinations touristiques les plus accessibles. Parmi ces villes figurent également Amsterdam, Las Vegas et Londres. Cette situation met en lumière les récentes initiatives du gouvernement français, notamment le 'Plan 100% accessibilité', visant à faire de Paris une ville plus inclusive pour tous.
+//Cependant, malgré ces efforts, des voix critiques, en particulier celles des associations de défense des droits des personnes handicapées, insistent sur la nécessité de poursuivre ces actions au-delà de 2024. Elles soulignent que de nombreuses lacunes demeurent, notamment dans l’accessibilité du métro et des bus. Ce constat est largement discuté dans les débats politiques actuels, où des partis comme La France Insoumise (LFI) appellent à une prise en compte renforcée de l’accessibilité dans les politiques publiques.",
+//                'title' => "Paris accéssibilité",
+//                'slug' => "paris-accessibilite",
 //                'published_at' => date('Y-m-d')
 //            ]);
 //
 //            // Poll 3: "Do you believe in the need for climate change policies?"
 //            Poll::create([
-//                'quote' => "We must take immediate action to reduce carbon emissions and protect our planet for future generations.",
+//                'quote' => "La nouvelle loi immigration interdit désormais aux étrangers d’accéder aux prestations sociales.",
 //                'author' => "Environmental Leader C",
 //                'context' => "With increasing natural disasters and environmental destruction, the urgency to implement climate change policies has become a priority for governments worldwide.",
 //                'analysis' => "While climate change policies are widely supported by environmentalists, some argue that the economic cost of implementing these policies could be too high.",
