@@ -53,15 +53,17 @@
 
     <div class="popup-container" style="opacity: 0; z-index: -100">
         <div class="popup-content">
-            <x-button
-                size="large"
-                color="primary"
-                kind="outlined"
-                label=""
-                iconEnd="fa-solid fa-arrow-left"
-                classes="btn-back close-popup"
-            />
-            <h3>Ajouter un commentaire</h3>
+            <div class="title-bar">
+                <x-button
+                    size="large"
+                    color="primary"
+                    kind="outlined"
+                    label=""
+                    iconEnd="fa-solid fa-arrow-left"
+                    classes="btn-back close-popup"
+                />
+                <h3>Ajouter un commentaire</h3>
+            </div>
             <form action="{{ route('addComment', ['poll' => $poll]) }}" method="post">
                 @csrf
                 <input type="hidden" name="parent_id" value="{{ $parentId }}">
@@ -76,6 +78,7 @@
                     />
                 </div>
             </form>
+
         </div>
     </div>
 

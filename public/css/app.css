@@ -13,7 +13,6 @@ body {
     height: 100vh;
     margin: 0;
     overflow-x: hidden;
-    background: no-repeat top left fixed;
 }
 
 h1 {
@@ -81,7 +80,7 @@ input:hover {
     min-height: calc(100dvh - env(safe-area-inset-bottom));
     padding: 1.5rem;
     box-sizing: border-box;
-   padding-bottom: 5rem;
+    padding-bottom: 7rem;
 }
 
 @media (min-width: 500px) {
