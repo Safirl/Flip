@@ -74,6 +74,17 @@
                     </div>
                 @endforeach
             </div>
+
+            <form action="{{ route('mentionslegales') }}" method="get">
+                <x-button
+                    kind="clear"
+                    type="submit"
+                    size="small"
+                    color="grey"
+                    label="Voir les mentions légales"
+                    expand="false"
+                />
+            </form>
             <div class="delete-btn">
                 <form class="disconnect-btn"
                       action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
@@ -89,9 +100,6 @@
                     />
                 </form>
             </div>
-            <form action="{{ route('mentionslegales') }}" method="get">
-                <button class="link" type="submit">Voir les mentions légales</button>
-            </form>
         @endauth
 
 

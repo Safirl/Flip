@@ -76,7 +76,7 @@
 
     <p><strong>Flip corp.</strong></p>
 
-    <img src="{{asset('images/logo-180x180.png')}}" alt="logo de Flip">
+    <img src="{{asset('images/favicon.ico')}}" alt="logo de Flip">
 
     <x-nav-bar/>
 

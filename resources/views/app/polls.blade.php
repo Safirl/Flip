@@ -16,19 +16,18 @@
                     <h4>{{ $poll->author }}</strong> :</h4>
                     <p class="author"><em>"{{ $poll->quote }}"</em></p>
 
-                    @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
-                         (auth()->check() && $poll->users()->exists()))
+
                         <x-link
                             route="{{ route('app.result', ['poll' => $poll->slug]) }}"
                             label="Voir le contexte"
                             color="primary"
                             size="medium"
                             iconEnd="fa-solid fa-chevron-right"/>
-                    @else
 
+                        <hr class="divider">
                         <form class="form" action="{{ route('app.result', ['poll' => $poll->slug]) }}" method="POST">
                             @csrf
-                            <hr class="divider">
+
                             <div class="form-buttons">
                                 <div class="buttons-item">
                                     <input type="radio" id="intox-{{ $poll->id }}" name="answer" value="false">
@@ -56,7 +55,7 @@
                                       class="hidden"
                             />
                         </form>
-                    @endif
+
                 </div>
             @endforeach
         </div>
