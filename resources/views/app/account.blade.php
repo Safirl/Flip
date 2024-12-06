@@ -74,17 +74,33 @@
                     </div>
                 @endforeach
             </div>
+        @endauth
+        @guest
+            <div class="card delete-btn">
+                <p class="card-account-text">
+                    Vous souhaitez partager l’expérience avec vos proches ? Créez-vous un compte pour partager votre
+                    code ami.
+                </p>
+                <form action="{{route('auth.login')}}" method="get">
+                    @csrf
+                    <x-button
+                        size="large"
+                        color="primary"
+                        label="Connexion / Inscription"
+                        expand="true"
+                    />
+                </form>
 
-            <form action="{{ route('mentionslegales') }}" method="get">
-                <x-button
-                    kind="clear"
-                    type="submit"
-                    size="small"
-                    color="grey"
-                    label="Voir les mentions légales"
-                    expand="false"
-                />
-            </form>
+            </div>
+        @endguest
+        <x-link color="primary"
+                size="medium"
+                expand="true"
+                noPadding=true
+                url='mentionslegales'
+                label="Voir les mentions légales">
+        </x-link>
+        @auth
             <div class="delete-btn">
                 <form class="disconnect-btn"
                       action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
@@ -103,25 +119,6 @@
         @endauth
 
 
-        @guest
-            <div class="card delete-btn">
-                <p class="card-account-text">
-                    Vous souhaitez partager l’expérience avec vos proches ? Créez-vous un compte pour partager votre
-                    code ami.
-                </p>
-                <form action="{{route('auth.login')}}" method="get">
-                    @csrf
-                    <x-button
-                        size="large"
-                        color="primary"
-                        label="Connexion / Inscription"
-                        expand="true"
-                    />
-                </form>
-
-
-            </div>
-        @endguest
     </div>
     <x-nav-bar/>
 @endsection
