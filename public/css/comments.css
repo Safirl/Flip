@@ -17,6 +17,11 @@
     background: var(--app-secondary-500);
 }
 
+.intox-bulb {
+    border-radius: var(--spacing-xxl, 24px);
+    background: var(--app-primary-500);
+}
+
 .info-bulb h1 {
     font-style: italic;
     font-weight: 800;
