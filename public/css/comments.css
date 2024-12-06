@@ -128,3 +128,11 @@ p {
 h3 {
     margin-top: 1rem;
 }
+
+.title-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}

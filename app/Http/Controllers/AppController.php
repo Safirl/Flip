@@ -79,11 +79,9 @@ class AppController extends Controller
 //            ]);
 
 
-
-
         // Récupère les sondages du jour
         $polls = Poll::where('published_at', date('Y-m-d'))->get();
-		session(['previous_url' => url()->full()]);
+        session(['previous_url' => url()->full()]);
         // Gère le vote si une réponse est soumise
         if ($request->isMethod('post')) {
             $pollId = $request->input('poll_id');
@@ -341,7 +339,21 @@ class AppController extends Controller
     {
         $data = $request->validated();
         $parent_id = $request->input('parent_id');
-        $comment = Comment::create([
+        if ($parent_id) {
+
+            $parent_comment = Comment::find($parent_id);
+
+            if (!$parent_comment) {
+                return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'L\'utilisateur n\'existe pas!');
+            }
+
+            if (!Auth::user()->friends()->contains(($parent_comment->user()->first())) && Auth::id() !== $parent_comment->user_id) {
+                return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'Vous n\'êtes pas ami avec cet utilisateur !');
+            }
+        }
+
+
+        Comment::create([
             'poll_id' => $poll->id,
             'parent_id' => $parent_id,
             'content' => $data['content'],
