@@ -108,8 +108,7 @@ figure {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-
-
+    margin-bottom: 1rem;
 }
 
 .contenaireGraph p {
