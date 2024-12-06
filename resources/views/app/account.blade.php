@@ -26,7 +26,7 @@
                             size="small"
                             type="submit"
                             color="primary"
-                            label="se déconnecter"
+                            label="Se déconnecter"
                             expand="true"
                             kind="clear"
                             iconStart="fa-solid fa-right-from-bracket"
