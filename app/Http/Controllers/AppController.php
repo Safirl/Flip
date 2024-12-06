@@ -284,7 +284,7 @@ class AppController extends Controller
             'content' => $data['content'],
             'user_id' => Auth::id(),
         ]);
-        return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'Comment added successfully!');
+        return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'Commentaire publié !');
     }
 
     public function mentionslegales(): View
