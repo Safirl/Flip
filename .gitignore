@@ -24,4 +24,4 @@ yarn-error.log
 _ide_helper_models.php
 /storage/*
 !/storage/.gitignore
-.DS_Store
+*.DS_Store
