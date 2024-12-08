@@ -1,5 +1,10 @@
-@import url('variables.css');
-@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import 'reset.css';
+@import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+@import 'variables.css';
+@import 'components/_button.css';
+@import 'components/_nav.css';
+@import 'components/_link.css';
+
 
 * {
     font-family: var(--app-text-font);
