@@ -1,8 +1,6 @@
 @extends('base')
 @section('title', 'Login')
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-@endsection
+@vite(['resources/css/login.css'])
 @section('content')
 
     <h1>Créer un compte</h1>

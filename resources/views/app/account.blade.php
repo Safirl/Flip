@@ -1,9 +1,7 @@
 @extends('base')
 
 @section('title', 'Profil')
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/account.css') }}">
-@endsection
+@vite(['resources/css/account.css'])
 @section('content')
     <div class="section-user-profile">
         <div class="user-profile">

@@ -1,10 +1,8 @@
 @extends('base')
 
 @section('title', 'Votes du jour')
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/polls.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-@endsection
+@vite(['resources/css/polls.css'])
+{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>--}}
 
 @section('content')
     <h1 style="padding: 1.5rem 1.5rem 0;">@if($isFeed) Votes de la semaine @else Votes du jour @endif </h1>

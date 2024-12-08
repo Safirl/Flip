@@ -1,8 +1,7 @@
 @extends('base')
 @section('title', 'Mentions légales')
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/mentions-legales.css') }}">
-@endsection
+@vite(['resources/css/mentions.css'])
+
 @section('content')
     <div class="mentions-legales">
         <div class="title-bar">
