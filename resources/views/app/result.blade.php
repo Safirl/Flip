@@ -2,9 +2,7 @@
 
 
 @section('title', 'Result')
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/results.css') }}">
-@endsection
+@vite(['resources/css/results.css'])
 @section('content')
 
     <form action="{{ session('previous_url') }}"

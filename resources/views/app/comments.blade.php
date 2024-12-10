@@ -1,9 +1,7 @@
 @extends('base')
 
 @section('title', 'Commentaires')
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/comments.css') }}">
-@endsection
+@vite(['resources/css/comments.css'])
 
 @section('content')
     <div>

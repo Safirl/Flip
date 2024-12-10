@@ -2,6 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
+        "start": "vite --port $PORT",
         "build": "vite build",
         "dev": "vite"
     },

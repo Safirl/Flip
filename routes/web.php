@@ -25,3 +25,7 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
     Route::delete('/logout', 'logout')->name('auth.logout');
     Route::delete('/users/{user}', 'deleteUser')->name('auth.destroy');
 });
+
+Route::controller(\App\Http\Controllers\AdminController::class)->group(function () {
+    Route::match(['get', 'post'], '/admin', 'index')->name('admin');
+});

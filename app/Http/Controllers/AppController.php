@@ -20,8 +20,6 @@ use function Sodium\add;
 
 class AppController extends Controller
 {
-
-
     public function index(Request $request): View
     {
 //            Poll::create([
