@@ -76,7 +76,7 @@ class AuthController extends Controller
     public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
-        $request->session()->regenerate();
+        session()->flush();
         return redirect()->route('auth.login')->with('success', 'Vous avez été déconnecté');
     }
 
