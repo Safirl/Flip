@@ -89,7 +89,7 @@
                             </div>
                             <x-link
                                 route="{{ route('app.result', ['poll' => $poll->slug]) }}"
-                                label="Voir pourquoi c’est une info"
+                                label='Voir pourquoi'
                                 color="primary"
                                 size="medium"
                                 iconEnd="fa-solid fa-chevron-right"/>
