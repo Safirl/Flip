@@ -27,6 +27,7 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
 });
 
 Route::controller(\App\Http\Controllers\AdminController::class)->group(function () {
+    Route::get('/admin', 'index')->name('admin.index');
     Route::get('/create-poll', 'createPoll')->name('admin.create.poll')->middleware('auth');
     Route::post('/create-poll', 'storeUser')->middleware('auth');
 });

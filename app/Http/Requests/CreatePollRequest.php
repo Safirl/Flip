@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class CreateArticleRequest extends FormRequest
+class CreatePollRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,6 +30,7 @@ class CreateArticleRequest extends FormRequest
             'author' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
             'published_at' => 'required|date',
+            'is_intox' => 'required|boolean',
         ];
     }
 
@@ -45,6 +46,7 @@ class CreateArticleRequest extends FormRequest
             'author.max' => 'L\'auteur est trop long.',
             'slug.required' => 'Le slug est obligatoire.',
             'published_at.required' => 'La date de publication est obligatoire.',
+            'is_intox.required' => 'L\'intox est obligatoire.',
         ];
     }
 }
