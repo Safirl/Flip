@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreatePollRequest;
+use App\Http\Requests\FormPollRequest;
 use App\Models\Poll;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
@@ -17,7 +17,7 @@ class AdminController extends Controller
         return view('admin.createPoll', ['poll' => $poll]);
     }
 
-    public function storePoll(CreatePollRequest $request): RedirectResponse
+    public function storePoll(FormPollRequest $request): RedirectResponse
     {
         $data = $request->validated();
         Poll::create([
@@ -34,10 +34,16 @@ class AdminController extends Controller
         return redirect()->route('polls')->with('success', 'Poll created successfully.');
     }
 
-    public function editPoll(Poll $poll): View|RedirectResponse {
-
+    public function updatePoll(Poll $poll, FormPollRequest $request): RedirectResponse
+    {
+        $poll->update($request->validated());
+        return redirect()->route('polls')->with('success', 'Poll updated successfully.');
     }
-    public function index() {
+
+    public function editPoll(Poll $poll): View|RedirectResponse {
+        return view('admin.createPoll', ['poll' => $poll]);
+    }
+    public function index(): View {
         $polls = Poll::orderBy('published_at', 'desc')->paginate(10);
         return view('admin.index', ['polls' => $polls]);
     }
