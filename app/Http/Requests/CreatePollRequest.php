@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CreatePollRequest extends FormRequest
 {
@@ -28,9 +29,10 @@ class CreatePollRequest extends FormRequest
             'analysis' => 'required|string',
             'quote' => 'required|string|max:500',
             'author' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
+//            'slug' => 'required|string|max:255',
             'published_at' => 'required|date',
-            'is_intox' => 'required|boolean',
+            'is_intox' => 'boolean|required',
+            'slug' => 'required|string|max:255',
         ];
     }
 
@@ -48,5 +50,11 @@ class CreatePollRequest extends FormRequest
             'published_at.required' => 'La date de publication est obligatoire.',
             'is_intox.required' => 'L\'intox est obligatoire.',
         ];
+    }
+
+    protected function prepareForValidation(): void {
+        $this->merge([
+            'slug' => $this->input('slug') ?: Str::slug($this->input('title'))
+        ]);
     }
 }

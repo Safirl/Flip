@@ -10,9 +10,11 @@ use Illuminate\View\View;
 
 class AdminController extends Controller
 {
-    public function createArticle(): View|RedirectResponse
+    public function createPoll(): View|RedirectResponse
     {
-        return view('admin.createArticle');
+        $poll = new Poll();
+        $poll->title = 'New Poll';
+        return view('admin.createPoll', ['poll' => $poll]);
     }
 
     public function storePoll(CreatePollRequest $request): RedirectResponse
@@ -24,11 +26,12 @@ class AdminController extends Controller
             'analysis' => $data['analysis'],
             'published_at' => $data['published_at'],
             'quote' => $data['quote'],
-            'slug' => $data[Str::slug($data['title'], '-', 'fr')],
+            'slug' => $data['slug'],
             'is_intox' => $data['is_intox'],
+            'author' => $data['author'],
         ]);
 
-        return redirect()->route('app.polls')->with('success', 'Poll created successfully.');
+        return redirect()->route('polls')->with('success', 'Poll created successfully.');
     }
 
     public function editPoll(Poll $poll): View|RedirectResponse {
