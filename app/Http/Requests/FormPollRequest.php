@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class CreatePollRequest extends FormRequest
+class FormPollRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,10 +29,9 @@ class CreatePollRequest extends FormRequest
             'analysis' => 'required|string',
             'quote' => 'required|string|max:500',
             'author' => 'required|string|max:255',
-//            'slug' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
             'published_at' => 'required|date',
             'is_intox' => 'boolean|required',
-            'slug' => 'required|string|max:255',
         ];
     }
 
