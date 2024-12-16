@@ -31,6 +31,34 @@
                         />
                     </form>
                 </div>
+                @if(\Illuminate\Support\Facades\Auth::user()->is_admin)
+                    <div>
+                        <form action="{{ route('admin.index') }}" method="get">
+                            @csrf
+                            <x-button
+                                size="small"
+                                type="submit"
+                                color="primary"
+                                label="Voir tous les polls"
+                                expand="true"
+                                kind="clear"
+                            />
+                        </form>
+                    </div>
+                    <div>
+                        <form action="{{ route('admin.create.poll') }}" method="get">
+                            @csrf
+                            <x-button
+                                size="small"
+                                type="submit"
+                                color="primary"
+                                label="Créer un poll"
+                                expand="true"
+                                kind="clear"
+                            />
+                        </form>
+                    </div>
+                @endif
             @endauth
         </div>
     </div>

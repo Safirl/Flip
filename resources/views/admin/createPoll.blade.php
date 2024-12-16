@@ -11,12 +11,14 @@
         {{--            @error("image") {{ $message }} @enderror--}}
         {{--        </div>--}}
         <div>
+            <label for="title">Titre</label>
             <input type="text" name="title" value= {{ old('title', $poll->title) }}>
             @error("title") {{ $message }} @enderror
             @error("slug") {{ $message }} @enderror
         </div>
         <div>
-            <textarea name="context">{{ old('context', $poll->context) }}</textarea>
+            <label for="context">Contexte</label>
+            <textarea name="context" id="context">{{ old('context', $poll->context) }}</textarea>
             @error("context") {{ $message }} @enderror
         </div>
         <div>
@@ -40,7 +42,7 @@
             @error("published_at") {{ $message }} @enderror
         </div>
         <div>
-            <label for="is_intox">C'est une intox</label>
+            <label for="is_intox">Intox</label>
             <input type="checkbox" id="is_intox" name="is_intox" value="0" required>
             @error("is_intox") {{ $message }} @enderror
         </div>
