@@ -44,7 +44,7 @@ class AdminController extends Controller
         return view('admin.createPoll', ['poll' => $poll]);
     }
     public function index(): View {
-        $polls = Poll::orderBy('published_at', 'desc')->paginate(10);
+        $polls = Poll::orderBy('published_at', 'desc')->paginate(5);
         return view('admin.index', ['polls' => $polls]);
     }
 }
