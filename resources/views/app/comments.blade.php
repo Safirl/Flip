@@ -116,7 +116,6 @@
             </div>
         @endforeach
     </div>
-    <x-nav-bar/>
 @endsection
 
 <script>

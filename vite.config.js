@@ -12,7 +12,7 @@ export default defineConfig({
                 "resources/css/login.css",
                 "resources/css/comments.css",
                 "resources/css/reset.css",
-                "resources/css/variables.css"
+                "resources/css/variables.css",
             ],
             refresh: true,
         }),

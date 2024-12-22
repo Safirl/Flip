@@ -146,5 +146,4 @@
 
 
     </div>
-    <x-nav-bar/>
 @endsection

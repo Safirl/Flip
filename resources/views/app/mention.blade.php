@@ -106,7 +106,6 @@
             <p><strong>Flip CORP.</strong></p>
         </div>
     </div>
-    <x-nav-bar/>
 
 @endsection
 @section('scripts')

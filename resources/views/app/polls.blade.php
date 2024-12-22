@@ -136,7 +136,7 @@
         </div>
     </div>
 
-    <x-nav-bar/>
+
 
 
 
