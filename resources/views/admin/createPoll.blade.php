@@ -5,11 +5,11 @@
 @section('content')
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
-        {{--        <div>--}}
-        {{--            <label for="image">Image</label>--}}
-        {{--            <input type="file" class="form-control" id="image">--}}
-        {{--            @error("image") {{ $message }} @enderror--}}
-        {{--        </div>--}}
+            <div>
+                <label for="image">Image</label>
+                <input type="file" class="form-control" id="image" name="image">
+                @error("image") {{ $message }} @enderror
+            </div>
         <div>
             <label for="title">Titre</label>
             <input type="text" name="title" value= {{ old('title', $poll->title) }}>
