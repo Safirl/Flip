@@ -51,6 +51,9 @@
                     <div class="CardContent">
                         <h4>{{ $poll->author }} :</h4>
                         <p class="author"><em>"{{ $poll->quote }}"</em></p>
+                        @if($poll->image)
+                            <img style="width: 100%; height: 300px; object-fit: cover" src="{{$poll->imageUrl()}}" alt="image du contexte">
+                        @endif
 
                         @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
                        (auth()->check() && $poll->users()->exists()))

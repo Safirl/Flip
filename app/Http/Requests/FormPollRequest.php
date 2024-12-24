@@ -31,7 +31,7 @@ class FormPollRequest extends FormRequest
             'author' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
             'published_at' => 'required|date',
-            'is_intox' => 'boolean|required',
+            'is_intox' => 'boolean',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

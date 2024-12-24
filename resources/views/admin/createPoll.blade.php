@@ -43,7 +43,7 @@
         </div>
         <div>
             <label for="is_intox">Intox</label>
-            <input type="checkbox" id="is_intox" name="is_intox" value="0" required>
+            <input type="checkbox" id="is_intox" name="is_intox" value="0">
             @error("is_intox") {{ $message }} @enderror
         </div>
         <button>
