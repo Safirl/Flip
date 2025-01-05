@@ -29,8 +29,8 @@
 }
 
 .link-primary {
-    color: var(--app-primary-800);
-    --link-color: var(--app-primary-800);
+    color: var(--app-primary);
+    --link-color: var(--app-primary);
 }
 
 .link-secondary {
@@ -43,12 +43,12 @@
 }
 
 .link:focus {
-    outline: solid 3px var(--app-primary-200);
+    outline: solid 3px var(--app-primary);
     transition: all 0.25s;
 }
 
 .link:hover {
-    outline: solid 3px var(--app-primary-200);
+    outline: solid 3px var(--app-primary);
     transition: all 0.25s;
     cursor: pointer;
 }

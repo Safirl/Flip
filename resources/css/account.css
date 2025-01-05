@@ -80,7 +80,7 @@ p {
 }
 
 .profile-bg {
-    background-color: var(--app-primary-200);
+    background-color: var(--app-primary);
     border-radius: .5rem;
 }
 

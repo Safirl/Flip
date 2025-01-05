@@ -137,7 +137,7 @@
                         data: [{
                             name: 'Intox',
                             y: {{ $intoxCount }},
-                            color: 'var(--app-primary-500)'
+                            color: 'var(--app-primary)'
                         }, {
                             name: 'Info',
                             y: {{ $infoCount }},

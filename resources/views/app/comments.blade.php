@@ -96,8 +96,8 @@
                         <div></div>
                     @endif
                     <button data-parent-id="{{ $comment->id }}" class="btn-response toggle-popup"
-                            style="color: var(--app-primary-500)">Répondre<i
-                            style="color: var(--app-primary-500); padding-left: .5rem"
+                            style="color: var(--app-primary)">Répondre<i
+                            style="color: var(--app-primary); padding-left: .5rem"
                             class="fa-solid fa-paper-plane"></i>
                     </button>
 
