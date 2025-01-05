@@ -9,26 +9,26 @@
     line-height: normal;
     border-radius: var(--spacing-m);
     border: 1px solid transparent;
-    --btn-color: var(--app-primary-800);
+    --btn-color: var(--app-primary);
     margin: 0.5rem 0;
 }
 
 .btn:focus {
-    outline: solid 3px var(--app-primary-200);
+    outline: solid 3px var(--app-primary);
     transition: all 0.25s;
 }
 
 .btn:hover {
-    outline: solid 3px var(--app-primary-200);
+    outline: solid 3px var(--app-primary);
     transition: all 0.25s;
     cursor: pointer;
 }
 
 /* BUTTON FILLED STYLES */
 .btn-fill-primary {
-    background-color: var(--app-primary-800);
+    background-color: var(--app-primary);
     color: var(--app-white-400);
-    --btn-color: var(--app-primary-800);
+    --btn-color: var(--app-primary);
 }
 
 .btn-fill-secondary {

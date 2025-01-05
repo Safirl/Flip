@@ -19,7 +19,7 @@
 
 .intox-bulb {
     border-radius: var(--spacing-xxl, 24px);
-    background: var(--app-primary-500);
+    background: var(--app-primary);
 }
 
 .info-bulb h1 {

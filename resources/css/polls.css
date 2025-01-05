@@ -188,7 +188,7 @@ label p em{
 
 .intox-bulb {
     border-radius: var(--spacing-xxl);
-    background: var(--app-primary-500);
+    background: var(--app-primary);
     color: white;
 
 }
@@ -302,7 +302,7 @@ label p em{
     width: 100%;
     height: 100%;
     padding: 24px;
-  
+
 }
 
 

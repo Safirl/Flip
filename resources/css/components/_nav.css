@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: var(--app-primary-200);
+    color: var(--app-primary);
     min-height: 72px;
     min-width: 72px;
     padding: var(--spacing-l);
@@ -17,19 +17,19 @@
 .nav-button .label {
     font-size: 0.8rem;
     font-weight: 300;
-    color: var(--app-primary-200);
+    color: var(--app-primary);
 }
 
 .nav-button.active {
-    color: var(--app-primary-800);
+    color: var(--app-primary);
 }
 
 .nav-button.active .icon {
-    color: var(--app-primary-800);
+    color: var(--app-primary);
 }
 
 .nav-button.active .label {
-    color: var(--app-primary-800);
+    color: var(--app-primary);
 }
 
 .navbar {
@@ -42,7 +42,7 @@
     align-items: center;
     flex-wrap: wrap;
     border-radius: var(--spacing-l) var(--spacing-l) 0 0;
-    background: var(--app-white-300);
+    background: var(--app-black);
     box-shadow: 0 0 var(--spacing-xl, 16px) 5px rgba(0, 0, 0, 0.10);
     z-index: 1;
 }
@@ -53,7 +53,7 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: var(--app-primary-300);
+    color: var(--app-primary);
     min-height: 72px;
     min-width: 72px;
     padding: var(--spacing-l);
@@ -67,7 +67,7 @@
     transform: translateX(-50%);
     height: 2px;
     width: 0;
-    background-color:  var(--app-primary-800);
+    background-color:  var(--app-primary);
     border-radius: 5px;
 }
 

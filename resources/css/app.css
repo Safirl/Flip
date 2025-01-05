@@ -14,7 +14,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom left, var(--app-primary-100), var(--app-white-300), var(--app-primary-100));
+    background: linear-gradient(to bottom left, var(--app-primary), var(--app-white-300), var(--app-primary));
     height: 100vh;
     margin: 0;
     overflow-x: hidden;
@@ -57,7 +57,7 @@ input, textarea {
     border: 1px solid var(--app-grey-500);
     border-radius: var(--spacing-m);
     margin-top: 0.25rem !important;
-    background-color: var(--app-primary-500) 0.5;
+    background-color: var(--app-primary) 0.5;
 }
 
 textarea {
@@ -66,13 +66,13 @@ textarea {
 }
 
 input:focus {
-    outline: solid 3px var(--app-primary-200);
+    outline: solid 3px var(--app-primary);
     transition: all 0.25s;
 }
 
 
 input:hover {
-    outline: solid 3px var(--app-primary-200);
+    outline: solid 3px var(--app-primary);
     transition: all 0.25s;
     cursor: pointer;
 }
