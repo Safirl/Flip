@@ -14,7 +14,7 @@ class NavButton extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(string $icon, string $label, string $url)
+    public function __construct(string $icon, string $url, string $label = '')
     {
         $this->icon = $icon;
         $this->label = $label;
