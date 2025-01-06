@@ -8,7 +8,6 @@
     font-weight: 300;
     line-height: normal;
     border: 1px solid transparent;
-    /*--btn-color: var(--app-primary-800);*/
     margin: 24px 0;
 
 }
@@ -26,7 +25,6 @@
 
 /* BUTTON FILLED STYLES */
 .btn-fill-primary {
-    /*background-color: var(--app-primary-800);*/
     background-color: var(--app-black);
     color: var(--app-primary);
     --btn-color: var(--app-primary);

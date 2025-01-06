@@ -18,10 +18,6 @@
                     <p>Votre code ami : <strong>{{ \Illuminate\Support\Facades\Auth::user()->friend_id }}</strong></p>
                 @endauth
             </div>
-
-
-
-
                 <div class="disconnect-btn-container">
                     @auth()
 
@@ -56,9 +52,6 @@
                     </div>
                 @endif
             @endauth
-
-
-
     <div class="friend-container">
         @auth
             <div class="card user-card">
@@ -83,7 +76,6 @@
             </div>
             {{--Show friends--}}
             <div class="flex">
-
                 <p class="friends-p"><strong>Vos amis </strong>({{count($friends)}}) :</p>
                 @foreach($friends as $friend)
                     <div class="friend-card card">
@@ -113,16 +105,11 @@
                         expand="true"
                     />
                 </form>
-
             </div>
         @endguest
         </div>
-
-
-
     </div>
     <div class="endLink">
-
     <x-link color="secondary"
             size="medium"
             expand="true"
@@ -159,7 +146,6 @@
                 />
             </form>
         </div>
-
     </div>
     @endauth
     </div>
