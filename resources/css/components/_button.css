@@ -7,45 +7,46 @@
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    border-radius: var(--spacing-m);
     border: 1px solid transparent;
-    --btn-color: var(--app-primary);
-    margin: 0.5rem 0;
+    /*--btn-color: var(--app-primary-800);*/
+    margin: 24px 0;
+
 }
 
 .btn:focus {
-    outline: solid 3px var(--app-primary);
+    outline: solid 3px var(--app-primary-black);
     transition: all 0.25s;
 }
 
 .btn:hover {
-    outline: solid 3px var(--app-primary);
+    outline: solid 3px var(--app-primary-black);
     transition: all 0.25s;
     cursor: pointer;
 }
 
 /* BUTTON FILLED STYLES */
 .btn-fill-primary {
-    background-color: var(--app-primary);
-    color: var(--app-white-400);
-    --btn-color: var(--app-primary);
+    /*background-color: var(--app-primary-800);*/
+    background-color: var(--app-primary-black);
+    color: var(--app-primary-yellow);
+    --btn-color: var(--app-primary-yellow);
 }
 
 .btn-fill-secondary {
     background-color: var(--app-secondary-500);
-    color: var(--app-white-400);
+    color: var(--app-primary-yellow);
     --btn-color: var(--app-secondary-500);
 }
 
 .btn-fill-grey {
     background-color: var(--app-grey-500);
-    color: var(--app-white-400);
+    color: var(--app-primary-yellow);
     --btn-color: var(--app-grey-500);
 }
 
 .btn-fill-error {
     background-color: var(--app-error-500);
-    color: var(--app-white-400);
+    color: var(--app-primary-yellow);
     --btn-color: var(--app-error-500);
 }
 /* LABEL */
@@ -55,19 +56,19 @@
 
 /* Exemple pour les boutons remplis */
 .btn-fill-primary .btnLabel {
-    color: var(--app-white-400); /* Couleur du texte pour le bouton primaire rempli */
+    color: var(--app-primary-yellow); /* Couleur du texte pour le bouton primaire rempli */
 }
 
 .btn-fill-secondary .btnLabel {
-    color: var(--app-white-400); /* Couleur du texte pour le bouton secondaire rempli */
+    color: var(--app-primary-yellow); /* Couleur du texte pour le bouton secondaire rempli */
 }
 
 .btn-fill-grey .btnLabel {
-    color: var(--app-white-400); /* Couleur du texte pour le bouton gris rempli */
+    color: var(--app-primary-yellow); /* Couleur du texte pour le bouton gris rempli */
 }
 
 .btn-fill-error .btnLabel {
-    color: var(--app-white-400); /* Couleur du texte pour le bouton erreur rempli */
+    color: var(--app-primary-yellow); /* Couleur du texte pour le bouton erreur rempli */
 }
 
 /* Exemple pour les boutons outline */

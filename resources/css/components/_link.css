@@ -1,20 +1,24 @@
 .link {
+    /*border-radius: var(--spacing-m);*/
+    /*border: 1px solid transparent;*/
+    /*width: 100%;*/
+    /*padding: 0.5rem 1.375rem;*/
+
+    padding: 2px;
     width: fit-content;
     display: flex;
-    padding: 0.5rem 1.375rem;
+
     justify-content: center;
     align-items: flex-end;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    border-radius: var(--spacing-m);
-    border: 1px solid transparent;
-    width: 100%;
+    background-color: var(--app-primary-black);
 }
 
-.link-text {
+/*.link-text {
     text-decoration: underline;
-}
+}*/
 
 .link-size-small {
     font-size: 0.5rem;
@@ -29,13 +33,15 @@
 }
 
 .link-primary {
-    color: var(--app-primary);
-    --link-color: var(--app-primary);
+    color: var(--app-primary-yellow);
+    --link-color: var(--app-primary-yellow);
 }
 
 .link-secondary {
-    color: var(--app-secondary-500);
-    --link-color: var(--app-secondary-500);
+    color: var(--app-primary-black);
+    --link-color: var(--app-primary-black);
+    text-decoration: underline;
+    background-color: transparent;
 }
 
 .link-noPadding {
@@ -43,12 +49,12 @@
 }
 
 .link:focus {
-    outline: solid 3px var(--app-primary);
+    outline: solid 3px var(--app-primary-black);
     transition: all 0.25s;
 }
 
 .link:hover {
-    outline: solid 3px var(--app-primary);
+    outline: solid 3px var(--app-primary-black);
     transition: all 0.25s;
     cursor: pointer;
 }

@@ -4,15 +4,19 @@
 @vite(['resources/css/account.css'])
 @section('content')
     <div class="section-user-profile">
+
         <div class="user-profile">
-            <div class="profile-bg">
-                <i class="icon-user fa-solid fa-user"></i>
+            <div class="title-user-profile">
+                <h1>MON COMPTE</h1>
+                @guest()
+                    <p>
+                        Vous n’êtes pas connecté
+                    </p>
+                @endguest
             </div>
-            @guest()
-                <p>
-                    Vous n’êtes pas connecté
-                </p>
-            @endguest
+
+
+
             @auth()
                 <p>{{ \Illuminate\Support\Facades\Auth::user()->name }}</p>
                 <p>Votre code ami : <strong>{{ \Illuminate\Support\Facades\Auth::user()->friend_id }}</strong></p>
@@ -60,8 +64,8 @@
                     </div>
                 @endif
             @endauth
-        </div>
-    </div>
+
+
 
     <div class="friend-container">
         @auth
@@ -119,31 +123,38 @@
 
             </div>
         @endguest
-        <x-link color="primary"
-                size="medium"
-                expand="true"
-                noPadding=true
-                url='mentionslegales'
-                label="Voir les mentions légales">
-        </x-link>
-        @auth
-            <div class="delete-btn">
-                <form class="disconnect-btn"
-                      action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
-                    @method("delete")
-                    @csrf
-                    <x-button
-                        kind="clear"
-                        type="submit"
-                        size="small"
-                        color="error"
-                        label="Supprimer le compte"
-                        expand="false"
-                    />
-                </form>
-            </div>
-        @endauth
+        </div>
 
 
+
+    </div>
+    <div class="endLink">
+
+    <x-link color="secondary"
+            size="medium"
+            expand="true"
+            noPadding=true
+            url='mentionslegales'
+            label="Voir les mentions légales">
+    </x-link>
+    @auth
+        <div class="delete-btn">
+            <form class="disconnect-btn"
+                  action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
+                @method("delete")
+                @csrf
+                <x-button
+                    kind="clear"
+                    type="submit"
+                    size="small"
+                    color="error"
+                    label="Supprimer le compte"
+                    expand="false"
+                />
+            </form>
+        </div>
+
+    </div>
+    @endauth
     </div>
 @endsection

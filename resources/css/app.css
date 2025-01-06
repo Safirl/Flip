@@ -14,7 +14,8 @@
 }
 
 body {
-    background: linear-gradient(to bottom left, var(--app-primary), var(--app-white-300), var(--app-primary));
+    /*background: linear-gradient(to bottom left, var(--app-primary-100), var(--app-white-300), var(--app-primary-100));*/
+    background-color: var(--app-primary-yellow);
     height: 100vh;
     margin: 0;
     overflow-x: hidden;
@@ -94,20 +95,6 @@ input:hover {
     }
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-    max-height: fit-content;
-    width: 100%;
-    max-width: 500px;
-
-    border-radius: var(--spacing-l, 12px);
-    border: 1px solid var(--app-grey-100);
-    background: rgba(252, 252, 252, 0.50);
-    padding: 12px;
-}
 
 .text-center {
     text-align: -webkit-center;
