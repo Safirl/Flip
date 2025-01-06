@@ -53,7 +53,7 @@ input, textarea {
     display: block;
     height: 2.5rem;
     width: 100%;
-    padding: 0.75rem 0.5rem;
+    padding: 8px  16px;
     font-size: 0.9rem !important;
     border: 1px solid var(--app-grey-500);
     border-radius: var(--spacing-m);
@@ -67,13 +67,13 @@ textarea {
 }
 
 input:focus {
-    outline: solid 3px var(--app-primary);
+    outline: solid 3px var(--app-primary-black);
     transition: all 0.25s;
 }
 
 
 input:hover {
-    outline: solid 3px var(--app-primary);
+    outline: solid 3px var(--app-primary-black);
     transition: all 0.25s;
     cursor: pointer;
 }

@@ -144,3 +144,8 @@ p {
     background: none;
 }
 
+
+.contenaire-form{
+    width: 100%;
+    margin-top: 24px;
+}
