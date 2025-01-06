@@ -14,12 +14,12 @@
 }
 
 .btn:focus {
-    outline: solid 3px var(--app-primary-black);
+    outline: solid 3px var(--app-black);
     transition: all 0.25s;
 }
 
 .btn:hover {
-    outline: solid 3px var(--app-primary-black);
+    outline: solid 3px var(--app-black);
     transition: all 0.25s;
     cursor: pointer;
 }
@@ -27,26 +27,26 @@
 /* BUTTON FILLED STYLES */
 .btn-fill-primary {
     /*background-color: var(--app-primary-800);*/
-    background-color: var(--app-primary-black);
-    color: var(--app-primary-yellow);
-    --btn-color: var(--app-primary-yellow);
+    background-color: var(--app-black);
+    color: var(--app-primary);
+    --btn-color: var(--app-primary);
 }
 
 .btn-fill-secondary {
     background-color: var(--app-secondary-500);
-    color: var(--app-primary-yellow);
+    color: var(--app-primary);
     --btn-color: var(--app-secondary-500);
 }
 
 .btn-fill-grey {
     background-color: var(--app-grey-500);
-    color: var(--app-primary-yellow);
+    color: var(--app-primary);
     --btn-color: var(--app-grey-500);
 }
 
 .btn-fill-error {
     background-color: var(--app-error-500);
-    color: var(--app-primary-yellow);
+    color: var(--app-primary);
     --btn-color: var(--app-error-500);
 }
 /* LABEL */
@@ -56,19 +56,19 @@
 
 /* Exemple pour les boutons remplis */
 .btn-fill-primary .btnLabel {
-    color: var(--app-primary-yellow); /* Couleur du texte pour le bouton primaire rempli */
+    color: var(--app-primary); /* Couleur du texte pour le bouton primaire rempli */
 }
 
 .btn-fill-secondary .btnLabel {
-    color: var(--app-primary-yellow); /* Couleur du texte pour le bouton secondaire rempli */
+    color: var(--app-primary); /* Couleur du texte pour le bouton secondaire rempli */
 }
 
 .btn-fill-grey .btnLabel {
-    color: var(--app-primary-yellow); /* Couleur du texte pour le bouton gris rempli */
+    color: var(--app-primary); /* Couleur du texte pour le bouton gris rempli */
 }
 
 .btn-fill-error .btnLabel {
-    color: var(--app-primary-yellow); /* Couleur du texte pour le bouton erreur rempli */
+    color: var(--app-primary); /* Couleur du texte pour le bouton erreur rempli */
 }
 
 /* Exemple pour les boutons outline */

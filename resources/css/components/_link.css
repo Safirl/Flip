@@ -13,7 +13,7 @@
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    background-color: var(--app-primary-black);
+    background-color: var(--app-black);
 }
 
 /*.link-text {
@@ -33,13 +33,13 @@
 }
 
 .link-primary {
-    color: var(--app-primary-yellow);
-    --link-color: var(--app-primary-yellow);
+    color: var(--app-primary);
+    --link-color: var(--app-primary);
 }
 
 .link-secondary {
-    color: var(--app-primary-black);
-    --link-color: var(--app-primary-black);
+    color: var(--app-black);
+    --link-color: var(--app-black);
     text-decoration: underline;
     background-color: transparent;
 }
@@ -49,12 +49,12 @@
 }
 
 .link:focus {
-    outline: solid 3px var(--app-primary-black);
+    outline: solid 3px var(--app-black);
     transition: all 0.25s;
 }
 
 .link:hover {
-    outline: solid 3px var(--app-primary-black);
+    outline: solid 3px var(--app-black);
     transition: all 0.25s;
     cursor: pointer;
 }
