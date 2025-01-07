@@ -21,7 +21,8 @@ body {
 }
 
 h1 {
-    font-size: 1.5rem;
+    font-family: var(--app-text-font-heading);
+    font-size: var(--app-font-size-h1);
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 1rem;
