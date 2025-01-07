@@ -47,11 +47,9 @@
 
 .section-user-profile {
     width: 100%;
+    display: block;
     min-height: calc(80dvh - env(safe-area-inset-bottom));
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+
 }
 
 .container {
@@ -83,14 +81,10 @@ p {
 }
 
 
-.friend-card{
-    display: flex;
-    border: none;
-    box-shadow: 0px 0px var(--global-blurs-blur-sm) 0px rgba(0, 0, 0, 0.10);
-    margin-bottom: var(--spacing-m);
-    flex-direction: row;
-    justify-content: flex-start;
-}
+
+
+
+
 
 .friends-p {
     margin-top: 1rem;
@@ -126,13 +120,11 @@ p {
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
-    min-height: 40dvh;
 }
 
 .delete-btn {
     width: 100%;
 }
-
 
 .friend-card{
     display: flex;
@@ -141,11 +133,44 @@ p {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    background: none;
+    width: 100%;
+    position: relative;
+    padding-left: 0;
+
+}
+
+.friend-card p{
+    color: var(--app-primary);
+}
+
+
+.decoration-contenaire-friend{
+    height: 100%;
+    position: absolute;
+    right: 2.5rem;
+    top: 0;
+    background-color: var(--app-black);
+    width: 120%;
+    transform: skew(314deg);
+    z-index: -1;
+}
+
+.friend-card:nth-child(odd) .decoration-contenaire-friend {
+    transform: skew(-314deg);
 }
 
 
 .contenaire-form{
     width: 100%;
     margin-top: 24px;
+}
+
+
+.end-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
 }
