@@ -61,7 +61,7 @@
                           class="add-friend-form">
                         @csrf
                         <div class="contenaire-form">
-                            <label for="friend_id">Saisissez le code ami</label>
+                            <label for="friend_id"><p><strong>Saisissez le code ami</strong></p></label>
                             <input type="text" class="form-control" id="friend_id" name="friend_id">
                             @error("friend_id") <span class="text-error">{{ $message }}</span> @enderror
                         </div>
@@ -79,12 +79,10 @@
                 <p class="friends-p"><strong>Vos amis </strong>({{count($friends)}}) :</p>
                 @foreach($friends as $friend)
                     <div class="friend-card card">
-                        <div class="friend-bg">
-                            <i class="friend-icon fa-solid fa-user"></i>
-                        </div>
                         <div class="friend-content">
-                            <p style="font-weight: lighter; font-size: 10px">{{ $friend->friend_id }}</p>
                             <p style="font-weight: normal">{{ $friend->name }}</p>
+                            <p style="font-weight: lighter; font-size: 10px">{{ $friend->friend_id }}</p>
+                            <div class="decoration-contenaire-friend"></div>
                         </div>
                     </div>
                 @endforeach
@@ -109,44 +107,44 @@
         @endguest
         </div>
     </div>
-    <div class="endLink">
-    <x-link color="secondary"
-            size="medium"
-            expand="true"
-            noPadding=true
-            url='mentionslegales'
-            label="Voir les mentions légales">
-    </x-link>
-    @auth
+    <div class="end-link">
+        <x-link color="secondary"
+                size="medium"
+                expand="true"
+                noPadding=true
+                url='mentionslegales'
+                label="Voir les mentions légales">
+        </x-link>
+        @auth
             <form action="{{ route('auth.logout') }}" method="post">
-                @method("delete")
-                @csrf
-                <x-button
-                    size="small"
-                    type="submit"
-                    color="primary"
-                    label="Se déconnecter"
-                    expand="true"
-                    kind="clear"
-                    iconStart="fa-solid fa-right-from-bracket"
-                />
-            </form>
-        <div class="delete-btn">
-            <form class="disconnect-btn"
-                  action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
-                @method("delete")
-                @csrf
-                <x-button
-                    kind="clear"
-                    type="submit"
-                    size="small"
-                    color="error"
-                    label="Supprimer le compte"
-                    expand="false"
-                />
-            </form>
+                    @method("delete")
+                    @csrf
+                    <x-button
+                        size="small"
+                        type="submit"
+                        color="secondary"
+                        label="Se déconnecter"
+                        expand="true"
+                        kind="clear"
+
+                    />
+                </form>
+            <div class="delete-btn">
+                <form class="disconnect-btn"
+                      action="{{ route('auth.destroy', \Illuminate\Support\Facades\Auth::user()) }}" method="post">
+                    @method("delete")
+                    @csrf
+                    <x-button
+                        kind="clear"
+                        type="submit"
+                        size="small"
+                        color="secondary"
+                        label="Supprimer le compte"
+                        expand="true"
+                    />
+                </form>
+            </div>
         </div>
-    </div>
-    @endauth
+        @endauth
     </div>
 @endsection

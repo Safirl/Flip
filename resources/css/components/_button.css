@@ -31,9 +31,9 @@
 }
 
 .btn-fill-secondary {
-    background-color: var(--app-secondary-500);
-    color: var(--app-primary);
-    --btn-color: var(--app-secondary-500);
+    background-color: none;
+    color: var(--app-black);
+    --btn-color:none;
 }
 
 .btn-fill-grey {
@@ -58,7 +58,7 @@
 }
 
 .btn-fill-secondary .btnLabel {
-    color: var(--app-primary); /* Couleur du texte pour le bouton secondaire rempli */
+    color: var(--app-black); /* Couleur du texte pour le bouton secondaire rempli */
 }
 
 .btn-fill-grey .btnLabel {
