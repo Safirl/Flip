@@ -4,26 +4,23 @@
 @vite(['resources/css/polls.css'])
 
 @section('content')
-    <h1 style="padding: 1.5rem 1.5rem 0;">@if($isFeed)
+    <h1 style="padding: 1.5rem 1.5rem 0;">
+        @if($isFeed)
             Votes de la semaine
         @else
             Votes du jour
-        @endif </h1>
+        @endif
+    </h1>
 
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
             @foreach ($polls as $poll)
                 <div class="swiper-slide">
-
-                    @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
-                        (auth()->check() && $poll->users()->exists()))
-
-                        <div
-                            class="contenaireinfoResultAndVote @if($poll->is_intox) intox-contenaire @else info-contenaire @endif">
+                    @if ((auth()->check() && $poll->users()->exists()) || (session()->has('completed_polls') && in_array($poll->id, session('completed_polls'))))
+                        <div class="contenaireinfoResultAndVote @if($poll->is_intox) intox-contenaire @else info-contenaire @endif">
                             <div class="bulb @if($poll->is_intox) intox-bulb @else info-bulb @endif ">
-                                <h1 style="">
+                                <h1>
                                     @if($poll->is_intox)
-
                                         <img class="" src="{{asset('../images/cross.svg')}}" alt="intox">
                                         INTOX
                                     @else
@@ -32,32 +29,27 @@
                                     @endif
                                 </h1>
                             </div>
-
-
-                            @if ($poll->id == old('poll_id'))
-
-
-                            @endif
                             @if ($answer !== null)
                                 <div class="reponse">
                                     <h4><strong>Vous avez voté </strong></h4>
-                                    <p class="{{ $answer ? 'bg-blue' : 'bg-purple' }}"><em>
+                                    <p class="{{ $answer ? 'bg-blue' : 'bg-purple' }}">
+                                        <em>
                                             {{ $answer ? 'INFO' : 'INTOX' }}
-                                        </em></p>
+                                        </em>
+                                    </p>
                                 </div>
                             @endif
                         </div>
                     @endif
                     <div class="CardContent">
-                        <h4>{{ $poll->author }} :</h4>
-                        <p class="author"><em>"{{ $poll->quote }}"</em></p>
+                        <div class="card-header">
+                            <h4>{{ $poll->author }} :</h4>
+                            <p class="author"><em>"{{ $poll->quote }}"</em></p>
+                        </div>
                         @if($poll->image)
                             <img style="width: 100%; height: 300px; object-fit: cover" src="{{$poll->imageUrl()}}" alt="image du contexte">
                         @endif
-
-                        @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
-                       (auth()->check() && $poll->users()->exists()))
-
+                        @if ((auth()->check() && $poll->users()->exists()) || (session()->has('completed_polls') && in_array($poll->id, session('completed_polls'))))
                         @else
                             <x-link
                                 route="{{ route('app.result', ['poll' => $poll->slug]) }}"
@@ -65,8 +57,6 @@
                                 color="primary"
                                 size="medium"
                                 iconEnd="fa-solid fa-chevron-right"/>
-
-
                             <hr class="divider">
                         @endif
                         @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
@@ -142,10 +132,6 @@
             @endforeach
         </div>
     </div>
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>

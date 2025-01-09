@@ -22,15 +22,17 @@ class AppController extends Controller
 {
     public function index(Request $request): View
     {
-//            Poll::create([
-//                'quote' => "Les procurations pour les législatives ont quadruplé par rapport à 2022 » (juin 2024)",
-//                'author' => "Emmanuel Macron",
-//                'context' => "Lors de l’annonce de la dissolution de l’Assemblée nationale, Emmanuel Macron a avancé que le nombre de procurations avait quadruplé par rapport aux élections législatives précédentes.",
-//                'analysis' => "En réalité, cette augmentation ne concerne qu’une période très spécifique et n’est pas représentative de l’ensemble des votes par procuration. L’information a été clarifiée par le ministère de l’Intérieur et critiquée pour son manque de nuance",
-//                'title' => "Procuration législative",
-//                'slug' => "procuration-legislative",
-//                'published_at' => date('Y-m-d')
-//            ]);
+            Poll::create([
+                'quote' => "Les procurations pour les législatives ont quadruplé par rapport à 2022 » (juin 2024)",
+                'author' => "Emmanuel Macron",
+                'source' => "le journal du dimanche",
+                'date' =>  date('Y-m-d'),
+                'context' => "Lors de l’annonce de la dissolution de l’Assemblée nationale, Emmanuel Macron a avancé que le nombre de procurations avait quadruplé par rapport aux élections législatives précédentes.",
+                'analysis' => "En réalité, cette augmentation ne concerne qu’une période très spécifique et n’est pas représentative de l’ensemble des votes par procuration. L’information a été clarifiée par le ministère de l’Intérieur et critiquée pour son manque de nuance",
+                'title' => "Procuration législative",
+                'slug' => "procuration-legislative",
+                'published_at' => date('Y-m-d')
+            ]);
 ////
 ////            // Poll 2: "Should the government raise the minimum wage?"
 //            Poll::create([

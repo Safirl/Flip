@@ -20,7 +20,9 @@ class Poll extends Model
         'title',
         'slug',
         'published_at',
-        'image'
+        'image',
+        'source',
+        'date'
     ];
 
     public function getRouteKeyName()
