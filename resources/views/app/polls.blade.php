@@ -14,16 +14,13 @@
         <div class="swiper-wrapper">
             @foreach ($polls as $poll)
                 <div class="swiper-slide">
-
                     @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
                         (auth()->check() && $poll->users()->exists()))
-
                         <div
                             class="contenaireinfoResultAndVote @if($poll->is_intox) intox-contenaire @else info-contenaire @endif">
                             <div class="bulb @if($poll->is_intox) intox-bulb @else info-bulb @endif ">
                                 <h1 style="">
                                     @if($poll->is_intox)
-
                                         <img class="" src="{{asset('../images/cross.svg')}}" alt="intox">
                                         INTOX
                                     @else
@@ -33,16 +30,11 @@
                                 </h1>
                             </div>
 
-
-                            @if ($poll->id == old('poll_id'))
-
-
-                            @endif
-                            @if ($answer !== null)
+                            @if ($poll->userAnswer !== null)
                                 <div class="reponse">
                                     <h4><strong>Vous avez voté </strong></h4>
-                                    <p class="{{ $answer ? 'bg-blue' : 'bg-purple' }}"><em>
-                                            {{ $answer ? 'INFO' : 'INTOX' }}
+                                    <p class="{{ $poll->userAnswer ? 'bg-blue' : 'bg-purple' }}"><em>
+                                            {{ $poll->userAnswer ? 'INFO' : 'INTOX' }}
                                         </em></p>
                                 </div>
                             @endif
@@ -65,7 +57,6 @@
                                 color="primary"
                                 size="medium"
                                 iconEnd="fa-solid fa-chevron-right"/>
-
 
                             <hr class="divider">
                         @endif
@@ -142,10 +133,6 @@
             @endforeach
         </div>
     </div>
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
