@@ -79,10 +79,10 @@ class AppController extends Controller
 //                'published_at' => date('Y-m-d')
 //            ]);
 
-
         // Récupère les sondages du jour
         $polls = Poll::where('published_at', date('Y-m-d'))->get();
         session(['previous_url' => url()->full()]);
+
         // Gère le vote si une réponse est soumise
         if ($request->isMethod('post')) {
             $pollId = $request->input('poll_id');
@@ -104,7 +104,7 @@ class AppController extends Controller
                         'user_id' => $userId ?? null,
                         'answer' => $answer,
                     ]);
-
+                    // Log pour vérifie
                     session()->push('completed_polls', $pollId);
                 }
             }
@@ -121,11 +121,18 @@ class AppController extends Controller
                 ->where('poll_id', $poll->id)
                 ->where('answer', 1)
                 ->count();
+
+            // Récupère la réponse de l'utilisateur pour ce sondage
+            if (Auth::check()) {
+                $poll->userAnswer = DB::table('user_poll')
+                    ->where('poll_id', $poll->id)
+                    ->where('user_id', Auth::id())
+                    ->value('answer');
+            }
         }
 
         // Récupère si une réponse a été soumise pour une réutilisation dans la vue
         $answer = filter_var($request->input('answer'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-
         return view('app.polls', compact('polls'), ['isFeed' => false, 'answer' => $answer]);
     }
 

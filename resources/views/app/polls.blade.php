@@ -16,8 +16,10 @@
         <div class="swiper-wrapper">
             @foreach ($polls as $poll)
                 <div class="swiper-slide">
-                    @if ((auth()->check() && $poll->users()->exists()) || (session()->has('completed_polls') && in_array($poll->id, session('completed_polls'))))
-                        <div class="contenaireinfoResultAndVote @if($poll->is_intox) intox-contenaire @else info-contenaire @endif">
+                    @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
+                        (auth()->check() && $poll->users()->exists()))
+                        <div
+                            class="contenaireinfoResultAndVote @if($poll->is_intox) intox-contenaire @else info-contenaire @endif">
                             <div class="bulb @if($poll->is_intox) intox-bulb @else info-bulb @endif ">
                                 <h1>
                                     @if($poll->is_intox)
@@ -29,14 +31,12 @@
                                     @endif
                                 </h1>
                             </div>
-                            @if ($answer !== null)
+                            @if ($poll->userAnswer !== null)
                                 <div class="reponse">
                                     <h4><strong>Vous avez voté </strong></h4>
-                                    <p class="{{ $answer ? 'bg-blue' : 'bg-purple' }}">
-                                        <em>
-                                            {{ $answer ? 'INFO' : 'INTOX' }}
-                                        </em>
-                                    </p>
+                                    <p class="{{ $poll->userAnswer ? 'bg-blue' : 'bg-purple' }}"><em>
+                                            {{ $poll->userAnswer ? 'INFO' : 'INTOX' }}
+                                        </em></p>
                                 </div>
                             @endif
                         </div>
@@ -57,6 +57,8 @@
                                 color="primary"
                                 size="medium"
                                 iconEnd="fa-solid fa-chevron-right"/>
+
+
                             <hr class="divider">
                         @endif
                         @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
