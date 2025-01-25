@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
             'is_pathfinder' => false,
             'password' => 'password',
+            'friend_id' => '000001',
         ]);
 
         User::factory()->create([
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
             'is_pathfinder' => true,
             'password' => 'password',
+            'friend_id' => '000002',
         ]);
 
         User::factory()->create([
@@ -37,6 +39,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true,
             'is_pathfinder' => false,
             'password' => 'password',
+            'friend_id' => '000003',
         ]);
 
         Poll::create([
