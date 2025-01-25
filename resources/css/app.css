@@ -86,8 +86,6 @@ input:hover {
     flex-direction: column;
     gap: 1rem;
     min-height: calc(100dvh - env(safe-area-inset-bottom));
-    padding: 1.5rem;
-    padding-bottom: 7rem;
     box-sizing: border-box;
     margin: 0 auto;
     max-width: var(--app-container-max-width);
