@@ -8,8 +8,6 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -18,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable(); // user_id peut être nul
             $table->unsignedBigInteger('poll_id'); // poll_id non nul
             $table->boolean('answer'); // Réponse (vrai ou faux)
-
 
             // Définir les relations avec les tables users et polls
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null'); // user_id peut être nul
@@ -31,8 +28,6 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

@@ -3,14 +3,17 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class NavButton extends Component
 {
     public string $icon;
+
     public string $label;
+
     public string $url;
+
     /**
      * Create a new component instance.
      */

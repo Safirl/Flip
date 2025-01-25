@@ -36,7 +36,8 @@ class FormPollRequest extends FormRequest
         ];
     }
 
-    public function messages(): array {
+    public function messages(): array
+    {
         return [
             'title.required' => 'Le titre est obligatoire.',
             'title.max' => 'Le titre est trop long',
@@ -52,9 +53,10 @@ class FormPollRequest extends FormRequest
         ];
     }
 
-    protected function prepareForValidation(): void {
+    protected function prepareForValidation(): void
+    {
         $this->merge([
-            'slug' => $this->input('slug') ?: Str::slug($this->input('title'))
+            'slug' => $this->input('slug') ?: Str::slug($this->input('title')),
         ]);
     }
 }

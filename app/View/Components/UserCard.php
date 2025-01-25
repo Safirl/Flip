@@ -3,16 +3,21 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class UserCard extends Component
 {
     public $image;
+
     public $label;
+
     public string $text;
+
     public $imageColor;
+
     public $isBackground;
+
     /**
      * Create a new component instance.
      */
@@ -22,8 +27,7 @@ class UserCard extends Component
         $text = null,
         $imageColor = null,
         $isBackground = true
-    )
-    {
+    ) {
         $this->image = $image;
         $this->label = $label;
         $this->text = $text;

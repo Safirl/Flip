@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class Poll extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'quote',
         'author',
@@ -22,7 +23,7 @@ class Poll extends Model
         'published_at',
         'image',
         'source',
-        'date'
+        'date',
     ];
 
     public function getRouteKeyName()
@@ -40,10 +41,8 @@ class Poll extends Model
         return $this->belongsToMany(User::class, 'user_poll');
     }
 
-    public function imageUrl(): string {
+    public function imageUrl(): string
+    {
         return Storage::disk('public')->url($this->image);
     }
 }
-
-
-

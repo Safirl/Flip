@@ -7,13 +7,21 @@ use Illuminate\View\Component;
 class Button extends Component
 {
     public $size;
+
     public $color;
+
     public $outlined;
+
     public $iconStart;
+
     public $iconEnd;
+
     public $label;
+
     public $onClick;
+
     public $expand;
+
     public $classes;
 
     public $type;
@@ -74,6 +82,7 @@ class Button extends Component
 
         return $kinds[$this->kind] ?? '';
     }
+
     public function expandClass()
     {
         return $this->expand ? 'btn-expand' : '';

@@ -31,7 +31,7 @@ class CommentRequest extends FormRequest
         return [
             'content.required' => 'Le champ Comment est obligatoire.',
             'content.min' => 'Le commentaire doit faire au moins 3 caractères.',
-            'content.max' => 'Le commentaire dépasse la limite de 1500 caractères.'
+            'content.max' => 'Le commentaire dépasse la limite de 1500 caractères.',
         ];
     }
 }

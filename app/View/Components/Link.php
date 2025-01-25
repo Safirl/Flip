@@ -7,12 +7,19 @@ use Illuminate\View\Component;
 class Link extends Component
 {
     public $size;
+
     public $color;
+
     public $iconStart;
+
     public $iconEnd;
+
     public $url;
+
     public $route;
+
     public $label;
+
     public $noPadding;
 
     public function __construct(
@@ -24,8 +31,7 @@ class Link extends Component
         $route = '',
         $label = '',
         $noPadding = false
-    )
-    {
+    ) {
         $this->size = $size;
         $this->color = $color;
         $this->iconStart = $iconStart;

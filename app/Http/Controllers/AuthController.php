@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -14,21 +13,23 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    //Return la view pour se connecter
+    // Return la view pour se connecter
     public function login(): View|RedirectResponse
     {
         if (Auth::check()) {
             return redirect()->route('account')->with('success', 'Vous êtes déjà connecté');
         }
+
         return view('auth.login');
     }
 
-    //Redirige vers la page se connecter
+    // Redirige vers la page se connecter
     public function register()
     {
         if (Auth::check()) {
             return redirect()->route('account')->with('success', 'Vous êtes déjà connecté');
         }
+
         return view('auth.register');
     }
 
@@ -39,12 +40,13 @@ class AuthController extends Controller
             'name' => $credentials['name'],
             'email' => $credentials['email'],
             'password' => Hash::make($credentials['password']),
-            'friend_id' => $this->generateFriendCode()
+            'friend_id' => $this->generateFriendCode(),
         ]);
         Auth::login($user);
 
         $request->session()->regenerate();
-        return redirect()->intended(route('polls'))->with('success', 'Bienvenue ' . $credentials['name'] . ' !');
+
+        return redirect()->intended(route('polls'))->with('success', 'Bienvenue '.$credentials['name'].' !');
     }
 
     private function generateFriendCode(): string
@@ -66,8 +68,10 @@ class AuthController extends Controller
         $credentials = $request->validated();
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
             return redirect()->intended(route('polls'))->with('success', 'Vous êtes connecté');
         }
+
         return to_route('auth.login')->withErrors([
             'email' => 'Email ou mot de passe incorrect!',
         ])->onlyInput('email');
@@ -77,12 +81,14 @@ class AuthController extends Controller
     {
         Auth::logout();
         session()->flush();
+
         return redirect()->route('auth.login')->with('success', 'Vous avez été déconnecté');
     }
 
-    public function deleteUser(User $user): RedirectResponse {
+    public function deleteUser(User $user): RedirectResponse
+    {
 
-        if (auth()->id() !== $user->id && !auth()->user()->isAdmin) {
+        if (auth()->id() !== $user->id && ! auth()->user()->isAdmin) {
             abort(403, 'Action non autorisée.');
         }
 

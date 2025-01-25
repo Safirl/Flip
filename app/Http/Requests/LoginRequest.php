@@ -31,6 +31,7 @@ class LoginRequest extends FormRequest
             $rules['name'] = ['required', 'string', 'max:255', 'min:3'];
             $rules['email'] = 'unique:users,email';
         }
+
         return $rules;
     }
 

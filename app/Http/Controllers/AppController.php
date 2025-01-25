@@ -37,7 +37,7 @@ class AppController extends Controller
                     ->where('user_id', $userId)
                     ->exists();
 
-                if (!$existingVote) {
+                if (! $existingVote) {
                     // Enregistre le vote
                     DB::table('user_poll')->insert([
                         'poll_id' => $pollId,
@@ -87,8 +87,7 @@ class AppController extends Controller
         return $isUser;
     }
 
-    public
-    function account(): View
+    public function account(): View
     {
         if (Auth::check()) {
             $friends_list = Friend::where('user_id_1', Auth::id())->orWhere('user_id_2', Auth::id())->get();
@@ -111,8 +110,8 @@ class AppController extends Controller
     {
         // Récupère les sondages publiés durant la semaine
         $polls = Poll::whereBetween('published_at', [
-            date('Y-m-d', strtotime('-7 days')) . ' 00:00:00',
-            date('Y-m-d') . ' 23:59:59',
+            date('Y-m-d', strtotime('-7 days')).' 00:00:00',
+            date('Y-m-d').' 23:59:59',
         ])->get();
 
         session(['previous_url' => url()->full()]);
@@ -136,8 +135,7 @@ class AppController extends Controller
         return view('app.polls', compact('polls'), ['isFeed' => true, 'answer' => $answer]);
     }
 
-    public
-    function result(
+    public function result(
         Request $request,
         Poll $poll): View|RedirectResponse
     {
@@ -204,21 +202,18 @@ class AppController extends Controller
         ]);
     }
 
-    public
-    function notification(): View
+    public function notification(): View
     {
         return view('app.notification');
     }
 
-    public
-    function activity(): View
+    public function activity(): View
     {
         dd('hello world');
-        //return toute l'activité liées aux commentaires
+        // return toute l'activité liées aux commentaires
     }
 
-    public
-    function addFriend(
+    public function addFriend(
         AddFriendRequest $request): RedirectResponse
     {
         if ($request['friend_id'] === Auth::user()->friend_id) {
@@ -242,13 +237,12 @@ class AppController extends Controller
         return redirect()->intended(route('account'))->with('success', 'Nouvel ami ajouté');
     }
 
-    //Used to create a fake user. Don't use on prod
+    // Used to create a fake user. Don't use on prod
 
-    public
-    function showComments(
+    public function showComments(
         Poll $poll): View
     {
-        //We only want our friends comments and ours
+        // We only want our friends comments and ours
         $friends = Auth::user()->friends();
         $comments = $poll->comments()->get();
         $friendsComments = $comments->filter(function ($comment) use ($friends) {
@@ -274,8 +268,7 @@ class AppController extends Controller
     //
     //    }
 
-    public
-    function addComment(
+    public function addComment(
         CommentRequest $request,
         Poll $poll): RedirectResponse
     {
@@ -284,11 +277,11 @@ class AppController extends Controller
         if ($parent_id) {
             $parent_comment = Comment::find($parent_id);
 
-            if (!$parent_comment) {
+            if (! $parent_comment) {
                 return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'L\'utilisateur n\'existe pas!');
             }
 
-            if (!Auth::user()->friends()->contains(($parent_comment->user()->first())) && Auth::id() !== $parent_comment->user_id) {
+            if (! Auth::user()->friends()->contains(($parent_comment->user()->first())) && Auth::id() !== $parent_comment->user_id) {
                 return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'Vous n\'êtes pas ami avec cet utilisateur !');
             }
         }
@@ -308,8 +301,7 @@ class AppController extends Controller
         return view('app.mention');
     }
 
-    private
-    function createUser(
+    private function createUser(
         string $password,
         string $email,
         string $name)
@@ -321,5 +313,4 @@ class AppController extends Controller
             'friend_id' => 12345678,
         ]);
     }
-
 }
