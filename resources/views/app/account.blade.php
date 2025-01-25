@@ -22,7 +22,7 @@
                     @auth()
 
                 </div>
-                @if(\Illuminate\Support\Facades\Auth::user()->is_admin)
+                @can('doAdminActions')
                     <div>
 
                         <form action="{{ route('admin.index') }}" method="get">
