@@ -1,7 +1,7 @@
-
 # About Flip
 
-Flip is a student app made with Laravel, blade and mysql. It targets young people (18 - 25 years old) that wants to have a more diverse and reliable access to information.
+Flip is a student app made with Laravel, blade and mysql. It targets young people (18 - 25 years old) that wants to have a more diverse and reliable
+access to information.
 
 ## Setup
 
@@ -9,7 +9,8 @@ To contribute to Flip, you must have a php and and composer installed on you com
 
 - Run composer install and npm install inside the repository directory.
 - Connect it to a mysql database instance
-- Run php artisan migrate
+- Run `php artisan migrate`
+- If you need some example data, run `php artisan db:seed`
 
 ## License
 
