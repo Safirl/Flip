@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'MODERNIZ';
     src: url('../../public/fonts/Moderniz.otf') format('opentype'),
-        url('../../public/fonts/Moderniz.woff2') format('woff2');
+    url('../../public/fonts/Moderniz.woff2') format('woff2');
 }
 
 :root {
@@ -17,6 +17,8 @@
     --app-font-size-p2: .875rem; /* 14px */
     --app-font-size-btn: 0.6875rem; /* 11px */
     --app-font-size-notif: 0.4375rem; /* 7px */
+
+    --app-container-max-width: 40rem;
 
     --spacing-xs: 4px;
     --spacing-s: 6px;

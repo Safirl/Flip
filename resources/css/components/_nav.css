@@ -1,9 +1,12 @@
 .navbar {
     position: fixed;
     top: calc(100dvh - env(safe-area-inset-bottom) - 57px);
+    margin: 0 auto;
     left: 0;
+    right: 0;
     height: 57px;
     width: 100%;
+    max-width: var(--app-container-max-width);
     display: flex;
     justify-content: space-evenly;
     background: var(--app-black);
@@ -37,7 +40,7 @@
     margin-left: .5rem;
 }
 
-.navbar .nav-button:nth-child(-n+2) *{
+.navbar .nav-button:nth-child(-n+2) * {
     transform: skew(16deg);
 }
 
@@ -45,9 +48,10 @@
     transform: skew(16deg);
 }
 
-.navbar .nav-button:nth-child(n+3) *{
+.navbar .nav-button:nth-child(n+3) * {
     transform: skew(-16deg);
 }
+
 /* End skew and middle spacing */
 
 .nav-button .icon {
