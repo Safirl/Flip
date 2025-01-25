@@ -80,6 +80,7 @@ input:hover {
 }
 
 .container {
+    overflow: hidden;
     background-color: var(--app-primary);
     display: flex;
     flex-direction: column;

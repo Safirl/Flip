@@ -2,14 +2,10 @@ h1 {
     padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
-.container {
-    padding: 0 !important;
-    justify-content: flex-start;
-}
 
 .swiper {
-    width: 85dvw;
-    height: 75dvh;
+    width: 100%;
+    height: 50%;
 }
 
 .swiper-slide {
@@ -21,7 +17,7 @@ h1 {
     font-weight: 300;
     background-color: var(--app-white-300);
     border: 1px solid var(--app-grey-100);
-   /* padding: var(--spacing-l); */
+    /* padding: var(--spacing-l); */
 }
 
 .swiper-slide::-webkit-scrollbar {
@@ -71,33 +67,31 @@ h1 {
     margin: var(--spacing-xxl) 0;
 
 }
-input{
+
+input {
     opacity: 0;
 }
 
 
-.form-buttons .labelInfo:hover
-{
+.form-buttons .labelInfo:hover {
     background-color: #2399F3;
 }
 
-.form-buttons .labelInfo:hover p em
-{
+.form-buttons .labelInfo:hover p em {
     color: white;
 }
 
-.form-buttons .labelInfo p em
-{
+.form-buttons .labelInfo p em {
     color: #2399F3;
 }
-.form-buttons .labelInfo
-{
+
+.form-buttons .labelInfo {
     background-color: transparent;
     border: 1px solid #2399F3;
 }
 
 
-.form-buttons label{
+.form-buttons label {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -109,7 +103,7 @@ input{
     height: 56px;
 }
 
-label p em{
+label p em {
     margin: 0;
     font-size: 1.5rem;
     font-weight: 600;
@@ -117,40 +111,42 @@ label p em{
 }
 
 
-.form-buttons label img{
+.form-buttons label img {
     width: 26px;
     height: 26px;
 }
 
 
-.form-buttons .labelIntox{
+.form-buttons .labelIntox {
     background-color: transparent;
     border: 1px solid #6420DF;
 }
 
-.form-buttons .labelIntox p em{
-    color:  #6420DF;
+.form-buttons .labelIntox p em {
+    color: #6420DF;
 }
 
-.form-buttons .labelIntox:hover{
+.form-buttons .labelIntox:hover {
     background-color: #6420DF;
 }
-.form-buttons .labelIntox:hover p em{
-    color:  white;
+
+.form-buttons .labelIntox:hover p em {
+    color: white;
 }
 
-.form-buttons label .notfocus{
+.form-buttons label .notfocus {
     display: block;
 }
 
-.form-buttons label .focus{
+.form-buttons label .focus {
     display: none;
 }
-.form-buttons label:hover .focus{
+
+.form-buttons label:hover .focus {
     display: block;
 }
 
-.form-buttons label:hover .notfocus{
+.form-buttons label:hover .notfocus {
     display: none;
 }
 
@@ -176,7 +172,7 @@ label p em{
     text-align: center;
 }
 
-.bulb img{
+.bulb img {
     width: 26px;
     height: 26px;
 }
@@ -207,7 +203,7 @@ label p em{
 }
 
 
-.intox-bulb h1{
+.intox-bulb h1 {
     margin-bottom: 0;
     padding: 0;
     color: white;
@@ -236,22 +232,22 @@ label p em{
 }
 
 
- .reponse em{
+.reponse em {
     color: white;
-     font-size: 1rem;
-     font-weight: 600;
-     margin-top: 0;
-     margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1rem;
 
 }
 
- .reponse{
-     display: flex;
-     align-items: center;
-     gap: 4px;
- }
+.reponse {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
 
-.textContenaire .pourcent{
+.textContenaire .pourcent {
     font-size: 18px;
 }
 
@@ -279,7 +275,7 @@ label p em{
 }
 
 
-.contenaireinfoResultAndVote{
+.contenaireinfoResultAndVote {
     width: 100%;
     padding: 16px;
     display: flex;
@@ -289,16 +285,16 @@ label p em{
     gap: 12px;
 }
 
-.intox-contenaire{
-    background: linear-gradient(0deg, rgba(218,236,253,0) 0%, rgba(223,209,249,1) 90%);
+.intox-contenaire {
+    background: linear-gradient(0deg, rgba(218, 236, 253, 0) 0%, rgba(223, 209, 249, 1) 90%);
 }
 
-.info-contenaire{
-    background: linear-gradient(0deg, rgba(0,212,255,0) 0%, rgba(218,236,253,1) 90%);
+.info-contenaire {
+    background: linear-gradient(0deg, rgba(0, 212, 255, 0) 0%, rgba(218, 236, 253, 1) 90%);
 }
 
 
-.CardContent{
+.CardContent {
     width: 100%;
     height: 100%;
     padding: 24px;
@@ -306,7 +302,7 @@ label p em{
 }
 
 
-.contenaireCountMistake{
+.contenaireCountMistake {
     display: flex;
     flex-direction: column;
 }
