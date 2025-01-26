@@ -26,6 +26,8 @@
         <a href="{{ route('app.result', ['poll' => $poll->slug]) }}">
             En savoir plus<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
         </a>
+
+        <span>Intox</span>
     </section>
 
     @if($voted)
@@ -78,6 +80,7 @@
     <footer>
         @if ($voted)
             <p>Vous avez voté <span>{{ $poll->userAnswer ? 'info' : 'intox' }}</span></p>
+            <p>{{ !$poll->userAnswer === $poll->is_intox ? 'Bien joue': 'Dommage'}}</p>
         @endif
     </footer>
 

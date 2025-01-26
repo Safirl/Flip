@@ -21,6 +21,16 @@
 
         > section:first-of-type {
             border: none;
+
+            > span {
+                position: absolute;
+                bottom: -2px;
+                right: 4px;
+                color: inherit;
+                display: initial;
+                font-family: var(--app-text-font-barcode);
+                font-size: var(--app-font-size-h2);
+            }
         }
     }
 
@@ -95,6 +105,7 @@
     }
 
     > section:first-of-type {
+        position: relative;
         color: var(--card-foreground);
         background: var(--card-background);
         border: 3px solid var(--card-foreground);
@@ -121,6 +132,10 @@
                 color: inherit;
                 margin-left: .5rem;
             }
+        }
+
+        > span {
+            display: none;
         }
     }
 
@@ -408,12 +423,25 @@
         margin-bottom: 1.5rem;
 
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: .5rem;
 
         p {
-            span {
-                text-transform: uppercase;
+            margin: 0;
+
+            &:first-of-type {
+                font-size: var(--app-font-size-h3);
+
+                span {
+                    text-transform: uppercase;
+                }
+            }
+
+            &:last-of-type {
+                font-family: var(--app-text-font-barcode);
+                font-size: var(--app-font-size-h2);
             }
         }
     }
