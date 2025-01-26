@@ -17,7 +17,7 @@ class AnswerPollController extends Controller
 
         $userId = Auth::id();
 
-        $userHasVoted = $poll->users()->where('id', $userId);
+        $userHasVoted = $poll->userAnswer;
 
         if (! $userHasVoted) {
             $poll->users()->sync([$userId => [
