@@ -1,10 +1,10 @@
 .navbar {
     position: fixed;
-    top: calc(100dvh - env(safe-area-inset-bottom) - 57px);
+    top: calc(100dvh - env(safe-area-inset-bottom) - var(--app-navbar-height));
     margin: 0 auto;
     left: 0;
     right: 0;
-    height: 57px;
+    height: var(--app-navbar-height);
     width: 100%;
     max-width: var(--app-container-max-width);
     display: flex;

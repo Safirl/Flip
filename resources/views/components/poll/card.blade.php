@@ -1,117 +1,84 @@
-<div class="swiper-slide">
-    @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
-        (auth()->check() && $poll->users()->exists()))
-        <div
-            class="contenaireinfoResultAndVote @if($poll->is_intox) intox-contenaire @else info-contenaire @endif">
-            <div class="bulb @if($poll->is_intox) intox-bulb @else info-bulb @endif ">
-                <h1>
-                    @if($poll->is_intox)
-                        <img class="" src="{{asset('../images/cross.svg')}}" alt="intox">
-                        INTOX
-                    @else
-                        <img class="logo" src="{{asset('../images/icon-circle-bulb.svg')}}" alt="info">
-                        INFO
-                    @endif
-                </h1>
-            </div>
-            @if ($poll->userAnswer !== null)
-                <div class="reponse">
-                    <h4><strong>Vous avez voté </strong></h4>
-                    <p class="{{ $poll->userAnswer ? 'bg-blue' : 'bg-purple' }}"><em>
-                            {{ $poll->userAnswer ? 'INFO' : 'INTOX' }}
-                        </em></p>
-                </div>
-            @endif
+@props(['poll'])
+@php
+    $voted = $poll->userAnswer !== null;
+
+    [$firstname, $lastname] = explode(' ', $poll->author);
+@endphp
+
+<article class="poll-card @if($poll->userAnswer !== null) {{ $poll->is_intox ? 'intox': 'info' }} @endif">
+    <header>
+        <h3>
+            <span>{{ $firstname }}</span>
+            <span>{{ $lastname }}</span>
+        </h3>
+
+        <div>
+            <p>{{ $poll->source }}</p>
+            <p>{{ $poll->date ? \Carbon\Carbon::parse($poll->date)->format('d.m.Y') : 'Date inconnue'}}</p>
         </div>
+    </header>
+
+    <section>
+        <p>
+            "{{ $poll->quote }}"
+        </p>
+
+        <a href="{{ route('app.result', ['poll' => $poll->slug]) }}">
+            En savoir plus<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </a>
+    </section>
+
+    @if($voted)
+        <section class="result">
+            <div class="@if($poll->userAnswer===0) voted @endif @if($poll->is_intox) active @endif">
+                <img src="{{ asset('images/sprites/thumb-black.png') }}" alt=""/>
+                <img src="{{ asset('images/sprites/thumb-yellow.png') }}" alt=""/>
+
+                <span>Intox</span>
+            </div>
+
+            <div class="@if($poll->userAnswer===1) voted @endif @if(!$poll->is_intox) active @endif">
+                <img src="{{ asset('images/sprites/thumb-blue.png') }}" alt=""/>
+                <img src="{{ asset('images/sprites/thumb-yellow.png') }}" alt=""/>
+                <span>Info</span>
+            </div>
+        </section>
+    @else
+        <form action="{{ route('polls.answer', $poll) }}" method="POST">
+            @csrf
+
+            <input type="radio" id="intox-{{ $poll->id }}" name="answer" value="0">
+            <label for="intox-{{ $poll->id }}">
+                <x-poll.card-btn-bg/>
+                <x-poll.card-btn-bg/>
+                <img src="{{ asset('images/sprites/thumb-black.png') }}" alt=""/>
+                <img src="{{ asset('images/sprites/thumb-yellow.png') }}" alt=""/>
+
+                <span>Intox</span>
+            </label>
+
+            <input type="radio" id="info-{{ $poll->id }}" name="answer" value="1">
+            <label for="info-{{ $poll->id }}">
+                <x-poll.card-btn-bg/>
+                <x-poll.card-btn-bg/>
+
+                <img src="{{ asset('images/sprites/thumb-blue.png') }}" alt=""/>
+                <img src="{{ asset('images/sprites/thumb-yellow.png') }}" alt=""/>
+                <span>Info</span>
+            </label>
+
+            <button>
+                <div>
+                    <img src="{{ asset('images/icons/check.svg') }}" alt="Valider"/>
+                </div>
+            </button>
+        </form>
     @endif
-    <div class="CardContent">
-        <div class="card-header">
-            <h4>{{ $poll->author }} :</h4>
-            <p class="author"><em>"{{ $poll->quote }}"</em></p>
-        </div>
-        @if($poll->image)
-            <img style="width: 100%; height: 300px; object-fit: cover" src="{{$poll->imageUrl()}}"
-                 alt="image du contexte">
+
+    <footer>
+        @if ($voted)
+            <p>Vous avez voté <span>{{ $poll->userAnswer ? 'info' : 'intox' }}</span></p>
         @endif
-        @if ((auth()->check() && $poll->users()->exists()) || (session()->has('completed_polls') && in_array($poll->id, session('completed_polls'))))
-        @else
-            <x-link
-                route="{{ route('app.result', ['poll' => $poll->slug]) }}"
-                label="Voir le contexte"
-                color="primary"
-                size="medium"
-                iconEnd="fa-solid fa-chevron-right"/>
+    </footer>
 
-
-            <hr class="divider">
-        @endif
-        @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
-      (auth()->check() && $poll->users()->exists()))
-
-            <div class="textContenaire">
-                @if( $poll->is_intox == 1 )
-                    <div class="contenaireCountMistake">
-                        <p><strong>{{ $poll->intoxCount}}</strong> personnes ont cru à une intox. </p>
-                        <p>Sur {{ $poll->intoxCount + $poll->infoCount}} votants</p>
-                    </div>
-                    <p class="pourcent" style="color: #6420DF">
-                        {{( $poll->intoxCount / ( $poll->intoxCount + $poll->infoCount))*100 }}%
-                    </p>
-
-                @else
-                    <div class="contenaireCountMistake">
-                        <p><strong>{{$poll->infoCount}}</strong> personnes ont cru à une intox
-                            sur {{ $poll->intoxCount + $poll->infoCount}} votants. </p>
-                        <p>Sur {{ $poll->intoxCount + $poll->infoCount}} votants</p>
-                    </div>
-                    <p class="pourcent" style="color: #2399F3">
-                        {{ round(($poll->infoCount / ( $poll->intoxCount + $poll->infoCount)) * 100) }}%
-                    </p>
-                @endif
-            </div>
-            <x-link
-                route="{{ route('app.result', ['poll' => $poll->slug]) }}"
-                label='Voir pourquoi'
-                color="primary"
-                size="medium"
-                iconEnd="fa-solid fa-chevron-right"/>
-        @else
-            <form class="form" action="{{ route('polls') }}" method="POST">
-                @csrf
-                <input type="hidden" name="poll_id" value="{{ $poll->id }}">
-
-                <div class="form-buttons">
-                    <div class="buttons-item">
-                        <input type="radio" id="intox-{{ $poll->id }}" name="answer" value="false">
-                        <label class="link labelIntox" for="intox-{{ $poll->id }}">
-                            <img class="notfocus" src="{{ asset('images/crossViolet.svg') }}"
-                                 alt="intox">
-                            <img class="focus" src="{{ asset('images/cross.svg') }}" alt="intox">
-                            <p><em>Intox</em></p>
-                        </label>
-                    </div>
-                    <div class="buttons-item">
-                        <input type="radio" id="info-{{ $poll->id }}" name="answer" value="true">
-                        <label class="link labelInfo" for="info-{{ $poll->id }}">
-                            <img class="focus" src="{{ asset('images/icon-circle-bulb.svg') }}"
-                                 alt="info">
-                            <img class="notfocus" src="{{ asset('images/icon-circle-bulb-bleu.svg') }}"
-                                 alt="info">
-                            <p><em>Info</em></p>
-                        </label>
-                    </div>
-                </div>
-
-                <x-button id="submit-button"
-                          type="submit"
-                          size="large"
-                          color="primary"
-                          label="Valider"
-                          iconStart="fa-solid fa-check"
-                          class="hidden"
-                />
-            </form>
-
-        @endif
-    </div>
-</div>
+</article>

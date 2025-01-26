@@ -1,10 +1,29 @@
 import 'swiper/css';
-import 'swiper/css/effect-cards';
 import Swiper from 'swiper';
-import {EffectCards} from 'swiper/modules';
+
+const btnNext = document.querySelector('.polls-next');
+const btnPrev = document.querySelector('.polls-previous');
 
 const swiper = new Swiper(".pollsSwiper", {
-    modules: [EffectCards],
-    effect: "cards",
     grabCursor: true,
+    on: {
+        init: (swiper) => {
+            btnPrev.disabled = swiper.isBeginning
+            btnNext.disabled = swiper.isEnd
+
+            btnNext.addEventListener('click', () => {
+                swiper.slideNext()
+            })
+
+            btnPrev.addEventListener('click', () => {
+                swiper.slidePrev()
+            })
+        },
+        slideChange: (swiper) => {
+            btnPrev.disabled = swiper.isBeginning
+            btnNext.disabled = swiper.isEnd
+        }
+    }
 });
+
+

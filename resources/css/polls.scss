@@ -1,0 +1,77 @@
+@import "components/_poll-card.scss";
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--app-navbar-height);
+
+    > header {
+        width: 100%;
+        padding: 1rem;
+        position: relative;
+
+        > h1 {
+            display: inline-block;
+            width: 50%;
+        }
+
+        > img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 90%;
+            transform: translate(0, -4%);
+        }
+    }
+
+    .swiper {
+        --polls-nav-height: 40px;
+        flex: 1;
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        .swiper-wrapper {
+            flex: 1
+        }
+
+        .swiper-slide {
+            height: auto;
+            background: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        > nav {
+            z-index: 1;
+            width: 100%;
+            height: var(--polls-nav-height);
+            position: absolute;
+            top: unset;
+            bottom: 1.5rem;
+            margin-top: auto;
+            text-align: center;
+
+            display: flex;
+            justify-content: space-between;
+
+            button {
+                border: none;
+                background: none;
+                padding: 0 1rem;
+
+                &:first-of-type img {
+                    transform: rotate(180deg);
+                }
+
+                &:disabled {
+                    opacity: 40%;
+                }
+            }
+        }
+    }
+}

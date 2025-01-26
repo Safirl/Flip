@@ -15,66 +15,17 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
+use function session;
+
 class AppController extends Controller
 {
-    public function index(Request $request): View
+    public function index(): View
     {
-        // Récupère les sondages du jour
-        $polls = Poll::where('published_at', date('Y-m-d'))->get();
+        $polls = Poll::with('users')->where('published_at', date('Y-m-d'))->get();
+
         session(['previous_url' => url()->full()]);
 
-        // Gère le vote si une réponse est soumise
-        if ($request->isMethod('post')) {
-            $pollId = $request->input('poll_id');
-            $answer = filter_var($request->input('answer'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-
-            if ($pollId && $answer !== null) {
-                $userId = Auth::id();
-
-                // Vérifie si l'utilisateur a déjà voté
-                $existingVote = DB::table('user_poll')
-                    ->where('poll_id', $pollId)
-                    ->where('user_id', $userId)
-                    ->exists();
-
-                if (! $existingVote) {
-                    // Enregistre le vote
-                    DB::table('user_poll')->insert([
-                        'poll_id' => $pollId,
-                        'user_id' => $userId ?? null,
-                        'answer' => $answer,
-                    ]);
-                    // Log pour vérifie
-                    session()->push('completed_polls', $pollId);
-                }
-            }
-        }
-
-        // Ajoute les informations des votes pour chaque sondage
-        foreach ($polls as $poll) {
-            $poll->intoxCount = DB::table('user_poll')
-                ->where('poll_id', $poll->id)
-                ->where('answer', 0)
-                ->count();
-
-            $poll->infoCount = DB::table('user_poll')
-                ->where('poll_id', $poll->id)
-                ->where('answer', 1)
-                ->count();
-
-            // Récupère la réponse de l'utilisateur pour ce sondage
-            if (Auth::check()) {
-                $poll->userAnswer = DB::table('user_poll')
-                    ->where('poll_id', $poll->id)
-                    ->where('user_id', Auth::id())
-                    ->value('answer');
-            }
-        }
-
-        // Récupère si une réponse a été soumise pour une réutilisation dans la vue
-        $answer = filter_var($request->input('answer'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-
-        return view('app.polls', compact('polls'), ['isFeed' => false, 'answer' => $answer]);
+        return view('app.polls', compact('polls'), ['isFeed' => false]);
     }
 
     public function isUserIdAnswer(Poll $poll, $userId): bool

@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Polls\AnswerPollController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(\App\Http\Controllers\AppController::class)->group(function () {
-    Route::match(['get', 'post'], '/', 'index')->name('polls');
+    Route::get('/', 'index')->name('polls');
     Route::get('/mention', 'mentionslegales')->name('mentionslegales');
     Route::match(['get', 'post'], '/result/{poll:slug}', 'result')->name('app.result');
     Route::get('/notification', 'notification')->name('notification');
@@ -15,6 +16,10 @@ Route::controller(\App\Http\Controllers\AppController::class)->group(function ()
     Route::get('/comments/{poll:slug}', 'showComments')->name('comments.show')->middleware('auth');
     Route::post('/comments/{poll:slug}', 'addComment')->name('addComment')->middleware('auth');
 });
+
+Route::post('/polls/{poll:slug}/answer', AnswerPollController::class)
+    ->name('polls.answer')
+    ->middleware('auth');
 
 Route::controller(\App\Http\Controllers\AuthController::class)->group(function () {
     Route::get('/login', 'login')->name('auth.login');

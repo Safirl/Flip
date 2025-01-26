@@ -13,12 +13,15 @@
     --app-font-size-h2: 1.25rem; /* 20px */
     --app-font-size-h3: 0.875rem; /* 14px */
     --app-font-size-h4: 0.5rem; /* 8px */
+    --app-font-size-quote: 1.125rem; /* 18px */
     --app-font-size-p: 1rem; /* 16px */
     --app-font-size-p2: .875rem; /* 14px */
     --app-font-size-btn: 0.6875rem; /* 11px */
+    --app-font-size-label: 0.625rem; /* 10px */
     --app-font-size-notif: 0.4375rem; /* 7px */
 
     --app-container-max-width: 40rem;
+    --app-navbar-height: 57px;
 
     --spacing-xs: 4px;
     --spacing-s: 6px;
