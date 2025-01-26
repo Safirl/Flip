@@ -19,7 +19,7 @@
     <div class="swiper pollsSwiper">
         <div class="swiper-wrapper">
             @foreach ($polls as $poll)
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-poll-id="{{ $poll->id }}">
                     <x-poll.card :poll="$poll"/>
                 </div>
             @endforeach
