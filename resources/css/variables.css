@@ -8,6 +8,7 @@
     /*Fonts*/
     --app-text-font-heading: MODERNIZ;
     --app-text-font-body: 'Agdasima';
+    --app-text-font-barcode: "Libre Barcode 39", serif;
     --app-text-font: 'Agdasima', MODERNIZ, Figtree, ui-sans-serif, system-ui, sans-serif;
     --app-font-size-h1: 1.375rem; /* 22px */
     --app-font-size-h2: 1.25rem; /* 20px */
