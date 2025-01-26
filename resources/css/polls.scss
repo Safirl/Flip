@@ -9,19 +9,11 @@
     > header {
         width: 100%;
         padding: 1rem;
-        position: relative;
+        position: absolute;
 
         > h1 {
             display: inline-block;
             width: 50%;
-        }
-
-        > img {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 90%;
-            transform: translate(0, -4%);
         }
     }
 

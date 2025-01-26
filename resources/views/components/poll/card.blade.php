@@ -6,6 +6,14 @@
 @endphp
 
 <article class="poll-card @if($poll->userAnswer !== null) {{ $poll->is_intox ? 'intox': 'info' }} @endif">
+    @if(!$voted)
+        <img src="{{ asset('images/covers/quote-small.png') }}" alt=""/>
+    @elseif($poll->is_intox)
+        <img src="{{asset('/images/covers/thumb-up-black.png')}}" alt=""/>
+    @else
+        <img src="{{asset('/images/covers/thumb-up-blue.png')}}" alt=""/>
+    @endif
+
     <header>
         <h3>
             <span>{{ $firstname }}</span>

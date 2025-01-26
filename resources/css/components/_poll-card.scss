@@ -3,12 +3,31 @@
     --card-foreground: var(--app-black);
     --card-background: var(--app-primary);
     height: 100%;
+    padding-top: 6rem;
     display: flex;
+    position: relative;
     flex-direction: column;
+    overflow: hidden;
+
+    > img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 90%;
+        transform: translate(0, -4%);
+    }
 
     &.info {
         --card-foreground: var(--app-primary);
         --card-background: var(--app-secondary);
+
+        > img {
+            display: initial;
+            top: -2%;
+            right: -2%;
+            width: 35%;
+            transform: rotate(-20deg);
+        }
 
         > section:first-of-type {
             border: none;
@@ -18,6 +37,16 @@
     &.intox {
         --card-foreground: var(--app-primary);
         --card-background: var(--app-black);
+
+        > img {
+            display: initial;
+            position: absolute;
+            top: -10%;
+            right: -4%;
+            width: 35%;
+            opacity: 50%;
+            transform: rotate(150deg);
+        }
 
         > section:first-of-type {
             border: none;

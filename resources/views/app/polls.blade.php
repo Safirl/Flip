@@ -14,7 +14,6 @@
             @endif
         </h1>
 
-        <img src="{{ asset('images/covers/quote-small.png') }}" alt=""/>
     </header>
 
     <div class="swiper pollsSwiper">
