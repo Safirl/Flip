@@ -4,21 +4,8 @@
 @vite(['resources/css/comments.css'])
 
 @section('content')
-    <div>
-        {{--        Mettre les infos liées à la carte bref on les retrouve depuis poll --}}
-    </div>
-    <form action="{{ route('app.result', ['poll' => $poll]) }}"
-          method="get">
-        <div class="back-bar">
-            <x-button
-                size="large"
-                color="primary"
-                kind="outlined"
-                label=""
-                iconEnd="fa-solid fa-arrow-left"
-                classes="btn-back"
-            />
-
+        <section class="back-bar">
+            <x-back-button />
             <div class="bulb @if($poll->is_intox) intox-bulb @else info-bulb @endif ">
                 <i class="fa-solid fa-lightbulb"></i>
                 <h1 style="">
@@ -29,8 +16,7 @@
                     @endif
                 </h1>
             </div>
-        </div>
-    </form>
+        </section>
     {{--    Quote--}}
     <div class="card">
         <div class="card-section">
