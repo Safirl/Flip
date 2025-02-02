@@ -21,7 +21,7 @@ class AppController extends Controller
 {
     public function index(): View
     {
-        $polls = Poll::with('users')->where('published_at', date('Y-m-d'))->get();
+        $polls = Poll::all()/*with('users')->where('published_at', date('Y-m-d'))->get()*/;
 
         session(['previous_url' => url()->full()]);
 
@@ -64,7 +64,6 @@ class AppController extends Controller
             date('Y-m-d', strtotime('-7 days')).' 00:00:00',
             date('Y-m-d').' 23:59:59',
         ])->get();
-
         session(['previous_url' => url()->full()]);
 
         // Récupère la réponse soumise pour une réutilisation dans la vue
