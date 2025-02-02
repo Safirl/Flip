@@ -8,6 +8,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/css/polls.scss',
+                'resources/css/polls.js',
                 'resources/css/account.css',
                 "resources/css/login.css",
                 "resources/css/comments.css",
