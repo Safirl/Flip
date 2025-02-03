@@ -32,7 +32,7 @@ h1, h2, h3, h4 {
 }
 
 p {
-    font-size: 0.9rem;
+    font-size: var(--app-font-size-p2);
     font-style: normal;
     font-weight: 300;
     line-height: normal;
@@ -46,11 +46,10 @@ label {
 
 input, textarea {
     display: block;
-    height: 2.5rem;
     width: 100%;
-    padding: 8px 16px;
-    font-size: 0.9rem !important;
-    border: 1px solid var(--app-grey-500);
+    padding: var(--spacing-l) var(--spacing-m);
+    font-size: 1rem !important;
+    border: 1px solid var(--app-black-20);
     border-radius: var(--spacing-m);
     margin-top: 0.25rem !important;
     background-color: var(--app-primary) 0.5;
