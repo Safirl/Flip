@@ -35,6 +35,10 @@
         <section class="empty">
             <h2>Aucune notification</h2>
             <p>Ajoutez des amis pour être informé de leurs commentaires !</p>
+
+            <a href="{{ route('account') }}">
+                Ajouter des amis
+            </a>
         </section>
     @endif
 
