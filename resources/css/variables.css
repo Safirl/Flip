@@ -39,6 +39,7 @@
     --app-black: rgba(0, 0, 0, 1);
     --app-black-50: rgba(0, 0, 0, .5);
     --app-black-30: rgba(0, 0, 0, .3);
+    --app-black-20: rgba(0, 0, 0, .2);
     --app-black-10: rgba(0, 0, 0, .1);
 
     --app-primary-800: rgba(60, 19, 134, 1);

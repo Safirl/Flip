@@ -1,51 +1,54 @@
-@vite(['resources/css/login.css'])
+@vite(['resources/css/auth.scss'])
 
-<x-layouts.base title="Register">
-    <h1>Créer un compte</h1>
+<x-layouts.base title="Inscription">
+    <h1>Inscription</h1>
 
-    <form action="{{route('auth.register.create')}}" method="post" class="vstack gap-3">
+    <form action="{{route('auth.register.create')}}" method="post">
         @csrf
-        <div class="container-auth">
-            <div class="auth">
-                <div>
-                    <div class="form-group">
-                        <label for="name">Pseudo</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
-                        @error("name") <span class="text-error">{{ $message }}</span> @enderror
-                    </div>
 
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value= {{ old('email') }}>
-                        @error("email") <span class="text-error">{{ $message }}</span> @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Mot de passe</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                        @error("password") <span class="text-error">{{ $message }}</span> @enderror
-                    </div>
-                </div>
-
-                <div>
-                    <div class="text-center">
-                        <span class="text">En vous inscrivant vous acceptez les</span>
-                        <x-link color="primary"
-                                size="medium"
-                                noPadding=true
-                                url='mentionslegales'
-                                label="Conditions Générales d'Utilisation">
-                        </x-link>
-                        <x-button
-                            size="large"
-                            color="primary"
-                            label="M'inscrire et me connecter"
-                            expand="true"
-                            iconEnd="fa-solid fa-chevron-right"
-                        />
-                    </div>
-                </div>
-            </div>
+        <div>
+            <label for="name">Pseudo</label>
+            <input type="name" name="name" id="name" required value="{{ old('name') }}">
+            @error("name")
+            <p class="text-error">{{ $message }}</p>
+            @enderror
         </div>
+
+        <div>
+            <label for="email">Adresse E-Mail</label>
+            <input type="email" name="email" id="email" required value="{{ old('email') }}">
+            @error("email")
+            <p class="text-error">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div>
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password" required>
+            <p class="hint">Minimum 8 caractères</p>
+            @error("password")
+            <p class="text-error">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <button>
+            Inscription
+        </button>
     </form>
+
+    <nav>
+        <p>
+            En vous créant un compte vous acceptez les <a href="{{ route('mentionslegales') }}">Conditions Générales d’Utilisation</a>
+        </p>
+
+        <a href="{{route('auth.login')}}">
+            Connexion
+        </a>
+
+        <a href="{{route('polls')}}">
+            Continuer sans compte
+            
+            <img src="{{ asset('images/icons/chevron-right.svg') }}" alt=""/>
+        </a>
+    </nav>
 </x-layouts.base>
