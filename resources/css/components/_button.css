@@ -33,7 +33,7 @@
 .btn-fill-secondary {
     background-color: none;
     color: var(--app-black);
-    --btn-color:none;
+    --btn-color: none;
 }
 
 .btn-fill-grey {
@@ -47,6 +47,7 @@
     color: var(--app-primary);
     --btn-color: var(--app-error-500);
 }
+
 /* LABEL */
 .btnLabel {
     color: inherit;
