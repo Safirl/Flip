@@ -13,6 +13,7 @@ export default defineConfig({
                 'resources/css/auth.scss',
                 'resources/css/comments.css',
                 'resources/css/mentions.scss',
+                'resources/css/notifications.scss',
                 'resources/css/reset.css',
                 'resources/css/variables.css',
             ],

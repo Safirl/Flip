@@ -1,16 +1,21 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\Polls\AnswerPollController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/account', [AccountController::class, 'show'])->name('account');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/notifications', [NotificationsController::class, 'index'])->name('notifications.index');
+    Route::get('/notifications/{notification}', [NotificationsController::class, 'show'])->name('notifications.show');
+});
+
 Route::controller(\App\Http\Controllers\AppController::class)->group(function () {
     Route::get('/', 'index')->name('polls');
     Route::get('/mention', 'mentionslegales')->name('mentionslegales');
     Route::match(['get', 'post'], '/result/{poll:slug}', 'result')->name('app.result');
-    Route::get('/notification', 'notification')->name('notification');
     Route::get('/feed', 'feed')->name('feed');
     Route::post('/account/add-friend', 'addFriend')->name('addFriend')->middleware('auth');
 
