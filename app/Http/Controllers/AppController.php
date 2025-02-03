@@ -8,13 +8,17 @@ use App\Models\Comment;
 use App\Models\Friend;
 use App\Models\Poll;
 use App\Models\User;
+use App\Notifications\PollCommented;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
+use function abort;
 use function session;
 
 class AppController extends Controller
@@ -201,10 +205,16 @@ class AppController extends Controller
 
     public function addComment(
         CommentRequest $request,
-        Poll $poll): RedirectResponse
-    {
+        Poll $poll,
+    ): RedirectResponse {
         $data = $request->validated();
         $parent_id = $request->input('parent_id');
+
+        $author = Auth::user();
+        if (! $author) {
+            abort(400);
+        }
+
         if ($parent_id) {
             $parent_comment = Comment::find($parent_id);
 
@@ -212,19 +222,31 @@ class AppController extends Controller
                 return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'L\'utilisateur n\'existe pas!');
             }
 
-            if (! Auth::user()->friends()->contains(($parent_comment->user()->first())) && Auth::id() !== $parent_comment->user_id) {
+            if (
+                $author->id !== $parent_comment->user_id
+                && ! $author->friends()->contains(($parent_comment->user()->first()))
+            ) {
                 return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'Vous n\'êtes pas ami avec cet utilisateur !');
             }
         }
 
-        Comment::create([
+        $comment = Comment::create([
             'poll_id' => $poll->id,
             'parent_id' => $parent_id,
             'content' => $data['content'],
-            'user_id' => Auth::id(),
+            'user_id' => $author->id,
         ]);
 
-        return redirect()->route('comments.show', ['poll' => $poll])->with('success', 'Commentaire publié !');
+        Notification::send($author->friends(), new PollCommented(
+            poll_id: $comment->poll_id,
+            comment_id: $comment->id,
+            author: $comment->user->name,
+            content: Str::limit($comment->content, 50)
+        ));
+
+        return redirect()
+            ->route('comments.show', ['poll' => $poll])
+            ->with('success', 'Commentaire publié !');
     }
 
     public function mentionslegales(): View
