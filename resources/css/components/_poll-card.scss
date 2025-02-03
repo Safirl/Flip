@@ -63,7 +63,7 @@
         }
     }
 
-    @mixin skewedBg() {
+    %skewed-bg {
         z-index: -1;
         content: '';
         position: absolute;
@@ -110,7 +110,7 @@
             }
 
             &::before {
-                @include skewedBg();
+                @extend %skewed-bg;
             }
         }
 
@@ -120,7 +120,7 @@
             width: fit-content;
 
             &:first-of-type::before {
-                @include skewedBg();
+                @extend %skewed-bg;
             }
 
             &:last-of-type {
@@ -129,7 +129,7 @@
         }
 
         &::before {
-            @include skewedBg();
+            @extend %skewed-bg;
         }
     }
 
