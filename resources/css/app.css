@@ -93,12 +93,12 @@ input:focus {
 }
 
 .text-error:before {
-    font-family: 'Font Awesome 6 Free';
+    font-family: var(--app-text-font-icon);
     font-size: 0.7rem;
     content: '\f071';
     font-weight: 900;
     margin-right: 0.3rem;
-    color: var(--app-error-500);;
+    color: var(--app-error-500);
 }
 
 .alert-success {
