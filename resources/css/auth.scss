@@ -1,0 +1,84 @@
+.container {
+    padding: 1rem;
+    gap: 3rem !important;
+
+    h1 {
+        margin: 0;
+    }
+
+    form {
+        > div {
+            + div {
+                margin-top: 1rem;
+            }
+
+            label {
+                display: block;
+
+                color: var(--app-black);
+                font-family: var(--app-text-font-heading);
+                font-size: var(--app-font-size-label);
+            }
+
+            p {
+                margin-top: 0.4rem;
+                margin-bottom: 0.4rem;
+            }
+        }
+
+
+        button {
+            margin-top: 2rem;
+            width: 100%;
+            border: 3px solid var(--app-black);
+            font-family: var(--app-text-font-heading);
+            font-size: var(--app-font-size-btn);
+            background: none;
+            color: var(--app-black);
+            padding: 11px 16px 10px 16px; // padding chelou pour gérer l'alignement de la police
+        }
+    }
+
+    nav {
+        margin-top: auto;
+        text-align: center;
+
+        p a {
+            text-decoration: underline;
+        }
+
+        > a:first-of-type {
+            display: block;
+            width: 100%;
+            border: 3px solid var(--app-black);
+            font-family: var(--app-text-font-heading);
+            font-size: var(--app-font-size-btn);
+            background: var(--app-black);
+            color: var(--app-primary);
+            padding: 11px 16px 10px 16px; // padding chelou pour gérer l'alignement de la police
+        }
+
+        > a:last-of-type {
+            margin-top: 0.2rem;
+
+            display: block;
+            gap: 0.4rem;
+            width: 100%;
+            border: 3px solid transparent;
+            font-family: var(--app-text-font-heading);
+            font-size: var(--app-font-size-label);
+            text-decoration: underline;
+            padding: 11px 16px 10px 16px; // padding chelou pour gérer l'alignement de la police
+
+            img {
+                margin-left: 0.4rem;
+                margin-bottom: -2px;
+                height: 12px;
+            }
+        }
+    }
+}
+
+
+
+
