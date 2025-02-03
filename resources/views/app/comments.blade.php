@@ -1,9 +1,6 @@
-@extends('base')
-
-@section('title', 'Commentaires')
 @vite(['resources/css/comments.css'])
 
-@section('content')
+<x-layouts.base-with-nav title="Commentaires">
     <div>
         {{--        Mettre les infos liées à la carte bref on les retrouve depuis poll --}}
     </div>
@@ -116,68 +113,68 @@
             </div>
         @endforeach
     </div>
-@endsection
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Sélectionner tous les boutons et les réponses associées
-        document.querySelectorAll('.btn-toggle-discussion').forEach((button) => {
-            button.addEventListener('click', () => {
-                // Trouver le parent ".comment" du bouton
-                const commentDiv = button.closest('.comment');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sélectionner tous les boutons et les réponses associées
+            document.querySelectorAll('.btn-toggle-discussion').forEach((button) => {
+                button.addEventListener('click', () => {
+                    // Trouver le parent ".comment" du bouton
+                    const commentDiv = button.closest('.comment');
 
-                // Trouver la div "answers" à l'intérieur de ce parent
-                const answersDiv = commentDiv.querySelector('.answers');
+                    // Trouver la div "answers" à l'intérieur de ce parent
+                    const answersDiv = commentDiv.querySelector('.answers');
 
-                // Vérifier si la div "answers" existe et gérer l'affichage
-                if (answersDiv) {
-                    if (answersDiv.style.display === 'none' || answersDiv.style.display === '') {
-                        answersDiv.style.display = 'block'; // Afficher
-                    } else {
-                        answersDiv.style.display = 'none'; // Cacher
+                    // Vérifier si la div "answers" existe et gérer l'affichage
+                    if (answersDiv) {
+                        if (answersDiv.style.display === 'none' || answersDiv.style.display === '') {
+                            answersDiv.style.display = 'block'; // Afficher
+                        } else {
+                            answersDiv.style.display = 'none'; // Cacher
+                        }
                     }
-                }
+                });
             });
         });
-    });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.close-popup').forEach((button) => {
-            button.addEventListener('click', () => {
-                const popup = document.querySelector('.popup-container');
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.close-popup').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const popup = document.querySelector('.popup-container');
 
-                if (popup) {
-                    popup.style.opacity = '0'
-                    popup.style.zIndex = '-100'
-                    const body = document.querySelector("body")
-                    if (body) {
-                        body.style.overflow = 'unset';
+                    if (popup) {
+                        popup.style.opacity = '0'
+                        popup.style.zIndex = '-100'
+                        const body = document.querySelector("body")
+                        if (body) {
+                            body.style.overflow = 'unset';
+                        }
                     }
-                }
+                });
             });
         });
-    });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.toggle-popup').forEach((button) => {
-            button.addEventListener('click', () => {
-                const popup = document.querySelector('.popup-container');
-                if (popup) {
-                    const parentId = button.getAttribute('data-parent-id');
-                    const hiddenInput = document.querySelector('input[name="parent_id"]');
-                    console.log('hiddenInput :', hiddenInput);
-                    if (hiddenInput) {
-                        hiddenInput.value = parentId;
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.toggle-popup').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const popup = document.querySelector('.popup-container');
+                    if (popup) {
+                        const parentId = button.getAttribute('data-parent-id');
+                        const hiddenInput = document.querySelector('input[name="parent_id"]');
+                        console.log('hiddenInput :', hiddenInput);
+                        if (hiddenInput) {
+                            hiddenInput.value = parentId;
+                        }
+                        console.log('Parent ID:', parentId);
+                        popup.style.opacity = '1'
+                        popup.style.zIndex = 'unset'
+                        const body = document.querySelector("body")
+                        if (body) {
+                            body.style.overflow = 'hidden';
+                        }
                     }
-                    console.log('Parent ID:', parentId);
-                    popup.style.opacity = '1'
-                    popup.style.zIndex = 'unset'
-                    const body = document.querySelector("body")
-                    if (body) {
-                        body.style.overflow = 'hidden';
-                    }
-                }
+                });
             });
         });
-    });
-</script>
+    </script>
+</x-layouts.base-with-nav>

@@ -1,7 +1,6 @@
-@extends('base')
-@section('title', 'Login')
 @vite(['resources/css/login.css'])
-@section('content')
+
+<x-layouts.base title="Login">
     <h1>Se connecter</h1>
     <div class="container-auth">
         <div class="auth">
@@ -48,5 +47,4 @@
             </div>
         </div>
     </div>
-
-@endsection
+</x-layouts.base>

@@ -1,15 +1,11 @@
-@extends('base')
-
-@section('title', $poll->title)
-
-@section('content')
+<x-layouts.base-with-nav :title="$poll->title">
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
-            <div>
-                <label for="image">Image</label>
-                <input type="file" class="form-control" id="image" name="image">
-                @error("image") {{ $message }} @enderror
-            </div>
+        <div>
+            <label for="image">Image</label>
+            <input type="file" class="form-control" id="image" name="image">
+            @error("image") {{ $message }} @enderror
+        </div>
         <div>
             <label for="title">Titre</label>
             <input type="text" name="title" value= {{ old('title', $poll->title) }}>
@@ -54,4 +50,4 @@
             @endif
         </button>
     </form>
-@endsection
+</x-layouts.base-with-nav>

@@ -1,8 +1,6 @@
-@extends('base')
-@section('title', 'Mentions légales')
 @vite(['resources/css/mentions.css'])
 
-@section('content')
+<x-layouts.base-with-nav title="Mentions légales">
     <div class="mentions-legales">
         <div class="title-bar">
             <form action="{{ url()->previous() }}"
@@ -106,7 +104,4 @@
             <p><strong>Flip CORP.</strong></p>
         </div>
     </div>
-
-@endsection
-@section('scripts')
-@endsection
+</x-layouts.base-with-nav>

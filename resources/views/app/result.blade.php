@@ -1,10 +1,6 @@
-@extends('base')
-
-
-@section('title', 'Result')
 @vite(['resources/css/results.css'])
-@section('content')
 
+<x-layouts.base-with-nav title="Résultats">
     <form action="{{ session('previous_url') }}"
           method="get">
         <div class="back-bar">
@@ -31,23 +27,23 @@
     </form>
 
 
-{{--    @if($poll->is_intox == 1)--}}
-{{--        <style>--}}
-{{--            .bulb {--}}
-{{--                background: var(--app-secondary-500);--}}
-{{--            }--}}
-{{--        </style>--}}
+    {{--    @if($poll->is_intox == 1)--}}
+    {{--        <style>--}}
+    {{--            .bulb {--}}
+    {{--                background: var(--app-secondary-500);--}}
+    {{--            }--}}
+    {{--        </style>--}}
 
-{{--    @else--}}
-{{--        <style>--}}
-{{--            .bulb {--}}
-{{--                background: var(--app-primary-700);:--}}
-{{--            }--}}
-{{--        </style>--}}
-{{--    @endif--}}
+    {{--    @else--}}
+    {{--        <style>--}}
+    {{--            .bulb {--}}
+    {{--                background: var(--app-primary-700);:--}}
+    {{--            }--}}
+    {{--        </style>--}}
+    {{--    @endif--}}
 
 
-    @if (session()->has('completed_polls') && in_array($poll->id, session('completed_polls')) ||
+    @if ((session()->has('completed_polls') && in_array($poll->id, session('completed_polls'))) ||
                              (auth()->check() && $poll->users()->exists()))
         <div class="contenaireGraph">
             <div class="cadreFigure">
@@ -67,7 +63,8 @@
 
                 @else
                     <div class="contenaireCountMistake">
-                        <p><strong>{{$infoCount}}</strong> personnes ont cru à une intox sur {{$intoxCount + $infoCount}} votants. </p>
+                        <p><strong>{{$infoCount}}</strong> personnes ont cru à une intox
+                            sur {{$intoxCount + $infoCount}} votants. </p>
                         <p></p>
                     </div>
                     <p class="pourcent" style="color: #6420DF">
@@ -147,4 +144,4 @@
                 });
             });
         </script>
-        @endsection
+</x-layouts.base-with-nav>

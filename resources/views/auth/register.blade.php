@@ -1,13 +1,11 @@
-@extends('base')
-@section('title', 'Login')
 @vite(['resources/css/login.css'])
-@section('content')
 
+<x-layouts.base title="Register">
     <h1>Créer un compte</h1>
 
-        <form action="{{route('auth.register.create')}}" method="post" class="vstack gap-3">
-            @csrf
-            <div class="container-auth">
+    <form action="{{route('auth.register.create')}}" method="post" class="vstack gap-3">
+        @csrf
+        <div class="container-auth">
             <div class="auth">
                 <div>
                     <div class="form-group">
@@ -48,7 +46,6 @@
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
-
-@endsection
+        </div>
+    </form>
+</x-layouts.base>

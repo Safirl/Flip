@@ -1,7 +1,4 @@
-@extends('base')
-@section('title', 'Admin')
-
-@section('content')
+<x-layouts.base-with-nav title="Admin">
     <h1>
         Les polls
     </h1>
@@ -18,4 +15,4 @@
         </article>
     @endforeach
     {{ $polls->links() }}
-@endsection
+</x-layouts.base-with-nav>

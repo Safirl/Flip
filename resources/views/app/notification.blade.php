@@ -1,11 +1,6 @@
-@extends('base')
-
-
-@section('title', 'Notification')
-
-@section('content')
+<x-layouts.base-with-nav title="Notifications">
     <h1>Notifications </h1>
 
     {{--    @foreach ($posts  as $post)--}}
     {{--    @endforeach--}}
-@endsection
+</x-layouts.base-with-nav>

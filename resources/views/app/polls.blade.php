@@ -1,10 +1,7 @@
-@extends('base')
-
-@section('title', 'Votes du jour')
 @vite(['resources/css/polls.scss'])
 @vite(['resources/js/polls.js'])
 
-@section('content')
+<x-layouts.base-with-nav title="Votes du jour">
     <header>
         <h1>
             @if($isFeed)
@@ -35,7 +32,4 @@
             </button>
         </nav>
     </div>
-@endsection
-
-@section('scripts')
-@endsection
+</x-layouts.base-with-nav>
