@@ -20,7 +20,7 @@
         @endif
     </header>
 
-    @can('doAdminActions')
+    @can('do-admin-actions')
         <div class="admin-actions">
             <h2>Actions admin</h2>
 

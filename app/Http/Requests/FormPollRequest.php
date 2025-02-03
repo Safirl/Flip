@@ -13,7 +13,7 @@ class FormPollRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Gate::allows('doAdminActions');
+        return Gate::allows('do-admin-actions');
     }
 
     /**

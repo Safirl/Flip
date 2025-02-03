@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     public function createPoll(): View|RedirectResponse
     {
-        Gate::authorize('doAdminActions');
+        Gate::authorize('do-admin-actions');
 
         $poll = new Poll;
         $poll->title = 'New Poll';
@@ -24,7 +24,7 @@ class AdminController extends Controller
 
     public function storePoll(FormPollRequest $request): RedirectResponse
     {
-        Gate::authorize('doAdminActions');
+        Gate::authorize('do-admin-actions');
 
         Poll::create($this->extractData(new Poll, $request));
 
@@ -33,7 +33,7 @@ class AdminController extends Controller
 
     public function updatePoll(Poll $poll, FormPollRequest $request): RedirectResponse
     {
-        Gate::authorize('doAdminActions');
+        Gate::authorize('do-admin-actions');
 
         $poll->update($this->extractData($poll, $request));
 
@@ -42,14 +42,14 @@ class AdminController extends Controller
 
     public function editPoll(Poll $poll): View|RedirectResponse
     {
-        Gate::authorize('doAdminActions');
+        Gate::authorize('do-admin-actions');
 
         return view('admin.createPoll', ['poll' => $poll]);
     }
 
     public function extractData(Poll $poll, FormPollRequest $request): array
     {
-        Gate::authorize('doAdminActions');
+        Gate::authorize('do-admin-actions');
 
         $data = $request->validated();
         /** @var UploadedFile|null $image */
@@ -67,7 +67,7 @@ class AdminController extends Controller
 
     public function index(): View
     {
-        Gate::authorize('doAdminActions');
+        Gate::authorize('do-admin-actions');
 
         $polls = Poll::orderBy('published_at', 'desc')->paginate(5);
 
