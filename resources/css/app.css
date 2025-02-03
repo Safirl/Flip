@@ -14,7 +14,6 @@
 }
 
 body {
-    /*background: linear-gradient(to bottom left, var(--app-primary-100), var(--app-white-300), var(--app-primary-100));*/
     background-color: var(--app-black-500);
     height: 100vh;
     margin: 0;
@@ -38,10 +37,6 @@ p {
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-}
-
-.form-group {
-    margin: 1rem 0;
 }
 
 label {
@@ -72,13 +67,6 @@ input:focus {
     transition: all 0.25s;
 }
 
-
-input:hover {
-    outline: solid 3px var(--app-black);
-    transition: all 0.25s;
-    cursor: pointer;
-}
-
 .container {
     overflow: hidden;
     background-color: var(--app-primary);
@@ -95,18 +83,6 @@ input:hover {
     .container {
         align-items: center;
     }
-}
-
-
-.text-center {
-    text-align: -webkit-center;
-}
-
-.text {
-    font-size: 0.9rem;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
 }
 
 .text-error {
@@ -156,13 +132,6 @@ input:hover {
     100% {
         top: -90px;
     }
-}
-
-.divider {
-    border: none;
-    height: 1px;
-    background-color: var(--app-grey-100);
-    margin: var(--spacing-xxl) 0;
 }
 
 .sr-only {
