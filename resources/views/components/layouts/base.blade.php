@@ -21,6 +21,8 @@
 
     {{ $slot }}
 </div>
+
+<x-loading-screen/>
 </body>
 </html>
 
